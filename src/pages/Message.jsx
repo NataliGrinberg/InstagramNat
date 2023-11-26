@@ -1,5 +1,5 @@
 export function Message() {
     return (
-        <div></div>
+        <div>Message page</div>
     )
 }

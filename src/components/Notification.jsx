@@ -1,5 +1,5 @@
 export function Notification() {
     return (
-        <div></div>
+        <div>Notification page</div>
     )
 }

@@ -1,0 +1,30 @@
+.navBar-grid-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;	
+}
+
+.navBar-grid-container  > div {
+	//background-color: #f1f1f1;
+	margin: 10px;
+	padding: 20px;
+	font-size: 25px;
+  }
+
+.navBar-logo{
+	order: 1;
+}
+
+.navBar-list{
+	order: 2;
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	gap: 20px;
+}
+
+.navBar-more{
+	order: 3;
+	padding-top: 200px;
+
+}

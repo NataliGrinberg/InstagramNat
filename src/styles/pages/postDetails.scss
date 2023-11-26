@@ -1,0 +1,44 @@
+.post-details{
+    background-color: aqua;
+    color: black;
+
+    img {
+        width: 200px;
+        height: 200px;
+        //border-radius: 50%;
+        object-fit: cover;
+    }
+
+
+}
+
+.user-info {
+    // background-color: $clr2;
+    // padding: 2px 8px;
+    padding-left: 100px;
+    color: white;
+  
+    img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+
+        .canvas {
+            left: -5px; 
+            position: absolute; 
+            top: -5px; 
+            height: 42px; 
+            width: 42px;
+        }
+    }
+
+   
+  
+   
+
+
+
+
+
+}

@@ -1,5 +1,5 @@
 export function Reel() {
     return (
-        <div></div>
+        <div>reels page</div>
     )
 }

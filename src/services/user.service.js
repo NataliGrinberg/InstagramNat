@@ -1,148 +1,170 @@
-import { storageService } from './async-storage.service.js'
-import { utilService } from './util.service.js'
+import { storageService } from './async-storage.service'
+import { utilService } from './util.service'
 
+const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+const STORAGE_KEY_USER_DB = 'user'
 
-const loggedinUser = { _id: 'u302' ,email: 'Nataliinsta4@gmail.com', fullname: 'Natali Insta' }
 
 export const userService = {
-  query,
-  save,
-  remove,
-  getById,
-  createUser,
-  getDefaultFilter,
-  loggedinUser,
-  getFilterFromParams
-
+    login,
+    logout,
+    signup,
+    getLoggedinUser,
+    saveLocalUser,
+    getUsers,
+    getById,
+    remove,
+    update,
+    getEmptyUser
 }
 
-const STORAGE_KEY = 'users'
+window.userService = userService
 
+_createUsers()
 
-_createUsers
-
-function getFilterFromParams(searchParams) {
-
-  const defaultFilter = getDefaultFilter()
-  const filterBy = {}
-  for (const field in defaultFilter) {
-    filterBy[field] = searchParams.get(field) ? (searchParams.get(field) === 'null' ? null : searchParams.get(field)) : defaultFilter[field]
-  }
-
-  return filterBy
+function getUsers() {
+    return storageService.query(STORAGE_KEY_USER_DB)
 }
 
-
-function getSortFromParams(searchParams) {
-  const defaultSort = getDefaultSort()
-  const sortBy = {}
-  for (const field in defaultSort) {
-    sortBy[field] = searchParams.get(field) ? (searchParams.get(field) === 'null' ? null : searchParams.get(field)) : ''
-  }
-
-  return sortBy
+async function getById(userId) {
+    const user = await storageService.get(STORAGE_KEY_USER_DB, userId)
+    return user
 }
 
-async function query(filterBy) {
-
-  let users = await storageService.query(STORAGE_KEY)
-  //users = await queryFilter(filterBy,users)
-
-  return users
+function remove(userId) {
+    return storageService.remove(STORAGE_KEY_USER_DB, userId)
 }
 
+async function update(userToUpdate) {
+    const user = await getById(userToUpdate.id)
+    console.log('user', user)
 
-
-
-async function queryFilter(filterBy, users) {
-
-  console.log("queryFilter", filterBy)
-  if (filterBy) {
-
-  }
-  return users
+    const updatedUser = await storageService.put(STORAGE_KEY_USER_DB, { ...user, ...userToUpdate })
+    if (getLoggedinUser().id === updatedUser.id) saveLocalUser(updatedUser)
+    return updatedUser
 }
 
-
-function getById(id) {
-  return storageService.get(STORAGE_KEY, id)
-}
-
-function remove(id) {
-  return storageService.remove(STORAGE_KEY, id)
-}
-
-
-function save(userToSave) {
-  if (userToSave.id) {
-    return storageService.put(STORAGE_KEY, userToSave)
-  } else {
-    return storageService.post(STORAGE_KEY, userToSave)
-  }
-}
-
-
-function createUser(){
-    return  {
-      username: '',
-      password: '',
-      fullname: '',
-      imgUrl: '',
-      following: [
-        {
-          _id: '',
-          fullname: '',
-          imgUrl: ''
-        }
-      ],
-      followers: [
-        {
-          _id: '',
-          fullname: '',
-          imgUrl: ''
-        }
-      ],
-      savedStoryIds: [] // even better - use mini-story
+async function login(userCred) {
+    const users = await storageService.query(STORAGE_KEY_USER_DB)
+    const user = users.find(user => user.username === userCred.username)
+    if (user) {
+        return saveLocalUser(user)
     }
 }
 
-function getDefaultFilter() {
-  return {
- 
-  }
+async function signup(userCred) {
+    userCred.balance = 10000
+    if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+    const user = await storageService.post('user', userCred)
+    return saveLocalUser(user)
 }
 
+async function logout() {
+    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+}
 
-function _createUsers() {
-  let users = utilService.loadFromStorage(STORAGE_KEY)
-  if (!users || !users.length) {
-    users = [{
-      _id: "u101",
-      username: "Muko",
-      password: "mukmuk",
-      fullname: "Muki Muka",
-      imgUrl: "http://some-img",
-      following: [
-        {
-          _id: "u106",
-          fullname: "Dob",
-          imgUrl: "http://some-img"
-        }
-      ],
-      followers: [
-        {
-          _id: "u105",
-          fullname: "Bob",
-          imgUrl: "http://some-img"
-        }
-      ],
-      savedStoryIds: ["s104", "s111", "s123"] // even better - use mini-story
+// function getEmptyUser() {
+//     return {
+//         username: '',
+//         fullname: '',
+//         password: '',
+//         imgUrl: '',
+//     }
+// }
+
+function getEmptyUser() {
+    return {
+        username: '',
+        password: '',
+        fullname: '',
+        imgUrl: '',
+        following: [
+            {
+                _id: '',
+                fullname: '',
+                imgUrl: ''
+            }
+        ],
+        followers: [
+            {
+                _id: '',
+                fullname: '',
+                imgUrl: ''
+            }
+        ],
+        savedStoryIds: [] // even better - use mini-story
     }
-    ]
-
-
-    utilService.saveToStorage(STORAGE_KEY, users)
-  }
 }
 
 
+
+function saveLocalUser(user) {
+    user = { id: user.id, fullname: user.fullname, imgUrl: user.imgUrl, balance: user.balance }
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    return user
+}
+
+function getLoggedinUser() {
+    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+}
+
+
+async function _createUsers() {
+    try {
+        const users = await getUsers()
+        if (!users || !users.length) {
+            users = [{
+                _id: "u101",
+                username: "Muko",
+                password: "mukmuk",
+                fullname: "Muki Muka",
+                imgUrl: "http://some-img",
+                following: [
+                    {
+                        _id: "u106",
+                        fullname: "Dob",
+                        imgUrl: "http://some-img"
+                    }
+                ],
+                followers: [
+                    {
+                        _id: "u105",
+                        fullname: "Bob",
+                        imgUrl: "http://some-img"
+                    }
+                ],
+                savedStoryIds: ["s104", "s111", "s123"] // even better - use mini-story
+            },
+            {
+                _id: "u102",
+                username: "Nata",
+                password: "Nata",
+                fullname: "Nat Gr",
+                imgUrl: "http://some-img",
+                following: [
+                    {
+                        _id: "u106",
+                        fullname: "Dob",
+                        imgUrl: "http://some-img"
+                    }
+                ],
+                followers: [
+                    {
+                        _id: "u105",
+                        fullname: "Bob",
+                        imgUrl: "http://some-img"
+                    }
+                ],
+                savedStoryIds: ["s104", "s111", "s123"] // even better - use mini-story
+            }
+            ]
+        }
+
+        await storageService.put(STORAGE_KEY_USER_DB, users)
+
+    } catch (err) {
+        console.log('UserActions: err in loadUsers', err)
+    }
+
+
+}

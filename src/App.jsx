@@ -7,29 +7,29 @@ import { PostDetails } from './pages/PostDetails';
 import { PostIndex } from './pages/PostIndex';
 import { Profile } from './pages/Profile';
 import { Message } from './pages/Message';
+import { loadUsers } from './store/actions/user.actions';
+import { useEffect } from 'react';
+
 // import './App.css'
 
 function App() {
 
+  useEffect(() => {
+    loadUsers()
+}, [])
+
   return (
     <Router>
-      <section >
-        <Logo />
+      <section className='app'>
         <NavBar />
-        <main className='container-main-app'>
           <Routes>
             <Route path="/" element={<PostIndex />} />
             <Route path="/chat" element={<Message />} />
             <Route path="/profile/:profileId" element={<Profile />} />
             <Route path="/post/:postId" element={<PostDetails />} />
           </Routes>
-        </main>
-
-        <AppFooter />
       </section>
     </Router>
   )
-
 }
-
 export default App

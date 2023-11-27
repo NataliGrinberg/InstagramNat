@@ -7,6 +7,7 @@ import { Profile } from './pages/Profile';
 import { Message } from './pages/Message';
 import { loadUsers } from './store/actions/user.actions';
 import { useEffect } from 'react';
+import { DynamicModal } from './components/DynamicModal';
 
 // import './App.css'
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/post/:postId" element={<PostDetails />} />
           </Routes>
       </section>
+      <DynamicModal />
     </Router>
   )
 }

@@ -1,16 +1,22 @@
 import { Svgs } from '../assets/Svgs'
 import imgCan from '../assets/images/canva.png'
+import { onToggleModal } from '../store/actions/app.actions'
 
 export function PostDetails({ post }) {
     return (
         <article className="post-details-model">
 
             <div className="post-user-info">
-                <img className="canvas" src={imgCan} />
-                <img className="imgPro" src={post.by.imgUrl} />
+                <div class="container">
+                    <img className="canvas" src={imgCan} />
+                    <img className="imgPro" src={post.by.imgUrl} />
+                </div>
+
+
+
                 <h2 className="fullName">{post.by.fullname}</h2>
                 <h2 className="loc">{post.by.loc}</h2>
-                <div className="more3Points" onClick={() => { }}> {Svgs.more3Points}</div>
+                <div className="moreOptions" onClick={() => { onToggleModal({ type: 'MoreOptions' }) }}> {Svgs.more3Points}</div>
             </div>
 
             <div className="post-details">
@@ -20,9 +26,9 @@ export function PostDetails({ post }) {
             </div>
 
             <div className='post-icons'>
-                <div className="like" onClick={() => { alert('click on like: ', Svgs.unlike) }}> {Svgs.notifications}</div>
-                <div className="comment" onClick={() => { }}> {Svgs.comment}</div>
-                <div className="sharePost" onClick={() => { }}> {Svgs.sharePost}</div>
+                <div className="like" onClick={() => { onToggleModal({ type: 'Likes' }) }}> {Svgs.notifications}</div>
+                <div className="comment" onClick={() => { onToggleModal({ type: 'Comments' }) }}> {Svgs.comment}</div>
+                <div className="sharePost" onClick={() => { onToggleModal({ type: 'Share' }) }}> {Svgs.sharePost}</div>
                 <div className="save" onClick={() => { }}>{Svgs.save}</div>
 
             </div>

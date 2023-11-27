@@ -111,7 +111,7 @@ function getLoggedinUser() {
 
 async function _createUsers() {
     try {
-        const users = await getUsers()
+        let users = await getUsers()
         if (!users || !users.length) {
             users = [{
                 _id: "u101",
@@ -160,7 +160,7 @@ async function _createUsers() {
             ]
         }
 
-        await storageService.put(STORAGE_KEY_USER_DB, users)
+      //  await storageService.put(STORAGE_KEY_USER_DB, users)
 
     } catch (err) {
         console.log('UserActions: err in loadUsers', err)

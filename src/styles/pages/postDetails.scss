@@ -6,9 +6,8 @@
 
     .post-details {
         img {
-            width: 200px;
-            height: 200px;
-            //border-radius: 50%;
+            width: 50%;
+            height: 80%;
             object-fit: cover;
         }
 
@@ -17,37 +16,58 @@
     .post-user-info {
         display: flex;
         flex-direction: row;
+        gap: 10px;
 
+        .container {
+            position: relative;
+        }
 
-        // background-color: $clr2;
-        // padding: 2px 8px;
-        padding-left: 100px;
-        //color: white;
-
-        img {
-            width: 32px;
-            height: 32px;
+        .imgPro {
+            position: absolute;
+            left: 8%;
+            bottom: 11%;
             border-radius: 50%;
-            object-fit: cover;
+            width: 85%;
+            height: 83%;
+        }
 
-            .canvas {
-                left: -5px;
-                position: absolute;
-                top: -5px;
-                height: 42px;
-                width: 42px;
-            }
+        .canvas {
+            width: 100%;
+            height: auto;
+        }
+
+
+        // img {
+        //     width: 32px;
+        //     height: 32px;
+        //     border-radius: 50%;
+        //     object-fit: cover;
+
+    
+        //     .canvas {
+
+        //         left: -5px;
+        //         position: absolute;
+        //         top: -5px;
+        //         height: 42px;
+        //         width: 42px;
+        //     }
+
+
+        // }
+
+        .moreOptions {
+            padding-left: 150px;
         }
     }
 
 
     .post-icons {
+
         display: flex;
         flex-direction: row;
+        gap: 10px;
 
-        div {
-            gap: 20px;
-        }
 
         .save {
             margin-left: 200px;

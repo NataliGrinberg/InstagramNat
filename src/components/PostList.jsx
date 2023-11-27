@@ -16,7 +16,7 @@ export function PostList({ posts }) {
 						<ul >
 							{posts.map(post => (
 								<PostDetails
-									key={post.id}
+									key={post._id}
 									post={post}
 								/>
 							))}

@@ -1,0 +1,23 @@
+.dynamic-modal {
+    position: fixed;
+    inset: 0;
+    margin: 100px 500px 100px 500px;
+   
+    text-align: center;
+    background: rgb(250, 250, 250);
+    border-radius: 10%; 
+
+    .dynamic-modal-button {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+}
+
+.dynamic-modal-opacity {
+    position: fixed;
+    inset: 0;
+    text-align: center;
+    background: rgb(3, 3, 3);
+    opacity: 0.3;
+}

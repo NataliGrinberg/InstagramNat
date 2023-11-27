@@ -145,16 +145,17 @@ function getDefaultFilter() {
 
 function _createPosts() {
   let posts = utilService.loadFromStorage(STORAGE_KEY)
+  debugger
   if (!posts || !posts.length) {
     posts = [
       {
         _id: "s101",
-        txt: "Best trip ever",
+        txt: "Best trip ever 1",
         imgUrl: "https://res.cloudinary.com/dvtyeanju/image/upload/v1701021596/sdjujydo9sjk0smgn7lv.png", //an array for a few pictures 
         by: {
           _id: "u101",
           fullname: "Ulash Ulashi",
-          imgUrl: "http://some-img"
+          imgUrl: "https://res.cloudinary.com/dvtyeanju/image/upload/v1701021596/sdjujydo9sjk0smgn7lv.png", //an array for a few pictures 
         },
         loc: { // Optional
           lat: 11.11,
@@ -208,8 +209,118 @@ function _createPosts() {
         imgUrl: "https://res.cloudinary.com/dvtyeanju/image/upload/v1701022046/e88sua3ge6ajcldn2hcs.png", //an array for a few pictures 
         by: {
           _id: "u102",
-          fullname: "Ulash Ulashi",
-          imgUrl: "http://some-img"
+          fullname: "rbn lol",
+          imgUrl: "https://res.cloudinary.com/dvtyeanju/image/upload/v1701022046/e88sua3ge6ajcldn2hcs.png", //an array for a few pictures 
+        },
+        loc: { // Optional
+          lat: 11.11,
+          lng: 22.22,
+          name: "Tel Aviv"
+        },
+        comments: [
+          {
+            id: "c1001",
+            by: {
+              _id: "u105",
+              fullname: "Bob",
+              imgUrl: "http://some-img"
+            },
+            txt: "good one!",
+            likedBy: [ // Optional
+              {
+                "_id": "u105",
+                "fullname": "Bob",
+                "imgUrl": "http://some-img"
+              }
+            ]
+          },
+          {
+            id: "c1002",
+            by: {
+              _id: "u106",
+              fullname: "Dob",
+              imgUrl: "http://some-img"
+            },
+            txt: "not good!",
+          }
+        ],
+        likedBy: [
+          {
+            _id: "u105",
+            fullname: "Bob",
+            imgUrl: "http://some-img"
+          },
+          {
+            _id: "u106",
+            fullname: "Dob",
+            imgUrl: "http://some-img"
+          }
+        ],
+        tags: ["fun", "romantic"]
+      },
+      {
+        _id: "s103",
+        txt: "Best trip ever 333",
+        imgUrl: "https://res.cloudinary.com/dvtyeanju/image/upload/v1701021596/sdjujydo9sjk0smgn7lv.png", //an array for a few pictures 
+        by: {
+          _id: "u103",
+          fullname: "gri kol",
+          imgUrl: "https://res.cloudinary.com/dvtyeanju/image/upload/v1701021596/sdjujydo9sjk0smgn7lv.png", //an array for a few pictures 
+        },
+        loc: { // Optional
+          lat: 11.11,
+          lng: 22.22,
+          name: "Tel Aviv"
+        },
+        comments: [
+          {
+            id: "c1001",
+            by: {
+              _id: "u105",
+              fullname: "Bob",
+              imgUrl: "http://some-img"
+            },
+            txt: "good one!",
+            likedBy: [ // Optional
+              {
+                "_id": "u105",
+                "fullname": "Bob",
+                "imgUrl": "http://some-img"
+              }
+            ]
+          },
+          {
+            id: "c1002",
+            by: {
+              _id: "u106",
+              fullname: "Dob",
+              imgUrl: "http://some-img"
+            },
+            txt: "not good!",
+          }
+        ],
+        likedBy: [
+          {
+            _id: "u105",
+            fullname: "Bob",
+            imgUrl: "http://some-img"
+          },
+          {
+            _id: "u106",
+            fullname: "Dob",
+            imgUrl: "http://some-img"
+          }
+        ],
+        tags: ["fun", "romantic"]
+      },
+      {
+        _id: "s104",
+        txt: "story four",
+        imgUrl: "https://res.cloudinary.com/dvtyeanju/image/upload/v1701022046/e88sua3ge6ajcldn2hcs.png", //an array for a few pictures 
+        by: {
+          _id: "u1044",
+          fullname: "dana tom",
+          imgUrl: "https://res.cloudinary.com/dvtyeanju/image/upload/v1701022046/e88sua3ge6ajcldn2hcs.png", //an array for a few pictures 
         },
         loc: { // Optional
           lat: 11.11,

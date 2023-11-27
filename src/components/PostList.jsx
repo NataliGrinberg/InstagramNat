@@ -8,10 +8,10 @@ export function PostList({ posts }) {
 	return (
 		<Fragment>
 			<section className="postList-container">
-				<div>
+				<div className="appStory-post">
 					<AppStory />
 				</div>
-				<div>
+				<div  className="postDetails-list">
 					{!!posts?.length && (
 						<ul >
 							{posts.map(post => (

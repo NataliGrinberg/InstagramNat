@@ -1,8 +1,6 @@
 import { Link, Route, HashRouter as Router, Routes } from 'react-router-dom';
 
-import { AppFooter } from './components/AppFooter';
 import { NavBar } from './components/NavBar';
-import { Logo } from './components/Logo';
 import { PostDetails } from './pages/PostDetails';
 import { PostIndex } from './pages/PostIndex';
 import { Profile } from './pages/Profile';

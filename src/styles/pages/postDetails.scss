@@ -1,57 +1,57 @@
-.post-details-model{
+.post-details-model {
     background-color: rgba(34, 8, 233, 0);
     color: black;
-    gap: 30px;
-    border: 1px;
+    margin: 30px;
+    border-bottom: 1px solid #ccc !important;
 
-.post-details{
-    img {
-        width: 200px;
-        height: 200px;
-        //border-radius: 50%;
-        object-fit: cover;
+    .post-details {
+        img {
+            width: 200px;
+            height: 200px;
+            //border-radius: 50%;
+            object-fit: cover;
+        }
+
     }
 
-
-}
-
-.post-user-info{
-    display: flex;
-    flex-direction: row;
+    .post-user-info {
+        display: flex;
+        flex-direction: row;
 
 
-    // background-color: $clr2;
-    // padding: 2px 8px;
-    padding-left: 100px;
-    //color: white;
-  
-    img {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        object-fit: cover;
+        // background-color: $clr2;
+        // padding: 2px 8px;
+        padding-left: 100px;
+        //color: white;
 
-        .canvas {
-            left: -5px; 
-            position: absolute; 
-            top: -5px; 
-            height: 42px; 
-            width: 42px;
+        img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+
+            .canvas {
+                left: -5px;
+                position: absolute;
+                top: -5px;
+                height: 42px;
+                width: 42px;
+            }
         }
     }
-}
 
 
-.post-icons{
-    display: flex;
-    flex-direction: row;
+    .post-icons {
+        display: flex;
+        flex-direction: row;
 
-    div{
-        gap: 20px;
+        div {
+            gap: 20px;
+        }
+
+        .save {
+            margin-left: 200px;
+        }
     }
-    .save{
-        margin-left: 200px;
-    }
-}
 
 }

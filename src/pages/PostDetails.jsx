@@ -1,15 +1,15 @@
 import { Svgs } from '../assets/Svgs'
 import imgCan from '../assets/images/canva.png'
 
-
 export function PostDetails({ post }) {
     return (
         <article className="post-details-model">
 
             <div className="post-user-info">
                 <img className="canvas" src={imgCan} />
-                <img className="" src={post.by.imgUrl} />
-                <h2>{post.by.fullname}</h2>
+                <img className="imgPro" src={post.by.imgUrl} />
+                <h2 className="fullName">{post.by.fullname}</h2>
+                <h2 className="loc">{post.by.loc}</h2>
                 <div className="more3Points" onClick={() => { }}> {Svgs.more3Points}</div>
             </div>
 

@@ -145,7 +145,6 @@ function getDefaultFilter() {
 
 function _createPosts() {
   let posts = utilService.loadFromStorage(STORAGE_KEY)
-  debugger
   if (!posts || !posts.length) {
     posts = [
       {

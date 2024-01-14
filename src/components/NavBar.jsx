@@ -136,6 +136,6 @@ export function NavBar() {
             {/* <Outlet context={{ onAddEmail, onUpdateEmail, onSaveDraftEmail }} /> */}
 
         </section >
-
+    
     )
 }

@@ -4,7 +4,7 @@ import { useForm } from "../customHooks/useForm";
 import { postService } from "../services/post.service";
 
 import { InputEmojiChat } from "../components/InputEmojiChat";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { savePost } from "../store/actions/post.actions";
 import { PostPreviewImg } from "../components/PostPreviewImg";
 import { Svgs } from "../assets/Svgs";
@@ -15,7 +15,7 @@ export function PostDetails() {
     const [post, setPost] = useState(null)
     const { postId } = useParams()
     const [likePost, setLikePost] = useState(postService.isLikePost(post));
-
+    const navigate = useNavigate()
 
     useEffect(() => {
         loadPost()
@@ -50,14 +50,14 @@ export function PostDetails() {
                 <div className="create-postDetails-button" onClick={
                     () => { }}>
                     <div className="create-postDetails-button-div">
-                        <div className="svg-postDetails">
+                        <div className="svg-postDetails" onClick={()=>navigate('/')}>
                             {Svgs.close}
                         </div>
                     </div>
                 </div>
 
      
-        //*********************************************** */
+      
                  <div className="postDetails-container">
 
                     <div className="postDetails-container-imgs">

@@ -231,16 +231,16 @@ width: 816px;
 
 .original img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-.original:before {
-  z-index: 2
-}
+// .original:before {
+//   z-index: 2
+// }
 
-.original:after {
-  z-index: 3
-}
+// .original:after {
+//   z-index: 3
+// }
 
 .aden {
   position: relative;
@@ -262,16 +262,16 @@ width: 816px;
 
 .aden img {
   width: 100%;
-  z-index: 1
+  //z-index: 1
 }
 
-.aden:before {
-  z-index: 2
-}
+// .aden:before {
+//   z-index: 2
+// }
 
-.aden:after {
-  z-index: 3
-}
+// .aden:after {
+//   z-index: 3
+// }
 
 .aden::after {
   background: -webkit-linear-gradient(left, rgba(66, 10, 14, .2), transparent);
@@ -305,16 +305,16 @@ width: 816px;
 
 .inkwell img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-.inkwell:before {
-  z-index: 2
-}
+// .inkwell:before {
+//   z-index: 2
+// }
 
-.inkwell:after {
-  z-index: 3
-}
+// .inkwell:after {
+//   z-index: 3
+// }
 
 .perpetua {
   position: relative
@@ -334,16 +334,16 @@ width: 816px;
 
 .perpetua img {
   width: 100%;
-  z-index: 1
+  //z-index: 1
 }
 
-.perpetua:before {
-  z-index: 2
-}
+// .perpetua:before {
+//   z-index: 2
+// }
 
-.perpetua:after {
-  z-index: 3
-}
+// .perpetua:after {
+//   z-index: 3
+// }
 
 .perpetua::after {
   background: -webkit-linear-gradient(top, #005b9a, #e6c13d);
@@ -371,16 +371,16 @@ width: 816px;
 
 .reyes img {
   width: 100%;
-  z-index: 1
+  //z-index: 1
 }
 
-.reyes:before {
-  z-index: 2
-}
+// .reyes:before {
+//   z-index: 2
+// }
 
-.reyes:after {
-  z-index: 3
-}
+// .reyes:after {
+//   z-index: 3
+// }
 
 .reyes::after {
   background: #efcdad;
@@ -407,16 +407,16 @@ width: 816px;
 
 .gingham img {
   width: 100%;
-  z-index: 1
+  //z-index: 1
 }
 
-.gingham:before {
-  z-index: 2
-}
+// .gingham:before {
+//   z-index: 2
+// }
 
-.gingham:after {
-  z-index: 3
-}
+// .gingham:after {
+//   z-index: 3
+// }
 
 .gingham::after {
   background: #e6e6fa
@@ -442,16 +442,16 @@ width: 816px;
 
 .toaster img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-.toaster:before {
-  z-index: 2
-}
+// .toaster:before {
+//   z-index: 2
+// }
 
-.toaster:after {
-  z-index: 3
-}
+// .toaster:after {
+//   z-index: 3
+// }
 
 .toaster::after {
   background: -webkit-radial-gradient(circle, #804e0f, #3b003b);
@@ -479,16 +479,16 @@ width: 816px;
 
 .walden img {
   width: 100%;
-  z-index: 1
+  //z-index: 1
 }
 
-.walden:before {
-  z-index: 2
-}
+// .walden:before {
+//   z-index: 2
+// }
 
-.walden:after {
-  z-index: 3
-}
+// .walden:after {
+//   z-index: 3
+// }
 
 .walden::after {
   background: #04c;
@@ -516,16 +516,16 @@ width: 816px;
 
 .hudson img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-.hudson:before {
-  z-index: 2
-}
+// .hudson:before {
+//   z-index: 2
+// }
 
-.hudson:after {
-  z-index: 3
-}
+// .hudson:after {
+//   z-index: 3
+// }
 
 .hudson::after {
   background: -webkit-radial-gradient(circle, #a6b1ff 50%, #342134);
@@ -554,16 +554,16 @@ width: 816px;
 
 .earlybird img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-.earlybird:before {
-  z-index: 2
-}
+// .earlybird:before {
+//   z-index: 2
+// }
 
-.earlybird:after {
-  z-index: 3
-}
+// .earlybird:after {
+//   z-index: 3
+// }
 
 .earlybird::after {
   background: -webkit-radial-gradient(circle, #d0ba8e 20%, #360309 85%, #1d0210 100%);
@@ -591,16 +591,16 @@ width: 816px;
 
 .mayfair img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-.mayfair:before {
-  z-index: 2
-}
+// .mayfair:before {
+//   z-index: 2
+// }
 
-.mayfair:after {
-  z-index: 3
-}
+// .mayfair:after {
+//   z-index: 3
+// }
 
 .mayfair::after {
   background: -webkit-radial-gradient(40% 40%, circle, rgba(255, 255, 255, .8), rgba(255, 200, 200, .6), #111 60%);
@@ -629,16 +629,16 @@ width: 816px;
 
 .lofi img {
   width: 100%;
-  z-index: 1
+  //z-index: 1
 }
 
-.lofi:before {
-  z-index: 2
-}
+// .lofi:before {
+//   z-index: 2
+// }
 
-.lofi:after {
-  z-index: 3
-}
+// .lofi:after {
+//   z-index: 3
+// }
 
 .lofi::after {
   background: -webkit-radial-gradient(circle, transparent 70%, #222 150%);
@@ -666,15 +666,15 @@ width: 816px;
 
 ._1977 img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-._1977:before {
-  z-index: 2
-}
+// ._1977:before {
+//   z-index: 2
+// }
 
 ._1977:after {
-  z-index: 3;
+  //z-index: 3;
   background: rgba(243, 106, 188, .3);
   mix-blend-mode: screen
 }
@@ -699,16 +699,16 @@ width: 816px;
 
 .brooklyn img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-.brooklyn:before {
-  z-index: 2
-}
+// .brooklyn:before {
+//   z-index: 2
+// }
 
-.brooklyn:after {
-  z-index: 3
-}
+// .brooklyn:after {
+//   z-index: 3
+// }
 
 .brooklyn::after {
   background: -webkit-radial-gradient(circle, rgba(168, 223, 193, .4) 70%, #c4b7c8);
@@ -736,16 +736,16 @@ width: 816px;
 
 .xpro2 img {
   width: 100%;
-  z-index: 1
+  //z-index: 1
 }
 
-.xpro2:before {
-  z-index: 2
-}
+// .xpro2:before {
+//   z-index: 2
+// }
 
-.xpro2:after {
-  z-index: 3
-}
+// .xpro2:after {
+//   z-index: 3
+// }
 
 .xpro2::after {
   background: -webkit-radial-gradient(circle, #e6e7e0 40%, rgba(43, 42, 161, .6) 110%);
@@ -773,16 +773,16 @@ width: 816px;
 
 .nashville img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-.nashville:before {
-  z-index: 2
-}
+// .nashville:before {
+//   z-index: 2
+// }
 
-.nashville:after {
-  z-index: 3
-}
+// .nashville:after {
+//   z-index: 3
+// }
 
 .nashville::after {
   background: rgba(0, 70, 150, .4);
@@ -814,16 +814,16 @@ width: 816px;
 
 .lark img {
   width: 100%;
-  z-index: 1
+  //z-index: 1
 }
 
-.lark:before {
-  z-index: 2
-}
+// .lark:before {
+//   z-index: 2
+// }
 
-.lark:after {
-  z-index: 3
-}
+// .lark:after {
+//   z-index: 3
+// }
 
 .lark::after {
   background: rgba(242, 242, 242, .8);
@@ -855,16 +855,16 @@ width: 816px;
 
 .moon img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-.moon:before {
-  z-index: 2
-}
+// .moon:before {
+//   z-index: 2
+// }
 
-.moon:after {
-  z-index: 3
-}
+// .moon:after {
+//   z-index: 3
+// }
 
 .moon::before {
   background: #a0a0a0;
@@ -896,18 +896,18 @@ width: 816px;
 
 .clarendon img {
   width: 100%;
-  z-index: 1
+  //z-index: 1
 }
 
 .clarendon:before {
-  z-index: 2;
+  //z-index: 2;
   background: rgba(127, 187, 227, .2);
   mix-blend-mode: overlay
 }
 
-.clarendon:after {
-  z-index: 3
-}
+// .clarendon:after {
+//   z-index: 3
+// }
 
 .willow {
   position: relative;
@@ -929,16 +929,16 @@ width: 816px;
 
 .willow img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-.willow:before {
-  z-index: 2
-}
+// .willow:before {
+//   z-index: 2
+// }
 
-.willow:after {
-  z-index: 3
-}
+// .willow:after {
+//   z-index: 3
+// }
 
 .willow::before {
   background-color: radial-gradient(40%, circle, #d4a9af 55%, #000 150%);
@@ -970,16 +970,16 @@ width: 816px;
 
 .rise img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-.rise:before {
-  z-index: 2
-}
+// .rise:before {
+//   z-index: 2
+// }
 
-.rise:after {
-  z-index: 3
-}
+// .rise:after {
+//   z-index: 3
+// }
 
 .rise::after {
   background: -webkit-radial-gradient(circle, rgba(232, 197, 152, .8), transparent 90%);
@@ -1014,16 +1014,16 @@ width: 816px;
 
 .slumber img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-.slumber:before {
-  z-index: 2
-}
+// .slumber:before {
+//   z-index: 2
+// }
 
-.slumber:after {
-  z-index: 3
-}
+// .slumber:after {
+//   z-index: 3
+// }
 
 .slumber::after {
   background: rgba(125, 105, 24, .5);
@@ -1055,16 +1055,16 @@ width: 816px;
 
 .brannan img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-.brannan:before {
-  z-index: 2
-}
+// .brannan:before {
+//   z-index: 2
+// }
 
-.brannan:after {
-  z-index: 3
-}
+// .brannan:after {
+//   z-index: 3
+// }
 
 .brannan::after {
   background-color: rgba(161, 44, 199, .31);
@@ -1091,16 +1091,16 @@ width: 816px;
 
 .valencia img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-.valencia:before {
-  z-index: 2
-}
+// .valencia:before {
+//   z-index: 2
+// }
 
-.valencia:after {
-  z-index: 3
-}
+// .valencia:after {
+//   z-index: 3
+// }
 
 .valencia::after {
   background: #3a0339;
@@ -1126,16 +1126,16 @@ width: 816px;
 
 .kelvin img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-.kelvin:before {
-  z-index: 2
-}
+// .kelvin:before {
+//   z-index: 2
+// }
 
-.kelvin:after {
-  z-index: 3
-}
+// .kelvin:after {
+//   z-index: 3
+// }
 
 .kelvin::after {
   background: #b77d21;
@@ -1167,15 +1167,15 @@ width: 816px;
 
 .maven img {
   width: 100%;
-  z-index: 1
+ // z-index: 1
 }
 
-.maven:before {
-  z-index: 2
-}
+// .maven:before {
+//   z-index: 2
+// }
 
 .maven:after {
-  z-index: 3;
+  //z-index: 3;
   background: rgba(3, 230, 26, .2);
   mix-blend-mode: hue
 }
@@ -1198,25 +1198,23 @@ width: 816px;
   pointer-events: none
 }
 
-.stinson img {
-  width: 100%;
-  z-index: 1
-}
+// .stinson img {
+//   width: 100%;
+//   z-index: 1
+// }
 
-.stinson:before {
-  z-index: 2
-}
+// .stinson:before {
+//   z-index: 2
+// }
 
-.stinson:after {
-  z-index: 3
-}
+// .stinson:after {
+//   z-index: 3
+// }
 
 .stinson::before {
   background: rgba(240, 149, 128, .2);
   mix-blend-mode: soft-light
 }
-
-//*************************************************
 
 
 // *,

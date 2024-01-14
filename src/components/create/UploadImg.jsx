@@ -36,7 +36,8 @@ export function UploadImg() {
     function handleChange(event) {
         
         saveImage({ type: SET_IMGS, imgs: event })
-    //    uploadImageSelected()
+
+        //uploadImageSelected()
         
         onToggleModalCreate({ type: 'FilterImg' })
     };

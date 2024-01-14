@@ -1,6 +1,5 @@
 export function SwitchProfile() {
-    
     return (
-    <div>display the SwitchProfile here</div>
+    <div className="switchProfile-container">display the SwitchProfile here</div>
     )
 }

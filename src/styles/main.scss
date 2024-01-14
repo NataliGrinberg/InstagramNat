@@ -12,10 +12,20 @@
 //COMPONENTS
 @import 'cmps/story';
 @import 'cmps/naVBar';
-@import 'cmps/sideDate';
+@import 'cmps/sideData';
 @import 'cmps/postList';
 @import 'cmps/dynamic-modal';
-
+@import 'cmps/create-dynamic-modal';
+@import 'cmps/upload-img';
+@import 'cmps/filter-img';
+@import 'cmps/filters';
+@import 'cmps/suggested';
+@import 'cmps/switchProfile';
+@import 'cmps/appFooter';
+@import 'cmps/inputEmojiChat';
+@import 'cmps/autoComplete';
+@import 'cmps/postPreview'; 
+@import 'cmps/createPost';
 
 //PAGES
 @import 'pages/postIndex.scss';

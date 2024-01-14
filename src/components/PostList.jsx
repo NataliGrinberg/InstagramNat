@@ -1,8 +1,8 @@
 import { Fragment } from "react";
-import { PostDetails } from "../pages/PostDetails";
+import {  PostPreview } from "./PostPreview";
 import { AppStory } from "./AppStory";
 
-export function PostList({ posts }) {
+export function PostList({ posts ,addLikeToPost,addCommentToPost}) {
 
 
 	return (
@@ -12,18 +12,22 @@ export function PostList({ posts }) {
 					<AppStory />
 				</div>
 				<div  className="postDetails-list">
+					<div></div>
 					{!!posts?.length && (
 						<ul >
 							{posts.map(post => (
-								<PostDetails
+								<PostPreview
 									key={post._id}
 									post={post}
+									addLikeToPost={addLikeToPost}
+									addCommentToPost={addCommentToPost}
 								/>
 							))}
 						</ul>
 					)}
 					{!posts?.length && <h1 className="no-posts-info">No posts here</h1>}
 				</div>
+				<div></div>
 			</section>
 		</Fragment>
 	)

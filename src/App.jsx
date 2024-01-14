@@ -8,6 +8,7 @@ import { Message } from './pages/Message';
 import { loadUsers } from './store/actions/user.actions';
 import { useEffect } from 'react';
 import { DynamicModal } from './components/DynamicModal';
+import { CreateDynamicModal } from './components/CreateDynamicModal';
 
 // import './App.css'
 
@@ -15,20 +16,22 @@ function App() {
 
   useEffect(() => {
     loadUsers()
-}, [])
+  }, [])
 
   return (
     <Router>
       <section className='app'>
         <NavBar />
-          <Routes>
-            <Route path="/" element={<PostIndex />} />
-            <Route path="/chat" element={<Message />} />
-            <Route path="/profile/:profileId" element={<Profile />} />
-            <Route path="/post/:postId" element={<PostDetails />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<PostIndex />}>
+             <Route path="/post/:postId" element={<PostDetails />} />
+          </Route> 
+          <Route path="/chat" element={<Message />} />
+          <Route path="/profile/:profileId" element={<Profile />} />
+        </Routes>
       </section>
       <DynamicModal />
+      <CreateDynamicModal />
     </Router>
   )
 }

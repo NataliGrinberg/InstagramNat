@@ -1,6 +1,6 @@
 export function Suggested() {
     
     return (
-    <div>display the Suggested here</div>
+    <div className="suggested-container">display the Suggested here</div>
     )
 }

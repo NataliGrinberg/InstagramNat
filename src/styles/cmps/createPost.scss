@@ -1,0 +1,234 @@
+// createPost-container{
+// display: flex;
+// flex-direction: row;
+// }
+
+// .createPost-titel{
+//     display: flex;
+//     flex-direction: column;
+// }
+
+.createPost-container-data {
+    display: flex;
+    flex-direction: row;
+}
+
+.createPost-container {
+    align-content: stretch;
+    align-items: normal;
+    align-self: auto;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    color-scheme: light;
+    direction: ltr;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    justify-content: flex-start;
+    line-height: 18px;
+    min-height: 0px;
+    min-width: 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    pointer-events: all;
+    position: relative;
+    text-size-adjust: 100%;
+
+
+    .createPost-titel {
+        align-items: normal;
+        color: rgb(0, 0, 0);
+        color-scheme: light;
+        direction: ltr;
+        display: flex;
+        flex-direction: row;
+        font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        height: 43px;
+        line-height: 18px;
+        outline-color: rgb(0, 0, 0);
+        outline-style: none;
+        outline-width: 0px;
+        pointer-events: all;
+        text-size-adjust: 100%;
+        justify-content: center;
+        align-items: center;
+        border-bottom-color: rgb(219, 219, 219);
+        border-bottom-style: solid;
+        border-bottom-width: 0.8px;
+
+
+        // .upload-img-model-title-div {
+        //     font-size: 16px;
+        //     font-weight: 600;
+        //     align-content: stretch;
+        //     text-align: center;
+        //     text-overflow: ellipsis;
+        //     text-size-adjust: 100%;
+        //     text-wrap: nowrap;
+        //     align-items: center;
+        //     align-self: auto;
+        //     box-sizing: border-box;
+        //     color: rgb(0, 0, 0);
+        //     color-scheme: light;
+        //     direction: ltr;
+        //     justify-content: center;
+        //     line-height: 24px;
+        //     pointer-events: all;
+
+        // }
+
+
+    }
+}
+
+
+.createPost-container-data-img {
+    align-items: stretch;
+    border-bottom-color: rgb(0, 0, 0);
+    border-bottom-style: none;
+    border-bottom-width: 0px;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    color-scheme: light;
+    cursor: crosshair;
+    direction: ltr;
+    // display: flex;
+    // flex-direction: column;
+    flex-shrink: 0;
+    font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-optical-sizing: auto;
+    font-size: 14px;
+    font-stretch: 100%;
+    font-weight: 400;
+    height: 476px;
+    line-height: 18px;
+    margin-bottom: 0.1px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0.1px;
+    pointer-events: all;
+    position: relative;
+    text-size-adjust: 100%;
+    vertical-align: baseline;
+    width: 476px;
+}
+
+.createPost-titel-btn-share {
+    align-content: stretch;
+    align-items: stretch;
+    align-self: auto;
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    color-scheme: light;
+    direction: ltr;
+    // display: flex;
+    // flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+    font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    height: 50px;
+    justify-content: flex-start;
+    line-height: 18px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: none;
+    outline-width: 0px;
+    overflow-x: visible;
+    overflow-y: visible;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 16px;
+    pointer-events: all;
+    position: relative;
+    text-size-adjust: 100%;
+}
+
+.filter-back-btn {
+    align-content: stretch;
+    align-items: stretch;
+    align-self: auto;
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    color-scheme: light;
+    direction: ltr;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+    font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    height: 40px;
+    justify-content: flex-start;
+    line-height: 18px;
+    margin-left: 8px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: none;
+    outline-width: 0px;
+
+    pointer-events: all;
+    position: relative;
+    text-size-adjust: 100%;
+    width: 40px;
+}
+
+
+.createPost-container-data-txt {
+    color: rgb(0, 0, 0);
+    color-scheme: light;
+    direction: ltr;
+    display: block;
+    font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-optical-sizing: auto;
+    font-size: 16px;
+    font-stretch: 100%;
+
+    font-weight: 400;
+    height: 168px;
+    line-break: after-white-space;
+    line-height: 24px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    max-height: 168px;
+    min-height: 168px;
+    overflow-wrap: break-word;
+    overflow-x: auto;
+    overflow-y: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    pointer-events: all;
+    position: relative;
+    tab-size: 1;
+    text-size-adjust: 100%;
+    text-wrap: wrap;
+    user-select: text;
+    white-space-collapse: preserve;
+    width: 290.4px;
+    word-break: break-word;
+    -webkit-user-modify: read-write;
+
+}

@@ -1,5 +1,5 @@
 const post = {
-  _id: "s101",
+  _id: "s1012",
   txt: "Best trip ever",
   imgUrl: "http://some-img", //an array for a few pictures 
   by: {
@@ -23,9 +23,9 @@ const post = {
       txt: "good one!",
       likedBy: [ // Optional
         {
-          "_id": "u105",
-          "fullname": "Bob",
-          "imgUrl": "http://some-img"
+          _id: "u105",
+          fullname: "Bob",
+          imgUrl: "http://some-img"
         }
       ]
     },

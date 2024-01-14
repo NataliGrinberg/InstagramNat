@@ -1,30 +1,562 @@
 .navBar-grid-container {
+	// display: flex;
+	// flex-direction: column;
+	// justify-content: center;	
+
+	border-right-color: rgb(219, 219, 219);
+	border-right-style: solid;
+	border-right-width: 0.8px;
+	//height: 695.2px;
+
+
+	align-content: stretch;
+	align-items: stretch;
+	align-self: auto;
+	background-color: rgba(0, 0, 0, 0);
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	box-sizing: border-box;
+	color: rgb(0, 0, 0);
+	color-scheme: light;
+	direction: ltr;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;	
+	flex-grow: 0;
+	flex-shrink: 0;
+	font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	//height: 335.2px; //221.6px;
+	justify-content: flex-start;
+	line-height: 18px;
+	overflow-x: visible;
+	overflow-y: visible;
+	position: fixed;
+	text-size-adjust: 100%;
+	top: 0px;
+//	width: 244.8px;
+	z-index: 10;
+
+
+	.flex {
+		align-items: flex-start;
+		background-color: rgb(255, 255, 255);
+		box-sizing: border-box;
+		color: rgb(0, 0, 0);
+		color-scheme: light;
+		direction: ltr;
+		display: flex;
+		flex-direction: column;
+		font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+		font-size: 14px;
+		height: 695.2px;
+		line-height: 18px;
+		padding-bottom: 20px;
+		padding-left: 12px;
+		padding-right: 12px;
+		padding-top: 8px;
+		text-size-adjust: 100%;
+		transform: matrix(1, 0, 0, 1, 0, 0);
+		//width: 244px;
+
+
+
+		.navBar-logo {
+			color: rgb(0, 0, 0);
+			color-scheme: light;
+			direction: ltr;
+			display: block;
+			flex-shrink: 0;
+			font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			font-size: 14px;
+			height: 92px;
+			line-height: 18px;
+			position: relative;
+			text-size-adjust: 100%;
+			width: 220px;
+
+
+			.div-navBar-logo {
+				box-sizing: border-box;
+				color: rgb(0, 0, 0);
+				color-scheme: light;
+				direction: ltr;
+				display: block;
+				font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+				font-size: 14px;
+				height: 73px;
+				left: 0px;
+				line-height: 18px;
+				margin-bottom: 19px;
+				padding-bottom: 16px;
+				padding-left: 12px;
+				padding-right: 12px;
+				padding-top: 25px;
+				position: absolute;
+				text-size-adjust: 100%;
+				top: 0px;
+				width: 220px;
+
+				.logo {
+					color: rgb(0, 0, 0);
+					color-scheme: light;
+					direction: ltr;
+					display: block;
+					font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+					font-size: 14px;
+					height: 36px;
+					line-height: 18px;
+					opacity: 1;
+					text-size-adjust: 100%;
+					width: 196px;
+				}
+			}
+		}
+
+		.navBar-list {
+			color: rgb(0, 0, 0);
+			color-scheme: light;
+			direction: ltr;
+			display: block;
+			flex-grow: 1;
+			font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			font-size: 14px;
+			//height: 416px;
+			line-height: 18px;
+			text-size-adjust: 100%;
+			width: 220px;
+
+			// .insert {
+			// 	align-content: normal;
+			// 	align-items: normal;
+			// 	align-self: auto;
+			// 	color: rgb(0, 0, 0);
+			// 	color-scheme: light;
+			// 	direction: ltr;
+			// 	display: block;
+			// 	flex-basis: auto;
+			// 	flex-direction: row;
+			// 	flex-grow: 0;
+			// 	flex-shrink: 1;
+			// 	font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			// 	font-size: 14px;
+			// 	height: 52px;
+			// 	justify-content: normal;
+			// 	line-height: 18px;
+			// 	max-height: none;
+			// 	max-width: none;
+			// 	min-height: 0px;
+			// 	min-width: 0px;
+			// 	text-size-adjust: 100%;
+			// 	width: 220px;
+			// }
+
+			// .flex-navBar-list {
+			// 	align-items: center;
+			// 	border-bottom-left-radius: 8px;
+			// 	border-bottom-right-radius: 8px;
+			// 	border-top-left-radius: 8px;
+			// 	border-top-right-radius: 8px;
+			// 	box-sizing: border-box;
+			// 	color: rgb(0, 55, 107);
+			// 	color-scheme: light;
+			// 	cursor: pointer;
+			// 	direction: ltr;
+			// 	display: inline-flex;
+			// 	flex-direction: row;
+			// 	font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			// 	font-size: 14px;
+			// 	height: 48px;
+			// 	line-height: 18px;
+			// 	list-style-image: none;
+			// 	list-style-position: outside;
+			// 	list-style-type: none;
+			// 	margin-bottom: 2px;
+			// 	margin-top: 2px;
+			// 	padding-bottom: 12px;
+			// 	padding-left: 12px;
+			// 	padding-right: 12px;
+			// 	padding-top: 12px;
+			// 	text-align: start;
+			// 	text-size-adjust: 100%;
+			// 	width: 220px;
+			// 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			// 	// color: rgb(0, 0, 0);
+			// 	// color-scheme: light;
+			// 	// direction: ltr;
+			// 	// display: block;
+			// 	// font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			// 	// font-size: 14px;
+			// 	// height: 52px;
+			// 	// position: relative;
+			// 	// line-height: 18px;
+			// 	// text-size-adjust: 100%;
+			// 	// width: 220px;
+
+			// 	.svgs {
+			// 		align-content: stretch;
+			// 		align-items: stretch;
+			// 		align-self: auto;
+			// 		background-color: rgba(0, 0, 0, 0);
+			// 		border-bottom-left-radius: 0px;
+			// 		border-bottom-right-radius: 0px;
+			// 		border-top-left-radius: 0px;
+			// 		border-top-right-radius: 0px;
+			// 		box-sizing: border-box;
+			// 		color: rgb(0, 55, 107);
+			// 		color-scheme: light;
+			// 		cursor: pointer;
+			// 		direction: ltr;
+			// 		display: flex;
+			// 		flex-direction: column;
+			// 		flex-grow: 0;
+			// 		flex-shrink: 0;
+			// 		font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			// 		font-size: 14px;
+			// 		height: 24px;
+			// 		justify-content: flex-start;
+			// 		line-height: 18px;
+			// 		list-style-image: none;
+			// 		list-style-position: outside;
+			// 		list-style-type: none;
+			// 		overflow-x: visible;
+			// 		overflow-y: visible;
+			// 		position: relative;
+			// 		text-align: start;
+			// 		text-size-adjust: 100%;
+			// 		width: 24px;
+			// 		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			// 	}
+
+			// 	.name {
+			// 		align-items: center;
+			// 		box-sizing: border-box;
+			// 		color: rgb(0, 55, 107);
+			// 		color-scheme: light;
+			// 		cursor: pointer;
+			// 		direction: ltr;
+			// 		display: flex;
+			// 		font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			// 		font-size: 14px;
+			// 		//height: 24px;
+			// 		line-height: 18px;
+			// 		list-style-image: none;
+			// 		list-style-position: outside;
+			// 		list-style-type: none;
+			// 		opacity: 1;
+			// 		overflow-x: hidden;
+			// 		padding-left: 16px;
+			// 		text-align: start;
+			// 		text-size-adjust: 100%;
+
+			// 		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			// 	}
+
+			// 	.aaa {
+			// 		background-color: rgba(0, 0, 0, 0);
+			// 		border-bottom-color: rgb(0, 55, 107);
+			// 		border-bottom-style: none;
+			// 		border-bottom-width: 0px;
+			// 		border-left-color: rgb(0, 55, 107);
+			// 		border-left-style: none;
+			// 		border-left-width: 0px;
+			// 		border-right-color: rgb(0, 55, 107);
+			// 		border-right-style: none;
+			// 		border-right-width: 0px;
+			// 		border-top-color: rgb(0, 55, 107);
+			// 		border-top-style: none;
+			// 		border-top-width: 0px;
+			// 		box-sizing: border-box;
+			// 		color: rgb(0, 55, 107);
+			// 		color-scheme: light;
+			// 		cursor: pointer;
+			// 		direction: ltr;
+			// 		display: inline;
+			// 		font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			// 		font-size: 14px;
+			// 		height: auto;
+			// 		line-height: 18px;
+			// 		list-style-image: none;
+			// 		list-style-position: outside;
+			// 		list-style-type: none;
+			// 		margin-bottom: 0px;
+			// 		margin-left: 0px;
+			// 		margin-right: 0px;
+			// 		margin-top: 0px;
+			// 		outline-color: rgb(0, 55, 107);
+			// 		outline-style: none;
+			// 		outline-width: 0px;
+			// 		padding-bottom: 0px;
+			// 		padding-left: 0px;
+			// 		padding-right: 0px;
+			// 		padding-top: 0px;
+			// 		text-align: start;
+			// 		text-decoration-color: rgb(0, 55, 107);
+			// 		text-decoration-line: none;
+			// 		text-decoration-style: solid;
+			// 		text-decoration-thickness: auto;
+			// 		text-size-adjust: 100%;
+			// 		touch-action: manipulation;
+			// 		width: auto;
+			// 		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			// 	}
+			// }
+		}
+
+		.navBar-more {
+			// align-content: normal;
+			// align-items: normal;
+			// align-self: auto;
+			// color: rgb(0, 0, 0);
+			// color-scheme: light;
+			// direction: ltr;
+			// display: block;
+			// flex-basis: auto;
+			// flex-direction: row;
+			color: rgb(0, 0, 0);
+			color-scheme: light;
+			direction: ltr;
+			display: block;
+			font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			font-size: 14px;
+			height: 56px;
+			justify-content: flex-end;
+			line-height: 18px;
+			text-size-adjust: 100%;
+			width: 220px;
+
+		}
+
+
+
+		.div-navBar-list {
+			color: rgb(0, 0, 0);
+			color-scheme: light;
+			direction: ltr;
+			display: block;
+			font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			font-size: 14px;
+			//height: 56px;
+			line-height: 18px;
+			text-size-adjust: 100%;
+			//width: 220px;
+		}
+
+		.div-navBar-list2 {
+			align-content: normal;
+			align-items: normal;
+			align-self: auto;
+			color: rgb(0, 0, 0);
+			color-scheme: light;
+			direction: ltr;
+			display: block;
+			flex-basis: auto;
+			flex-direction: row;
+			flex-grow: 0;
+			flex-shrink: 1;
+			font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			font-size: 14px;
+			height: 52px;
+			justify-content: normal;
+			line-height: 18px;
+			max-height: none;
+			max-width: none;
+			min-height: 0px;
+			min-width: 0px;
+			text-size-adjust: 100%;
+			width: 220px;
+		}
+
+
+		.flex-navBar-list {
+			align-items: center;
+			border-bottom-left-radius: 8px;
+			border-bottom-right-radius: 8px;
+			border-top-left-radius: 8px;
+			border-top-right-radius: 8px;
+			box-sizing: border-box;
+			//color: rgb(0, 55, 107);
+			color-scheme: light;
+			cursor: pointer;
+			direction: ltr;
+			display: inline-flex;
+			flex-direction: row;
+			font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			font-size: 14px;
+			//height: 48px;
+			line-height: 18px;
+			list-style-image: none;
+			list-style-position: outside;
+			list-style-type: none;
+			margin-bottom: 4px;
+			margin-top: 4px;
+			padding-bottom: 12px;
+			padding-left: 12px;
+			padding-right: 12px;
+			padding-top: 12px;
+			text-align: start;
+			text-size-adjust: 100%;
+			width: 220px;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			// color: rgb(0, 0, 0);
+			// color-scheme: light;
+			// direction: ltr;
+			// display: block;
+			// font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			// font-size: 14px;
+			// height: 52px;
+			// position: relative;
+			// line-height: 18px;
+			// text-size-adjust: 100%;
+			// width: 220px;
+
+
+			.svgs {
+				color: rgb(0, 0, 0);
+				color-scheme: light;
+				cursor: pointer;
+				direction: ltr;
+				display: block;
+				fill: rgb(0, 0, 0);
+				font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+				font-size: 14px;
+				height: 24px;
+				line-height: 18px;
+				list-style-image: none;
+				list-style-position: outside;
+				list-style-type: none;
+				overflow-clip-margin: content-box;
+				overflow-x: hidden;
+				overflow-y: hidden;
+				position: relative;
+				text-align: start;
+				text-size-adjust: 100%;
+				width: 24px;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			}
+
+			// .svgs2 {
+			// 	align-content: stretch;
+			// 	align-items: stretch;
+			// 	align-self: auto;
+			// 	background-color: rgba(0, 0, 0, 0);
+			// 	border-bottom-left-radius: 0px;
+			// 	border-bottom-right-radius: 0px;
+			// 	border-top-left-radius: 0px;
+			// 	border-top-right-radius: 0px;
+			// 	box-sizing: border-box;
+			// 	//	color: rgb(0, 55, 107);
+			// 	color-scheme: light;
+			// 	cursor: pointer;
+			// 	direction: ltr;
+			// 	display: flex;
+			// 	flex-direction: column;
+			// 	flex-grow: 0;
+			// 	flex-shrink: 0;
+			// 	font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			// 	font-size: 14px;
+			// 	height: 24px;
+			// 	justify-content: flex-start;
+			// 	line-height: 18px;
+			// 	list-style-image: none;
+			// 	list-style-position: outside;
+			// 	list-style-type: none;
+			// 	overflow-x: visible;
+			// 	overflow-y: visible;
+			// 	position: relative;
+			// 	text-align: start;
+			// 	text-size-adjust: 100%;
+			// 	width: 24px;
+			// 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			// }
+
+			.name {
+				color: rgb(0, 0, 0);
+				color-scheme: light;
+				cursor: pointer;
+				direction: ltr;
+				display: block;
+				font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+				font-size: 16px;
+				font-weight: 400;
+				//height: 20px;
+				line-height: 20px;
+				list-style-image: none;
+				list-style-position: outside;
+				list-style-type: none;
+				max-width: 100%;
+				overflow-wrap: break-word;
+				overflow-x: hidden;
+				overflow-y: hidden;
+				text-align: start;
+				text-overflow: ellipsis;
+				text-size-adjust: 100%;
+				text-wrap: nowrap;
+				white-space-collapse: collapse;
+				//width: 49.6875px;
+				word-break: break-word;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				//padding-left: 16px;
+			}
+
+			.div-name {
+				align-items: center;
+				box-sizing: border-box;
+				//color rgb(0, 55, 107);
+				color-scheme: light;
+				cursor: pointer;
+				direction: ltr;
+				display: flex;
+				font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+				//font-size: 14px;
+				height: 24px;
+				line-height: 18px;
+				list-style-image: none;
+				list-style-position: outside;
+				list-style-type: none;
+				opacity: 1;
+				overflow-x: hidden;
+				padding-left: 16px;
+				text-align: start;
+				text-size-adjust: 100%;
+				width: 111.238px;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			}
+
+			// .name2 {
+			// 	align-items: center;
+			// 	box-sizing: border-box;
+			// 	//	color: rgb(0, 55, 107);
+			// 	color-scheme: light;
+			// 	cursor: pointer;
+			// 	direction: ltr;
+			// 	display: flex;
+			// 	font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			// 	font-size: 14px;
+			// 	//height: 24px;
+			// 	line-height: 18px;
+			// 	list-style-image: none;
+			// 	list-style-position: outside;
+			// 	list-style-type: none;
+			// 	opacity: 1;
+			// 	overflow-x: hidden;
+			// 	padding-left: 16px;
+			// 	text-align: start;
+			// 	text-size-adjust: 100%;
+
+			// 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			// }
+		}
+
+	}
+
 }
 
-.navBar-grid-container  > div {
-	//background-color: #f1f1f1;
-	margin: 10px;
-	padding: 20px;
-	font-size: 25px;
-  }
-
-.navBar-logo{
-	order: 1;
+@media(max-width:1260px){
+	.navBar-grid-container .flex .flex-navBar-list .div-name {
+		display: none;
+	}
 }
 
-.navBar-list{
-	order: 2;
-	display: flex;
-	flex-direction: column;
-	padding: 20px;
-	gap: 20px;
-}
 
-.navBar-more{
-	order: 3;
-	padding-top: 200px;
-
-}

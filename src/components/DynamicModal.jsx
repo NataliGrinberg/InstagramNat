@@ -1,11 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
 import { SET_MODAL_DATA } from "../store/reducers/app.reducer"
 import { Likes } from "./Likes"
-import { Comments } from "./Comments"
 import { Svgs } from "../assets/Svgs"
 import { Share } from "./Share"
 import { MoreOptions } from "./MoreOptions"
-
 
 
 export function DynamicModal() {
@@ -25,18 +23,18 @@ export function DynamicModal() {
             </div>
             <div className="dynamic-modal" onClick={modalData.cb}>
                 <div className="dynamic-modal-button" onClick={onCloseModal}>{Svgs.closeWhite}</div>
-                <DynamicCmp type={modalData.type} />
-                {/* {modalData.cmp} */}
+                <DynamicCmp type={modalData.type} data={modalData.data} />
             </div>
         </div>
     )
 }
-//payload={modalData.payload} , payload 
-function DynamicCmp({ type }) {
+
+function DynamicCmp({ type, data }) {
     console.log(type);
+    console.log(data);
     const cmpMap = {
-        Comments: <Comments />,
-        Likes: <Likes />,
+        // Comments: <Comments data={data}/>,
+        Likes: <Likes data={data} />,
         Share: <Share />,
         MoreOptions: <MoreOptions />
     }

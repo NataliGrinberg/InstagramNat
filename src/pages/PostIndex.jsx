@@ -3,9 +3,11 @@ import { postService } from "../services/post.service";
 import { PostList } from "../components/PostList";
 
 import { loadPosts, removePost, savePost, setFilterBy } from "../store/actions/post.actions";
-import { Link, Outlet, useNavigate, useSearchParams } from "react-router-dom";
+import { Outlet, useNavigate, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { SideDate } from "../components/sideDate";
+import { SideData } from "../components/sideData";
+
+
 
 
 
@@ -15,11 +17,13 @@ export function PostIndex() {
     const posts = useSelector(storeState => storeState.postModule.posts)
     const filterBy = useSelector(storeState => storeState.postModule.filterBy)
 
+
     const navigate = useNavigate()
 
     useEffect(() => {
         setFilterBy(postService.getFilterFromParams(searchParams))
     }, [])
+
 
     useEffect(() => {
         // Sanitize filterBy
@@ -40,42 +44,65 @@ export function PostIndex() {
         } catch (err) {
             console.log('Had issues loading posts', err);
             showErrorMsg('can not remove!')
-            // eventBusService.emit('show-user-msg', {type: 'error', txt:'can not remove!'})
         }
     }
 
     async function onSavePost(post) {
         try {
             await savePost(post)
-            navigate('/post')
+            // navigate('/post')
         } catch (err) {
             console.log('Had issues adding post', err);
         }
     }
 
-    // async function loadPosts() {
-    //     try {
-    //         const posts = await postService.query()//filterBy
-    //         setPosts(posts)
-    //         document.getElementById("json").textContent = JSON.stringify(posts, undefined, 2);
-    //         debugger
-    //     } catch (err) {
-    //         console.log('Had issues loading posts', err);
-    //     }
-    // }
+    
+    async function addLikeToPost(post) {
+        try {
+            const user = postService.loggedinUser
+            const likePost = postService.isLikePost(post)
+            if (!likePost) {
 
+                const likeToSave = {
+                    _id: user._id,
+                    fullname: user.fullname,
+                    imgUrl: user.imgUrl
+                }
+
+                post.likedBy = post.likedBy ? [...post.likedBy, likeToSave] : [likeToSave]
+            }
+            else {
+                if (post.likedBy) post.likedBy = post.likedBy.filter(like => like._id !== user._id)
+            }
+
+            await savePost(post)
+           
+        } catch (err) {
+            console.log('Had issues adding add like', err);
+        }
+    }
+
+
+    async function addCommentToPost(comment, post) {
+        try {
+
+            const postToSave = structuredClone(post)
+            postToSave.comments = post.comments ? [...post.comments, comment] : [comment]
+            await savePost(postToSave)
+
+        } catch (err) {
+            console.log('Had issues adding add comment', err);
+        }
+    }
     return (
-        <main className="post-index-container">
-            <PostList posts={posts} />
-            {/* <MailSidebar
-                unreadCount={unreadCount}
-                folder={params.folder}
-                searchParams={searchParams}
-                setIsLoading={setIsLoading} /> */}
-
-
-            <SideDate></SideDate>
-        </main>
+        <section className="post-index-container">
+           
+            <main className="main-post-index-container">
+                <PostList addCommentToPost={addCommentToPost} posts={posts}  addLikeToPost={addLikeToPost} />
+                <SideData />
+            </main>
+            <Outlet />
+        </section>
     )
 
 }

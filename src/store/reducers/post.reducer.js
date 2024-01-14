@@ -30,14 +30,14 @@ export function postReducer(state = initialState, action = {}) {
             const lastPosts = [...state.posts]
             return {
                 ...state,
-                posts: state.posts.filter(post => post.id !== action.postId),
+                posts: state.posts.filter(post => post._id !== action.postId),
                 lastPosts
 
             }
         case UPDATE_POST:
             return {
                 ...state,
-                posts: state.posts.map(post => post.id === action.post.id ? action.post : post)
+                posts: state.posts.map(post => post._id === action.post._id ? action.post : post)
             }
         case SET_FILTER_BY:
             return {

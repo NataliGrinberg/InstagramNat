@@ -26,7 +26,7 @@ export async function removePost(postId) {
 
 export async function savePost(post) {
     try {
-        const type = post.id ? UPDATE_POST : ADD_POST
+        const type = post._id ? UPDATE_POST : ADD_POST
         const postToSave = await postService.save(post)
         store.dispatch({ type, post: postToSave })
     } catch (err) {

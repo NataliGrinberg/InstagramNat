@@ -1,0 +1,309 @@
+.upload-img-model-container {
+    align-content: stretch;
+    align-items: normal;
+    align-self: auto;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    color-scheme: light;
+    direction: ltr;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    justify-content: flex-start;
+    line-height: 18px;
+    min-height: 0px;
+    min-width: 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    pointer-events: all;
+    position: relative;
+    text-size-adjust: 100%;
+
+
+    .upload-img-model-title {
+        align-items: normal;
+        color: rgb(0, 0, 0);
+        color-scheme: light;
+        direction: ltr;
+        display: flex;
+        flex-direction: column;
+        font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        height: 43px;
+        line-height: 18px;
+        outline-color: rgb(0, 0, 0);
+        outline-style: none;
+        outline-width: 0px;
+        pointer-events: all;
+        text-size-adjust: 100%;
+        justify-content: center;
+        align-items: center;
+        border-bottom-color: rgb(219, 219, 219);
+        border-bottom-style: solid;
+        border-bottom-width: 0.8px;
+
+
+        .upload-img-model-title-div {
+            font-size: 16px;
+            font-weight: 600;
+            align-content: stretch;
+            text-align: center;
+            text-overflow: ellipsis;
+            text-size-adjust: 100%;
+            text-wrap: nowrap;
+            align-items: center;
+            align-self: auto;
+            box-sizing: border-box;
+            color: rgb(0, 0, 0);
+            color-scheme: light;
+            direction: ltr;
+            justify-content: center;
+            line-height: 24px;
+            pointer-events: all;
+
+        }
+    }
+
+    .upload-img-model {
+        align-content: stretch;
+        align-items: center;
+        align-self: auto;
+        background-color: rgba(0, 0, 0, 0);
+        box-sizing: border-box;
+        color: rgb(0, 0, 0);
+        color-scheme: light;
+        direction: ltr;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 0;
+        flex-shrink: 0;
+        font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        height: 476.2px;
+        justify-content: center;
+        line-height: 18px;
+        padding-bottom: 24px;
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-top: 24px;
+        pointer-events: all;
+        position: relative;
+        text-size-adjust: 100%;
+        width: 476px;
+
+        .upload-img-model-svg {
+            color: rgb(0, 0, 0);
+            color-scheme: light;
+            direction: ltr;
+            display: block;
+            fill: rgb(0, 0, 0);
+            height: 77px;
+            line-height: 18px;
+            overflow-clip-margin: content-box;
+            pointer-events: all;
+            position: relative;
+            text-size-adjust: 100%;
+            width: 96px;
+        }
+
+        .upload-img-model-txt {
+            align-content: stretch;
+            align-items: stretch;
+            align-self: auto;
+            background-color: rgba(0, 0, 0, 0);
+            box-sizing: border-box;
+            color: rgb(0, 0, 0);
+            color-scheme: light;
+            direction: ltr;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 0;
+            flex-shrink: 0;
+            font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            height: 15px;
+            justify-content: flex-start;
+            line-height: 18px;
+            margin-top: 16px;
+
+            pointer-events: all;
+            position: relative;
+            text-size-adjust: 100%;
+
+            .upload-img-model-txt-span {
+                color: rgb(0, 0, 0);
+                color-scheme: light;
+                direction: ltr;
+                display: block;
+                font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                font-size: 20px;
+                font-weight: 400;
+                height: 15px;
+                line-height: 25px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                max-width: 100%;
+                min-width: 0px;
+                overflow-wrap: break-word;
+
+                pointer-events: all;
+                position: relative;
+                text-align: center;
+                text-size-adjust: 100%;
+                text-wrap: wrap;
+                unicode-bidi: isolate;
+                white-space-collapse: preserve-breaks;
+                width: 266.025px;
+                word-break: break-word;
+            }
+        }
+
+        .upload-img-model-input {
+
+            align-content: stretch;
+            align-items: center;
+            align-self: auto;
+            background-color: rgba(0, 0, 0, 0);
+
+            box-sizing: border-box;
+            color: rgb(0, 0, 0);
+            color-scheme: light;
+            direction: ltr;
+            display: flex;
+            flex-direction: row;
+            flex-grow: 0;
+            flex-shrink: 0;
+            font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            height: 40px;
+            justify-content: flex-start;
+            line-height: 18px;
+            margin-top: 24px;
+
+            pointer-events: all;
+            position: relative;
+            text-size-adjust: 100%;
+
+
+
+            .upload-img-model-input-div {
+                align-content: stretch;
+                align-items: stretch;
+                align-self: auto;
+                box-sizing: border-box;
+                color: rgb(0, 0, 0);
+                color-scheme: light;
+                direction: ltr;
+                display: flex;
+                flex-direction: column;
+                flex-grow: 0;
+                flex-shrink: 0;
+                font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                font-size: 14px;
+                height: 40px;
+                justify-content: flex-start;
+                line-height: 18px;
+                padding-bottom: 4px;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 4px;
+                pointer-events: all;
+                position: relative;
+                text-size-adjust: 100%;
+
+                .upload-img-model-button {
+                    align-items: flex-start;
+                    appearance: none;
+                    background-attachment: scroll;
+                    background-clip: border-box;
+                    background-color: rgb(0, 149, 246);
+                    background-image: none;
+                    background-origin: padding-box;
+                    background-position-x: 0%;
+                    background-position-y: 0%;
+                    background-repeat: repeat;
+                    background-size: auto;
+                    border-bottom-color: rgb(255, 255, 255);
+                    border-bottom-left-radius: 8px;
+                    border-bottom-right-radius: 8px;
+                    border-bottom-style: none;
+                    border-bottom-width: 0px;
+                    border-image-outset: 0;
+                    border-image-repeat: stretch;
+                    border-image-slice: 100%;
+                    border-image-source: none;
+                    border-image-width: 1;
+                    border-left-color: rgb(255, 255, 255);
+                    border-left-style: none;
+                    border-left-width: 0px;
+                    border-right-color: rgb(255, 255, 255);
+                    border-right-style: none;
+                    border-right-width: 0px;
+                    border-top-color: rgb(255, 255, 255);
+                    border-top-left-radius: 8px;
+                    border-top-right-radius: 8px;
+                    border-top-style: none;
+                    border-top-width: 0px;
+                    box-sizing: border-box;
+                    color: rgb(255, 255, 255);
+                    color-scheme: light;
+                    cursor: pointer;
+                    direction: ltr;
+                    display: block;
+                    font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                    font-feature-settings: normal;
+                    font-kerning: auto;
+                    font-optical-sizing: auto;
+                    font-size: 14px;
+                    font-stretch: 100%;
+                    font-style: normal;
+                    font-variant-alternates: normal;
+                    font-variant-caps: normal;
+                    font-variant-east-asian: normal;
+                    font-variant-ligatures: normal;
+                    font-variant-numeric: normal;
+                    font-variant-position: normal;
+                    font-variation-settings: normal;
+                    font-weight: 600;
+                    height: 32px;
+                    letter-spacing: normal;
+                    line-height: 18px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-block-end: 7px;
+                    padding-block-start: 7px;
+                    padding-bottom: 7px;
+                    padding-inline-end: 16px;
+                    padding-inline-start: 16px;
+                    padding-left: 16px;
+                    padding-right: 16px;
+                    padding-top: 7px;
+                    pointer-events: auto;
+                    position: relative;
+                    text-align: center;
+                    text-indent: 0px;
+                    text-overflow: ellipsis;
+                    text-rendering: auto;
+                    text-shadow: none;
+                    text-size-adjust: 100%;
+                    text-transform: none;
+                    user-select: none;
+                    width: 177px;
+                    word-spacing: 0px;
+                   // -webkit-border-image: none;
+                }
+            }
+        }
+    }
+
+
+
+
+
+}

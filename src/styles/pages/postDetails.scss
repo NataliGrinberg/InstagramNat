@@ -24,8 +24,8 @@
     max-width: none;
     overflow-x: visible;
     overflow-y: visible;
-    pointer-events: none;
-    position: relative;
+   
+     position: relative;
     text-size-adjust: 100%;
  
 
@@ -51,7 +51,7 @@
         min-height: 450px;
         overflow-x: hidden;
         overflow-y: hidden;
-        pointer-events: auto;
+     
         position: relative;
         text-size-adjust: 100%;
     }
@@ -555,7 +555,7 @@
 
 ._al47-postDetails {
     position: absolute;
-    top: 50%;
+    //top: 50%;
     transform: translateY(-50%);
 }
 

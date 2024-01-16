@@ -3,7 +3,7 @@ import { userService } from './user.service.js'
 import { utilService } from './util.service.js'
 
 
-const loggedinUser = { _id: 'u302', email: 'Nataliinsta4@gmail.com', fullname: 'Natali Insta', imgUrl: '' }
+const loggedinUser = { _id: 'u302', email: 'Nataliinsta4@gmail.com', fullname: 'Natali Insta', imgUrl: "https://res.cloudinary.com/dvtyeanju/image/upload/v1705357431/ztwtgd3rki1rcpfair5m.png" }
 
 export const postService = {
   query,

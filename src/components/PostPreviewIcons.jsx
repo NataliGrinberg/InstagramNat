@@ -7,7 +7,7 @@ import { onToggleModal } from '../store/actions/app.actions';
 export function PostPreviewIcons({ post , addLikeToPost }) { 
 
     const [likePost, setLikePost] = useState(postService.isLikePost(post));
-    console.log("addLikeToPost  PostPreviewIcons: ",addLikeToPost)
+
 
     useEffect(() => {
         console.log('in post pre ')

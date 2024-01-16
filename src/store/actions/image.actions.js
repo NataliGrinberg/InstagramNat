@@ -10,7 +10,6 @@ export function saveImage({type, imgs}) {
 }
 
 export function saveImageUrl({type, imgsUrl}) {
-    debugger
     store.dispatch({
         type: SET_IMGS_URL,
         imgsUrl: imgsUrl

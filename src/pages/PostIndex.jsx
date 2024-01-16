@@ -59,7 +59,6 @@ export function PostIndex() {
     
     async function addLikeToPost(post) {
         try {
-            debugger
             const user = postService.loggedinUser
             const likePost = postService.isLikePost(post)
             if (!likePost) {

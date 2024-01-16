@@ -9,6 +9,11 @@ import { Svgs } from '../../assets/Svgs'
 import { PostPreviewImg } from "../PostPreviewImg"
 import { SET_IMGS, SET_IMGS_URL } from "../../store/reducers/image.reducer"
 import { saveImage, saveImageUrl } from "../../store/actions/image.actions"
+import Picker from 'emoji-picker-react';
+import { none } from "@cloudinary/url-gen/qualifiers/fontHinting"
+
+
+
 
 export function CreatePost() {
 
@@ -17,60 +22,29 @@ export function CreatePost() {
     const [text, setText] = useState("")
     const newPost = postService.createPost()
     const [imgCount, setImgCount] = useState(0)
-    debugger
-   
-    
+    const maxCharacterCount = 2200;
+
     const [filesMap, setFilesMap] = useState(imageModalUrlData ? imageModalUrlData : files.map((file) => {
         { return { 'file': file, 'type': (file.type.includes('video') ? 'video' : 'image'), 'url': URL.createObjectURL(file), 'filter': '' } }
     }))
-console.log('imageModalUrlData creat:', imageModalUrlData)
-    // async function uploadImageSelected() {
-    //     let retuenImgData = ''
-    //     let retuenImgDataUrl = []
-    //     const files = Array.from(imageModalData.target.files);
-    //     for (let i = 0; i < files.length; i++) {
-    //         retuenImgData = await uploadService.uploadImg(files[i])
-    //         console.log('retuenImgData', retuenImgData.secure_url)
-    //         retuenImgDataUrl =  [...retuenImgDataUrl, retuenImgData.secure_url] 
-    //     }
-    //     return retuenImgDataUrl;
-
-    // }
 
 
-    //const files = Array.from(imageModalData.target.files);
-    //const filesUrl = files.map(file => URL.createObjectURL(file))
+    const [chosenEmoji, setChosenEmoji] = useState(null);
 
+    const onEmojiClick = (event, emojiObject) => {
+        setChosenEmoji(emojiObject);
+        debugger
+        console.log('emojiObject:', { chosenEmoji });
+        setText(text + emojiObject.target)
 
-    //const newPost = postService.createPost()
+    };
 
-    // async function uploadImageSelected() {
-    //     let returnImgDataUrl = ''
-    //     const files = Array.from(imageModalData.target.files);
-    //     for (let i = 0; i < files.length; i++) {
-    //         returnImgDataUrl = await uploadService.uploadImg(files[i])
-    //         console.log('retuenImgData', returnImgDataUrl.secure_url)
-    //         newPost.imgUrl = newPost.imgUrl ? [...newPost.imgUrl, returnImgDataUrl.secure_url] : [returnImgDataUrl.secure_url]
-    //     }
-
-    // //     //setRetuenImgData(newPost.imgUrl)
-    // // }
-
-
-
-
-    // const files = Array.from(imageModalData.target.files);
-    // for (let i = 0; i < files.length; i++) {
-    //     retuenImgData = await uploadService.uploadImg(files[i])
-    //     console.log('retuenImgData', retuenImgData.secure_url)
-    //     newPost.imgUrl = newPost.imgUrl ? [...newPost.imgUrl, retuenImgData.secure_url] : [retuenImgData.secure_url]
-    // }
+    const [showEmojis, setShowEmojis] = useState(false);
 
     async function saveNewPost() {
         let returnImgDataUrl = ''
-        const files = imageModalUrlData ?  Array.from(imageModalUrlData.map(i=> i.file)) :  Array.from(imageModalData.target.files)
-      
-        //const files = Array.from(imageModalData.target.files);
+        const files = imageModalUrlData ? Array.from(imageModalUrlData.map(i => i.file)) : Array.from(imageModalData.target.files)
+
         for (let i = 0; i < files.length; i++) {
             returnImgDataUrl = await uploadService.uploadImg(files[i])
             console.log('retuenImgData', returnImgDataUrl.secure_url)
@@ -84,25 +58,37 @@ console.log('imageModalUrlData creat:', imageModalUrlData)
         onCloseModalCreate()
     }
 
-    
-    const maxCharacterCount = 2200; // Set your desired maximum character count
 
-    const handleChange = (event) => {
-      const inputText = event.target.value;
-      if (inputText.length <= maxCharacterCount) {
-        setText(inputText);
-      }
+    function handleChange(event) {
+        const inputText = event.target.value;
+        if (inputText.length <= maxCharacterCount) {
+            setText(inputText);
+        }
     };
+
 
 
     return (
         <div className="createPost-container">
 
-            <div className="createPost-titel">
-                <div className="filter-back-btn" onClick={() => { onToggleModalCreate({ type: 'FilterImg' }) }}>{Svgs.back}</div>
+            <div className="upload-img-model-title-filter" >
+
+                <div className="filter-back-btn" onClick={() => { onToggleModalCreate({ type: 'FilterImg' }) }}>
+                    <div className="filter-back-btn-svg">{Svgs.back}</div>
+                </div>
+                <div className="upload-img-title" >
+                    <div className="upload-img-title-div">Create new post</div>
+                </div>
+                <div className="upload-img-title-btn" >
+                    <div className="filter-next-btn" onClick={saveNewPost}>Share</div>
+                </div>
+            </div>
+
+
+            {/* <div className="create-post-back-btn" onClick={() => { onToggleModalCreate({ type: 'FilterImg' }) }}>{Svgs.back}</div>
                 <div className="createPost-titel-create" >Create new post</div>
                 <div className="createPost-titel-btn-share" onClick={saveNewPost}>Share</div>
-            </div>
+            </div> */}
 
             <div className="createPost-container-data">
                 {/* <div className="createPost-container-data-img"> */}
@@ -116,7 +102,6 @@ console.log('imageModalUrlData creat:', imageModalUrlData)
                     }
 
                     {
-
                         filesMap.length > 0 && filesMap[imgCount].url !== null
                         && ((filesMap[imgCount].type === 'video'
                             && <video controls width="100%">
@@ -134,40 +119,75 @@ console.log('imageModalUrlData creat:', imageModalUrlData)
                 </div>
                 {/* </div> */}
 
-                <div className="createPost-container-data-pro">
-                    <div className="createPost-container-data-pro">
-                        profile
-                    </div>
-                    <div className="createPost-container-data-txt">
+                <div className="createPost-container-data">
+                    <div className="createPost-container-data-scroll">
+                        <div className="createPost-container-data-con">
 
-                        <div className="container">
-                            <textarea
-                                value={text}
-                                onChange={handleChange}
-                                placeholder="Type something..."
-                                // rows={4}
-                                // cols={50}
-                            />
-                            <div className="result">
-                                {text.length}/{maxCharacterCount}
+                            <div className="createPost-container-data-profile">
+                                <div className="createPost-container-data-profile-flex">
+                                    <div className="createPost-container-data-profile-img-div"> <img className="createPost-container-data-profile-img" src={newPost.by.imgUrl} /></div>
+                                    <div className="createPost-container-data-profile-user-name">{newPost?.by?.fullname}</div>
+                                </div>
+                            </div>
+
+                            <div className="createPost-container-data-txt-2">
+
+                                <div className="createPost-container-data-txt3">
+                                    <textarea className="createPost-container-data-txt"
+                                        value={text}
+                                        onChange={handleChange}
+                                        placeholder="Write a caption..."
+
+                                    />
+                                </div>
+
+
+                                <div className="create-post-flex-emoji-count-txt create-post-divs">
+                                    <div className="create-post-divs-flex">
+                                        <button className="button2" onClick={() =>
+                                            setShowEmojis(!showEmojis)}>{Svgs.smi}</button>
+                                        <div className="create-post-result">
+                                            <div className="create-post-result-div">
+                                                {text.length}/{maxCharacterCount.toLocaleString()}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* {showEmojis && (
+                                    <div className="create-post-show-emojis">
+                                        <Picker onEmojiClick={onEmojiClick} />
+                                    </div>
+                                )} */}
+
+
+                            </div>
+
+
+                            <div className="createPost-container-data-add-location create-post-divs">
+                                <div className="create-post-divs-flex">
+                                    <div className="createPost-container-data-add-location-div"> Add location</div>
+                                    <div className="createPost-container-data-add-location-div1"> {Svgs.location}</div>
+                                </div>
+                            </div>
+                            <div className="createPost-container-data-accessibility create-post-divs">
+                                <div className="create-post-divs-flex">
+                                    <div className="createPost-container-data-accessibility-div"> Accessibility </div>
+                                    <div className="createPost-container-data-accessibility-div1"> {Svgs.down} </div>
+                                </div>
+                            </div>
+                            <div className="createPost-container-data-advanced-settings create-post-divs">
+                                <div className="create-post-divs-flex">
+                                    <div className="createPost-container-data-advanced-settings-div">Advanced settings </div>
+                                    <div className="createPost-container-data-advanced-settings-div1">{Svgs.down} </div>
+                                </div>
                             </div>
                         </div>
-                        {/* <InputEmoji
-                            className="input-text-post"
-                            value={text}
-
-                            onChange={(ev) => {
-                                setText(ev);
-                            }}
-                        /> */}
                     </div>
                 </div>
             </div>
 
-
-
-            {/* <AutoComplete/> */}
-
-        </div>
+        </div >
     )
+
 }

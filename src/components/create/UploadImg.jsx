@@ -14,27 +14,10 @@ export function UploadImg() {
         hiddenFileInput.current.click();
     };
 
-    // async function uploadImageSelected() {
-    //     console.log("returnImgDataUrl insert 1111")
-    //     let returnImgData = ''
-    //     let returnImgDataUrl = []
-    //     const imageModalData = useSelector(storeState => storeState.imageModal.imgs)
-    //     console.log("returnImgDataUrl insert 12222:", imageModalData)
-    //     const files = Array.from(imageModalData.target.files);
-    //     console.log("returnImgDataUrl insert 12222:", files)
-    //     for (let i = 0; i < files.length; i++) {
-    //         returnImgData = await uploadService.uploadImg(files[i])
-    //         console.log('retuenImgData', returnImgData.secure_url)
-    //         returnImgDataUrl =  [...returnImgDataUrl, returnImgDataUrl.secure_url] 
-    //     }
-    //     console.log("returnImgDataUrl: ", returnImgDataUrl)
-    //     debugger
-    //     saveImageUrl({ type: SET_IMGS_URL, imgsUrl: returnImgDataUrl }) 
-    // }
-
 
     function handleChange(event) {
-        
+        const files = Array.from(event.target.files);
+        console.log('event:', files)
         saveImage({ type: SET_IMGS, imgs: event })
 
         //uploadImageSelected()

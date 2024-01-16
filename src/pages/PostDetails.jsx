@@ -20,15 +20,16 @@ export function PostDetails() {
     const [likePost, setLikePost] = useState(postService.isLikePost(post));
     const navigate = useNavigate()
 
-    
-console.log("addLikeToPost: ",addLikeToPost)
+
     useEffect(() => {
         loadPost()
     }, [])
 
+    useEffect(() => {
+      
+    }, [post])
 
     useEffect(() => {
-        console.log("addLikeToPost: 11")
         var likeByUser = postService.isLikePost(post);
         setLikePost(likeByUser)
     }, [post?.likedBy])
@@ -47,12 +48,14 @@ console.log("addLikeToPost: ",addLikeToPost)
         await savePost(postToSave)
     }
 
+
     console.log('data from comments', post);
     if (!post) return <div>Loading</div>
     return (
 
         <section className="section-postDetails">
             <div className="create-postDetails-opacity">
+
                 <div className="create-postDetails-button">
                     <div className="create-postDetails-button-div">
                         <div className="svg-postDetails" onClick={() => navigate('/')}>
@@ -60,7 +63,6 @@ console.log("addLikeToPost: ",addLikeToPost)
                         </div>
                     </div>
                 </div>
-
 
 
                 <div className="postDetails-container">
@@ -97,26 +99,11 @@ console.log("addLikeToPost: ",addLikeToPost)
                                 <div className="postDetails-container-data-details-2-icons">
                                     */}
                             <div className='post-icons-info'>
+                       
                                 <PostPreviewIcons post={post} addLikeToPost={addLikeToPost} />
                             </div>
 
-                            {/* <div className='postDetails-post-icons'>
-                                        <div className='postDetails-icons-list'>
-                                            <span className="postDetails-span-like" onClick={() => addLikeToPost(post)}>
-                                                {
-                                                    likePost ?
-                                                        <div className="postDetails-like postDetails-likePost">{Svgs.red}</div> :
-                                                        <div className=" postDetails-like postDetails-black">{Svgs.notifications} </div>
-                                                }
-                                            </span>
-                                            <span className="postDetails-span-comment"><div className="postDetails-comment" > {Svgs.comment}</div></span>
-                                            <button className="postDetails-button-sharePost"> <div className="postDetails-sharePost" onClick={() => { onToggleModal({ type: 'Share' }) }}> {Svgs.sharePost}</div></button>
-                                        </div>
-                                        <div className='div-postDetails-icons-save'>
-                                            <div className="postDetails-icons-save" onClick={() => { }}>{Svgs.save}</div>
-                                        </div>
-                                    </div>
-                                </div>
+                            
 
                                 <div className="postDetails-container-data-details-2-likes">
                                     {!!post.likedBy?.length && (
@@ -133,16 +120,9 @@ console.log("addLikeToPost: ",addLikeToPost)
                                         <InputEmojiChat addCommentToPost={addCommentToPost} post={post} />
                                     </div>
                                 </div>
-                            </div> */}
-                            {/* 
-                        </div> */}
-                            {/* </div> */}
-
-
+      
                         </div>
                     </div>
-
-
 
                 </div>
             </div>

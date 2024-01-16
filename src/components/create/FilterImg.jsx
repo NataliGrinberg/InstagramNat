@@ -16,9 +16,9 @@ export function FilterImg() {
 
     const [imgCount, setImgCount] = useState(0)
 
-    console.log('imageModalUrlData: ', imageModalUrlData)
+    console.log('imageModalData: ', files)
     const [filesMap, setFilesMap] = useState(imageModalUrlData ? imageModalUrlData : files.map((file) => {
-        { return { 'file': file, 'type': (file.type.includes('video') ? 'video' : 'image'), 'url': URL.createObjectURL(file), 'filter': '' , displayFilter:false } }
+        { return { 'file': file, 'type': (file.type.includes('video') ? 'video' : 'image'), 'url': URL.createObjectURL(file), 'filter': '', displayFilter: false } }
     }))
 
 
@@ -30,16 +30,16 @@ export function FilterImg() {
     }, [filesMap])
 
 
-    const htmlToImageConvert = () => {
+    const htmlToImageConvert = (count) => {
         toPng(elementRef.current, { cacheBust: false })
             .then((dataUrl) => {
 
-                filesMap[imgCount].url = dataUrl
+                filesMap[count].url = dataUrl
                 let metadata = {
-                    type: filesMap[imgCount].file.type
+                    type: filesMap[count].file.type
                 };
-                let newFile = new File([dataUrl], filesMap[imgCount].file.name, metadata)
-                filesMap[imgCount].file = newFile
+                let newFile = new File([dataUrl], filesMap[count].file.name, metadata)
+                filesMap[count].file = newFile
                 setFilesMap([...filesMap])
                 saveImageUrl({ type: SET_IMGS_URL, imgsUrl: filesMap })
                 alert('can move')
@@ -73,11 +73,11 @@ export function FilterImg() {
     };
 
     function addFilterToImage(filter) {
-        debugger
-        if (filesMap[imgCount].filter !== '' && filesMap[imgCount].file.name === files[imgCount].name) {
-            filesMap[imgCount].url= URL.createObjectURL(files[imgCount])
-        }
         
+        if (filesMap[imgCount].filter !== '' && filesMap[imgCount].file.name === files[imgCount].name) {
+            filesMap[imgCount].url = URL.createObjectURL(files[imgCount])
+        }
+
         filesMap[imgCount].filter = filter.v
         filesMap[imgCount].displayFilter = true;
         setFilesMap([...filesMap])
@@ -86,22 +86,21 @@ export function FilterImg() {
     return (
         <section className="create-post-filter-img">
 
-            <div className="upload-img-model-title" >
-                <div className="filter-back-btn" onClick={() => { onToggleModalCreate({ type: 'UploadImg' }) }}>{Svgs.back}</div>
+            <div className="upload-img-model-title-filter" >
+
+                <div className="filter-back-btn" onClick={() => { onToggleModalCreate({ type: 'UploadImg' }) }}>
+                    <div className="filter-back-btn-svg">{Svgs.back}</div>
+                </div>
 
                 <div className="upload-img-title" >
                     <div className="upload-img-title-div">Edit</div>
                 </div>
 
                 <div className="upload-img-title-btn" >
-                    <button className="filter-next-btn" onClick={() => {
-                        console.log("inser filter button")
+                    <div className="filter-next-btn" onClick={() => {
                         uploadImageSelected()
-                    }}>next</button>
+                    }}>Next</div>
                 </div>
-
-
-
             </div>
 
 
@@ -109,35 +108,43 @@ export function FilterImg() {
 
                 <div className="create-post-filter-img-data">
                     {/* <div className="post-filter-preview"> */}
-                    {(imgCount > 0) &&
-                        <button onClick={() => {
-                            htmlToImageConvert()
-                            setImgCount(imgCount - 1)
-                        }}
-                            aria-label="Go Back" className=" _afxv _al46 _al47" >
-                            <div className=" _9zm0"></div>
-                        </button>
-                    }
+                    <div>
+                        {(imgCount > 0) &&
+                            <button onClick={() => {
+                                if (filesMap[imgCount].filter !== '')
+                                    htmlToImageConvert(imgCount)
+                                setImgCount(imgCount - 1)
+                            }}
+                                aria-label="Go Back" className=" _afxv _al46 _al47" >
+                                <div className=" _9zm0"></div>
+                            </button>
+                        }
+                    </div>
 
-                    {
+                    <div>
+                        {
 
-                        filesMap.length > 0 && filesMap[imgCount].url !== null
-                        && ((filesMap[imgCount].type === 'video'
-                            && <video controls width="100%">
-                                <source src={filesMap[imgCount].url} type="video/mp4" autoPlay={true} />
-                            </video>)
-                            || (<img ref={elementRef} className={`post-img-style ${filesMap[imgCount].displayFilter ? filesMap[imgCount].filter : ``}`} src={filesMap[imgCount].url} />))
+                            filesMap.length > 0 && filesMap[imgCount].url !== null
+                            && ((filesMap[imgCount].type === 'video'
+                                && <video controls width="100%">
+                                    <source src={filesMap[imgCount].url} type="video/mp4" autoPlay={true} />
+                                </video>)
+                                || (<img ref={elementRef} className={`post-img-style ${filesMap[imgCount].displayFilter ? filesMap[imgCount].filter : ``}`} src={filesMap[imgCount].url} />))
 
-                    }
+                        }
+                    </div>
 
-                    {((filesMap.length - 1) > imgCount) &&
-                        <button onClick={() => {
-                            htmlToImageConvert()
-                            setImgCount(imgCount + 1)
-                        }} aria-label="Next" className=" _afxw _al46 _al47">
-                            <div className="_9zm2"></div>
-                        </button>
-                    }
+                    <div>
+                        {((filesMap.length - 1) > imgCount) &&
+                            <button onClick={() => {
+                                if (filesMap[imgCount].filter !== '')
+                                    htmlToImageConvert(imgCount)
+                                setImgCount(imgCount + 1)
+                            }} aria-label="Next" className=" _afxw _al46 _al47">
+                                <div className="_9zm2"></div>
+                            </button>
+                        }
+                    </div>
                 </div>
 
 
@@ -148,22 +155,23 @@ export function FilterImg() {
 
                 <div className="upload-img-filter">
                     <div className="upload-img-filter-title">
-                        Filters
+                        <div className="upload-img-filter-title-div">Filters</div>
                     </div>
 
                     <div className="upload-img-filter-list">
-                        {/* <div className='list-of-filter'> */}
-                        {Object.entries(filter).map(([k, v]) => (
-                            <div className='filter-flex1'>
-                                <div onClick={() => { addFilterToImage({ v }) }} className='filter-img1'>
-                                    <figure className={v} >
-                                        <img src={normal} />
-                                    </figure>
+                        <div className='list-of-filter'>
+                            {/* <div className='list-of-filter'>figure {'filter-img {v}'}*/}
+                            {Object.entries(filter).map(([k, v]) => (
+                                <div className='filter-flex'>
+                                    <div onClick={() => { addFilterToImage({ v }) }} className={`filter-img ${v}`}>
+                                        {/* <figure className={v} > */}
+                                        <div className="filter-img-div"><img src={normal} /></div>
+                                        {/* </figure> */}
+                                    </div>
+                                    <div className='filter-name'>{k}</div>
                                 </div>
-                                <div className='filter-name'>{k}</div>
-                            </div>
-                        ))}
-                        {/* </div> */}
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

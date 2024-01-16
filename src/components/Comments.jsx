@@ -28,7 +28,7 @@ export function Comments() {
         await savePost(postToSave)
     }
 
-    console.log('data from comments', post);
+ 
     if (!post) return <div>Loading</div>
     return (
         <section className="Comments-container">

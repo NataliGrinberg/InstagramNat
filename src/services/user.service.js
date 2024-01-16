@@ -37,7 +37,6 @@ function remove(userId) {
 
 async function update(userToUpdate) {
     const user = await getById(userToUpdate.id)
-    console.log('user', user)
 
     const updatedUser = await storageService.put(STORAGE_KEY_USER_DB, { ...user, ...userToUpdate })
     if (getLoggedinUser().id === updatedUser.id) saveLocalUser(updatedUser)

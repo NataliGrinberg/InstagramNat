@@ -4,28 +4,36 @@ import { useForm } from "../customHooks/useForm";
 import { postService } from "../services/post.service";
 
 import { InputEmojiChat } from "../components/InputEmojiChat";
-import { Link, useNavigate, useParams } from "react-router-dom";
+
+import { Link, useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { savePost } from "../store/actions/post.actions";
 import { PostPreviewImg } from "../components/PostPreviewImg";
 import { Svgs } from "../assets/Svgs";
 import { Comments } from "../components/Comments";
 import { CreatePost } from "../components/create/CreatePost";
+import { PostPreviewIcons } from "../components/PostPreviewIcons";
 
 export function PostDetails() {
     const [post, setPost] = useState(null)
+    const { addLikeToPost } = useOutletContext()
     const { postId } = useParams()
     const [likePost, setLikePost] = useState(postService.isLikePost(post));
     const navigate = useNavigate()
 
+    
+console.log("addLikeToPost: ",addLikeToPost)
     useEffect(() => {
         loadPost()
     }, [])
 
 
     useEffect(() => {
+        console.log("addLikeToPost: 11")
         var likeByUser = postService.isLikePost(post);
         setLikePost(likeByUser)
     }, [post?.likedBy])
+
+
 
     async function loadPost() {
         const post = await postService.getById(postId)
@@ -43,22 +51,19 @@ export function PostDetails() {
     if (!post) return <div>Loading</div>
     return (
 
-       
         <section className="section-postDetails">
-
             <div className="create-postDetails-opacity">
-                <div className="create-postDetails-button" onClick={
-                    () => { }}>
+                <div className="create-postDetails-button">
                     <div className="create-postDetails-button-div">
-                        <div className="svg-postDetails" onClick={()=>navigate('/')}>
+                        <div className="svg-postDetails" onClick={() => navigate('/')}>
                             {Svgs.close}
                         </div>
                     </div>
                 </div>
 
-     
-      
-                 <div className="postDetails-container">
+
+
+                <div className="postDetails-container">
 
                     <div className="postDetails-container-imgs">
                         <PostPreviewImg imgUrl={post.imgUrl} />
@@ -88,9 +93,14 @@ export function PostDetails() {
 
                             </div>
 
-                            <div className="postDetails-container-data-details-2">
+                            {/* <div className="postDetails-container-data-details-2">
                                 <div className="postDetails-container-data-details-2-icons">
-                                    <div className='postDetails-post-icons'>
+                                    */}
+                            <div className='post-icons-info'>
+                                <PostPreviewIcons post={post} addLikeToPost={addLikeToPost} />
+                            </div>
+
+                            {/* <div className='postDetails-post-icons'>
                                         <div className='postDetails-icons-list'>
                                             <span className="postDetails-span-like" onClick={() => addLikeToPost(post)}>
                                                 {
@@ -123,14 +133,19 @@ export function PostDetails() {
                                         <InputEmojiChat addCommentToPost={addCommentToPost} post={post} />
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
+                            {/* 
+                        </div> */}
+                            {/* </div> */}
+
 
                         </div>
                     </div>
 
 
+
                 </div>
-            </div> 
+            </div>
         </section>
     )
 }

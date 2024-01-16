@@ -27,7 +27,7 @@ async function uploadImg(file) {
         const formData = new FormData()
         formData.append('upload_preset', UPLOAD_PRESET)
         formData.append('file', file)
-        console.log('ev.target.files[0]', file)
+   
 
         const res = await fetch(UPLOAD_URL, {
             method: 'POST',

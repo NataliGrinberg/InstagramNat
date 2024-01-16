@@ -4,37 +4,84 @@ import { Svgs } from '../../assets/Svgs'
 import normal from '../../assets/images/Normal.jpg'
 import { saveImageUrl } from '../../store/actions/image.actions';
 import { SET_IMGS_URL } from '../../store/reducers/image.reducer';
-import { uploadService } from '../../services/upload.service';
-import { PostPreviewImg } from '../PostPreviewImg';
+import { useEffect, useRef, useState } from 'react';
+import { toPng } from 'html-to-image';
 
 export function FilterImg() {
     const imageModalData = useSelector(storeState => storeState.imageModal.imgs)
-   // const imageModalUrlData = useSelector(storeState => storeState.imageModal.imgsUrl)
+    const imageModalUrlData = useSelector(storeState => storeState.imageModal.imgsUrl)
     const files = Array.from(imageModalData.target.files);
-    const filesUrl = files.map(file => URL.createObjectURL(file))
-
+    const elementRef = useRef(null);
     const filter = { Aden: 'aden', Clarendon: 'clarendon', Crema: 'crema', Gingham: 'gingham', Juno: 'juno', Lark: 'lark', Ludwig: 'ludwig', Moon: 'moon', Original: 'original', Perpetua: 'perpetua', Reyes: 'reyes', Slumber: 'slumber' }
+
+    const [imgCount, setImgCount] = useState(0)
+
+    console.log('imageModalUrlData: ', imageModalUrlData)
+    const [filesMap, setFilesMap] = useState(imageModalUrlData ? imageModalUrlData : files.map((file) => {
+        { return { 'file': file, 'type': (file.type.includes('video') ? 'video' : 'image'), 'url': URL.createObjectURL(file), 'filter': '' , displayFilter:false } }
+    }))
 
 
     async function uploadImageSelected() {
-
-        //         //ADD filter
-        //         let retuenImgData = ''
-        //         let retuenImgDataUrl = []
-        //         const files = Array.from(imageModalData.target.files);
-        //         for (let i = 0; i < files.length; i++) {
-        //             retuenImgData = await uploadService.uploadImg(files[i])
-        //             console.log('retuenImgData', retuenImgData.secure_url)
-        //             retuenImgDataUrl =  [...retuenImgDataUrl, retuenImgData.secure_url] 
-        //         }
-
-
-        //         saveImageUrl({ type: SET_IMGS_URL, imgsUrl: retuenImgDataUrl })
-        onToggleModalCreate({ type: 'CreatePost' })
-
+        htmlToImageConvertMove()
     }
 
- 
+    useEffect(() => {
+    }, [filesMap])
+
+
+    const htmlToImageConvert = () => {
+        toPng(elementRef.current, { cacheBust: false })
+            .then((dataUrl) => {
+
+                filesMap[imgCount].url = dataUrl
+                let metadata = {
+                    type: filesMap[imgCount].file.type
+                };
+                let newFile = new File([dataUrl], filesMap[imgCount].file.name, metadata)
+                filesMap[imgCount].file = newFile
+                setFilesMap([...filesMap])
+                saveImageUrl({ type: SET_IMGS_URL, imgsUrl: filesMap })
+                alert('can move')
+
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    const htmlToImageConvertMove = () => {
+        toPng(elementRef.current, { cacheBust: false })
+            .then((dataUrl) => {
+
+                filesMap[imgCount].url = dataUrl
+                let metadata = {
+                    type: filesMap[imgCount].file.type
+                };
+                let newFile = new File([dataUrl], filesMap[imgCount].file.name, metadata)
+                filesMap[imgCount].file = newFile
+                filesMap[imgCount].displayFilter = false;
+
+                setFilesMap([...filesMap])
+                saveImageUrl({ type: SET_IMGS_URL, imgsUrl: filesMap })
+                onToggleModalCreate({ type: 'CreatePost' })
+
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    function addFilterToImage(filter) {
+        debugger
+        if (filesMap[imgCount].filter !== '' && filesMap[imgCount].file.name === files[imgCount].name) {
+            filesMap[imgCount].url= URL.createObjectURL(files[imgCount])
+        }
+        
+        filesMap[imgCount].filter = filter.v
+        filesMap[imgCount].displayFilter = true;
+        setFilesMap([...filesMap])
+    }
 
     return (
         <section className="create-post-filter-img">
@@ -45,46 +92,79 @@ export function FilterImg() {
                 <div className="upload-img-title" >
                     <div className="upload-img-title-div">Edit</div>
                 </div>
-                <button className="filter-next-btn" onClick={() => {
-                    console.log("inser filter button")
-                    uploadImageSelected()
-                }}>next</button>
+
+                <div className="upload-img-title-btn" >
+                    <button className="filter-next-btn" onClick={() => {
+                        console.log("inser filter button")
+                        uploadImageSelected()
+                    }}>next</button>
+                </div>
+
+
 
             </div>
 
 
             <div className="create-post-filter-img-continar">
-                <div className="create-post-filter-img-2">
-                    <PostPreviewImg imgUrl={[]} />
+
+                <div className="create-post-filter-img-data">
+                    {/* <div className="post-filter-preview"> */}
+                    {(imgCount > 0) &&
+                        <button onClick={() => {
+                            htmlToImageConvert()
+                            setImgCount(imgCount - 1)
+                        }}
+                            aria-label="Go Back" className=" _afxv _al46 _al47" >
+                            <div className=" _9zm0"></div>
+                        </button>
+                    }
+
+                    {
+
+                        filesMap.length > 0 && filesMap[imgCount].url !== null
+                        && ((filesMap[imgCount].type === 'video'
+                            && <video controls width="100%">
+                                <source src={filesMap[imgCount].url} type="video/mp4" autoPlay={true} />
+                            </video>)
+                            || (<img ref={elementRef} className={`post-img-style ${filesMap[imgCount].displayFilter ? filesMap[imgCount].filter : ``}`} src={filesMap[imgCount].url} />))
+
+                    }
+
+                    {((filesMap.length - 1) > imgCount) &&
+                        <button onClick={() => {
+                            htmlToImageConvert()
+                            setImgCount(imgCount + 1)
+                        }} aria-label="Next" className=" _afxw _al46 _al47">
+                            <div className="_9zm2"></div>
+                        </button>
+                    }
                 </div>
-                <div>
 
 
-                    <div className="upload-img-filter">
-                        <div className="upload-img-filter-title">
+
+                {/* </div> */}
 
 
-                            <div className='list-of-filter'>
-                                {Object.entries(filter).map(([k, v]) => (
-                                    <div className='filter-flex'>
-                                        <div className='filter-img'>
-                                            <figure className={v} >
-                                                <img src={normal} />
-                                            </figure>
-                                        </div>
-                                        <div className='filter-name'>{k}</div>
-                                    </div>
-                                ))}
-                            </div>
 
-                            {/* <ul >
-                        {filesUrl.map(url => (
-                            <Filters imageSelected={url} key={url} />
-                        ))}
-                    </ul> */}
-                        </div>
+                <div className="upload-img-filter">
+                    <div className="upload-img-filter-title">
+                        Filters
                     </div>
 
+                    <div className="upload-img-filter-list">
+                        {/* <div className='list-of-filter'> */}
+                        {Object.entries(filter).map(([k, v]) => (
+                            <div className='filter-flex1'>
+                                <div onClick={() => { addFilterToImage({ v }) }} className='filter-img1'>
+                                    <figure className={v} >
+                                        <img src={normal} />
+                                    </figure>
+                                </div>
+                                <div className='filter-name'>{k}</div>
+                            </div>
+                        ))}
+                        {/* </div> */}
+                    </div>
                 </div>
             </div>
         </section >
@@ -93,46 +173,4 @@ export function FilterImg() {
 
 
 
-
-function Filters({ key, imageSelected }) {
-    const filter = { Aden: 'aden', Clarendon: 'clarendon', Crema: 'crema', Gingham: 'gingham', Juno: 'juno', Lark: 'lark', Ludwig: 'ludwig', Moon: 'moon', Original: 'original', Perpetua: 'perpetua', Reyes: 'reyes', Slumber: 'slumber' }
-
-    return (
-        <div className="create-post-filter">
-            {
-
-                //  Object.entries(map).map(([k,v]) => `${k}_${v}`);
-
-                <div className='list-of-filter'>
-                    {Object.entries(filter).map(([k, v]) => (
-                        <figure className={v}>
-                            <img src={normal} />
-                        </figure>
-                    ))}
-                </div>
-
-
-                // <img src={normal} alt="Pineapple" />
-                // <figure className="aden">
-                //     <img src={normal} />
-                // </figure>
-
-            }
-
-            {/* <img src={imageSelected} alt="Pineapple" />
-            <img className="blur" src={imageSelected} alt="Pineapple" />
-            <img className="brightness" src={imageSelected} alt="Pineapple" />
-            <img className="contrast" src={imageSelected} alt="Pineapple" />
-            <img className="grayscale" src={imageSelected} alt="Pineapple" />
-            <img className="huerotate" src={imageSelected} alt="Pineapple" />
-            <img className="invert" src={imageSelected} alt="Pineapple" />
-            <img className="opacity" src={imageSelected} alt="Pineapple" />
-            <img className="saturate" src={imageSelected} alt="Pineapple" />
-            <img className="sepia" src={imageSelected} alt="Pineapple" />
-            <img className="shadow" src={imageSelected} alt="Pineapple" /> */}
-        </div>
-
-    )
-
-}
 

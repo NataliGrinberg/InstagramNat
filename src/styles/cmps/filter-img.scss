@@ -1,30 +1,93 @@
-
-
-.create-post-filter-img{
-  color: rgb(0, 0, 0);
-color-scheme: light;
-direction: ltr;
-display: block;
-font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-font-size: 14px;
-height: 519.2px;
-line-height: 18px;
-max-height: 791px;
-max-width: 1088px;
-min-height: 391px;
-min-width: 688px;
-pointer-events: all;
-text-size-adjust: 100%;
-width: 816px;
-}
 .create-post-filter-img {
-  position: absolute;
+  color: rgb(0, 0, 0);
+  color-scheme: light;
+  direction: ltr;
   display: flex;
   flex-direction: column;
+  font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  height: 519.2px;
+  line-height: 18px;
+  max-height: 791px;
+  max-width: 1088px;
+  min-height: 391px;
+  min-width: 688px;
+  pointer-events: all;
+  text-size-adjust: 100%;
+  width: 816px;
+  background: white;
+  position: relative;
+  border-radius: 10%;
 
 }
 
-.filter-next-btn {
+.upload-img-model-title {
+  color: rgb(0, 0, 0);
+  color-scheme: light;
+  direction: ltr;
+  display: flex;
+  flex-direction: row;
+
+
+  //align-items: center;
+  border-bottom-color: rgb(219, 219, 219);
+  border-bottom-style: solid;
+  border-bottom-width: 0.8px;
+
+}
+
+.upload-img-model-title {
+  text-align: center;
+}
+
+.upload-img-title {
+  flex: 1;
+  text-align: center;
+}
+
+.upload-img-title-btn {
+  position: absolute;
+  right: 0;
+}
+
+
+
+.create-post-filter-img-continar{
+
+  color: rgb(0, 0, 0);
+  color-scheme: light;
+  direction: ltr;
+  display: flex;
+  flex-direction: row;
+}
+
+.upload-img-filter {
+  overflow-y: scroll;
+  color: rgb(0, 0, 0);
+  color-scheme: light;
+  direction: ltr;
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-img-filter-list {
+  color: rgb(0, 0, 0);
+  color-scheme: light;
+  direction: ltr;
+  display: flex;                       /* establish flex container */
+  flex-wrap: wrap;                     /* enable flex items to wrap */
+  //justify-content: space-around;
+  //flex-direction: row;
+  // flex-grow: 1;
+  // flex-shrink: 0;
+  // flex-basis: 30%;
+
+  // flex: 0 0 32%;                       /* don't grow, don't shrink, width */
+  // height: 50px;
+  // margin-bottom: 5px;
+}
+
+.filter-next-btn1 {
   align-content: stretch;
   align-items: stretch;
   align-self: auto;
@@ -60,6 +123,67 @@ width: 816px;
 }
 
 
+.create-post-filter-img-data {
+  color: rgb(0, 55, 107);
+  color-scheme: light;
+  cursor: pointer;
+  direction: ltr;
+  display: block;
+  font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  // height: 0px;
+  line-height: 18px;
+  padding-bottom: 468px;
+  position: relative;
+  text-size-adjust: 100%;
+  // width: 468px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  // border-right-color: rgb(246, 9, 9);
+  // border-right-style: solid;
+  // border-right-width: 0.8px;
+}
+
+.post-img-style {
+
+  border-bottom-color: rgb(0, 0, 0);
+  border-bottom-style: none;
+  border-bottom-width: 0px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-left-color: rgb(0, 0, 0);
+  border-left-style: none;
+  border-left-width: 0px;
+  border-right-color: rgb(0, 0, 0);
+  border-right-style: none;
+  border-right-width: 0px;
+  border-top-color: rgb(0, 0, 0);
+  border-top-style: none;
+  border-top-width: 0px;
+  color: rgb(0, 0, 0);
+  color-scheme: light;
+  cursor: pointer;
+  direction: ltr;
+  display: block;
+  font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  height: 468px;
+  left: 0px;
+  line-height: 18px;
+  object-fit: cover;
+  overflow-clip-margin: content-box;
+
+  // position: absolute;
+  text-size-adjust: 100%;
+  top: 0px;
+  user-select: none;
+  width: 468px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+}
+
 
 
 .list-of-filter {
@@ -88,37 +212,31 @@ width: 816px;
 //     flex-basis: 30%;
 
 .filter-flex {
-  align-content: stretch;
-  align-items: stretch;
-  align-self: auto;
-  background-color: rgba(0, 0, 0, 0);
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  box-sizing: border-box;
-  color: rgb(0, 0, 0);
-  color-scheme: light;
-  direction: ltr;
-  display: flex;
-  flex-direction: column;
+  
+  // align-content: stretch;
+  // align-items: stretch;
+  // align-self: auto;
+  // background-color: rgba(0, 0, 0, 0);
+  // box-sizing: border-box;
+  // color: rgb(0, 0, 0);
+  // color-scheme: light;
+  // direction: ltr;
+  // display: flex;
+  // flex-direction: column;
+  // flex-grow: 1;
+  // flex-shrink: 0;
+  // flex-basis: 30%;
 
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 30%;
-
-  font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  height: 110.2px;
-  justify-content: flex-start;
-  line-height: 18px;
-  margin-top: 16px;
-  overflow-x: visible;
-  overflow-y: visible;
-  pointer-events: all;
-  position: relative;
-  text-size-adjust: 100%;
-  width: 102.125px;
+  // font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  // font-size: 14px;
+  // height: 110.2px;
+  // justify-content: flex-start;
+  // line-height: 18px;
+  // margin-top: 16px;
+  // pointer-events: all;
+  // position: relative;
+  // text-size-adjust: 100%;
+  //width: 102.125px;
 }
 
 .filter-name {
@@ -231,7 +349,7 @@ width: 816px;
 
 .original img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // .original:before {
@@ -305,7 +423,7 @@ width: 816px;
 
 .inkwell img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // .inkwell:before {
@@ -442,7 +560,7 @@ width: 816px;
 
 .toaster img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // .toaster:before {
@@ -516,7 +634,7 @@ width: 816px;
 
 .hudson img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // .hudson:before {
@@ -554,7 +672,7 @@ width: 816px;
 
 .earlybird img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // .earlybird:before {
@@ -591,7 +709,7 @@ width: 816px;
 
 .mayfair img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // .mayfair:before {
@@ -666,7 +784,7 @@ width: 816px;
 
 ._1977 img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // ._1977:before {
@@ -699,7 +817,7 @@ width: 816px;
 
 .brooklyn img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // .brooklyn:before {
@@ -773,7 +891,7 @@ width: 816px;
 
 .nashville img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // .nashville:before {
@@ -855,7 +973,7 @@ width: 816px;
 
 .moon img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // .moon:before {
@@ -929,7 +1047,7 @@ width: 816px;
 
 .willow img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // .willow:before {
@@ -970,7 +1088,7 @@ width: 816px;
 
 .rise img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // .rise:before {
@@ -1014,7 +1132,7 @@ width: 816px;
 
 .slumber img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // .slumber:before {
@@ -1055,7 +1173,7 @@ width: 816px;
 
 .brannan img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // .brannan:before {
@@ -1091,7 +1209,7 @@ width: 816px;
 
 .valencia img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // .valencia:before {
@@ -1126,7 +1244,7 @@ width: 816px;
 
 .kelvin img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // .kelvin:before {
@@ -1167,7 +1285,7 @@ width: 816px;
 
 .maven img {
   width: 100%;
- // z-index: 1
+  // z-index: 1
 }
 
 // .maven:before {

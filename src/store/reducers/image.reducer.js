@@ -7,11 +7,11 @@ export const REMOVE_IMG = 'REMOVE_IMG'
 
 const initialState = {
     imgs: null,
-    imgsUrl: null,
+    imgsUrl: null
 }
 
 export function imageReducer(state = initialState, action = {}) {
-    debugger
+    
     switch (action.type) {
         case SET_IMGS:
             return {

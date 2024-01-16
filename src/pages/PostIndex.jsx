@@ -59,6 +59,7 @@ export function PostIndex() {
     
     async function addLikeToPost(post) {
         try {
+            debugger
             const user = postService.loggedinUser
             const likePost = postService.isLikePost(post)
             if (!likePost) {
@@ -101,7 +102,7 @@ export function PostIndex() {
                 <PostList addCommentToPost={addCommentToPost} posts={posts}  addLikeToPost={addLikeToPost} />
                 <SideData />
             </main>
-            <Outlet />
+            <Outlet context={{addLikeToPost}} />
         </section>
     )
 

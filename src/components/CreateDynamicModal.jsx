@@ -37,7 +37,6 @@ export function CreateDynamicModal() {
 }
 
 function DynamicCmp(props) {
-    console.log(props.type);
     const cmpMap = {
         UploadImg: <UploadImg {...props} />,
         FilterImg: <FilterImg {...props} />,

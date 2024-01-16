@@ -30,8 +30,6 @@ export function DynamicModal() {
 }
 
 function DynamicCmp({ type, data }) {
-    console.log(type);
-    console.log(data);
     const cmpMap = {
         // Comments: <Comments data={data}/>,
         Likes: <Likes data={data} />,

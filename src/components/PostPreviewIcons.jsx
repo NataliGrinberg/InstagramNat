@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { Svgs } from '../assets/Svgs'
 import { postService } from '../services/post.service';
 import { Link } from 'react-router-dom';
+import { onToggleModal } from '../store/actions/app.actions';
 
 export function PostPreviewIcons({ post , addLikeToPost }) { 
 
     const [likePost, setLikePost] = useState(postService.isLikePost(post));
+    console.log("addLikeToPost  PostPreviewIcons: ",addLikeToPost)
 
     useEffect(() => {
-        console.log("insert use from pre icons")
+        console.log('in post pre ')
         var likeByUser = postService.isLikePost(post);
         setLikePost(likeByUser)
     }, [post.likedBy])
@@ -18,7 +20,7 @@ export function PostPreviewIcons({ post , addLikeToPost }) {
 
         <div className='post-icons'>
             <div className='post-icons-list'>
-                <span className="span-like" onClick={() => addLikeToPost(post)}>
+                <span className="span-like" onClick={()=> { addLikeToPost(post) }}>
                     {
                         likePost ?
                             <div className="like likePost">{Svgs.red}</div> :
@@ -29,7 +31,7 @@ export function PostPreviewIcons({ post , addLikeToPost }) {
                 <button className="button-sharePost"> <div className="sharePost" onClick={() => { onToggleModal({ type: 'Share' }) }}> {Svgs.sharePost}</div></button>
             </div>
             <div className='div-post-icons-save'>
-                <div className="post-icons-save" onClick={() => { }}>{Svgs.save}</div>
+                <div className="post-icons-save" onClick={() => {alert('save')}}>{Svgs.save}</div>
             </div>
         </div>
     )

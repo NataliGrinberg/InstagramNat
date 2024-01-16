@@ -1,5 +1,5 @@
 export function Share() {
     return (
-        <div>Share</div>
+        <div>Share model</div>
     )
 }

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useOutletContext } from 'react-router-dom'
 import { Svgs } from '../assets/Svgs'
 import { onToggleModal } from '../store/actions/app.actions'
 import React, { useEffect, useState, useRef } from 'react'
@@ -9,7 +9,7 @@ import { Player } from 'video-react';
 import { Source } from '@cloudinary/url-gen/qualifiers'
 import { PostDetails } from '../pages/PostDetails'
 import { PostPreviewImg } from './PostPreviewImg'
-import { PostPreviewIcons } from './PostPreviewIcons'
+import { PostPreviewIcons } from "../components/PostPreviewIcons";
 
 export function PostPreview({ post, addLikeToPost, addCommentToPost }) {
 
@@ -22,6 +22,7 @@ export function PostPreview({ post, addLikeToPost, addCommentToPost }) {
     //     setLikePost(likeByUser)
     // }, [post.likedBy])
 
+    
 
     return (
         <article className="article-post-preview-model">

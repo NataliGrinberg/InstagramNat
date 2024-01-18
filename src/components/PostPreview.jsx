@@ -11,31 +11,57 @@ import { PostDetails } from '../pages/PostDetails'
 import { PostPreviewImg } from './PostPreviewImg'
 import { PostPreviewIcons } from "../components/PostPreviewIcons";
 
+
+
 export function PostPreview({ post, addLikeToPost, addCommentToPost }) {
 
-   // const [likePost, setLikePost] = useState(postService.isLikePost(post));
-   // const [imgCount, setImgCount] = useState(0)
+    // const [likePost, setLikePost] = useState(postService.isLikePost(post));
+    const [text, setText] = useState(post.txt)
+    const [isExp, setIsExp] = useState(false)
+    const numText = 20;
 
-    // useEffect(() => {
-    //     console.log("insert use from pre")
-    //     var likeByUser = postService.isLikePost(post);
-    //     setLikePost(likeByUser)
-    // }, [post.likedBy])
 
-    
+    useEffect(() => {
+        expText()
+    }, [isExp])
+
+    function expText() {
+
+        if (post.txt.length <= numText || isExp)
+            setText(post.txt)
+        else {
+            let txt = post.txt.substr(0, numText)
+            var lastIndex = txt.lastIndexOf(" ");
+
+            txt = txt.substring(0, lastIndex);
+            setText(txt + '\u2026' + '\u00A0')
+        }
+    }
+
 
     return (
         <article className="article-post-preview-model">
             <div className="post-preview-model">
+
                 <div className="post-user-info">
-                    <div className="container">
+                    <div className="post-user-info-container">
                         <div className="container-img">
-                            {/* <img className="canvas" src={imgCan} /> */}
+
+                            {/* <img className="canvas" src={'../assets/images/canva.png'} />  */}
+                            {/* <canvas className="canvas" height="53" width="53" ></canvas> */}
                             <img className="img" src={post.by.imgUrl} />
                         </div>
                         <div className="container-data">
-                            <div className="container-data-fullName">{post.by.fullname}</div>
-                            <div className="container-data-loc">{post.by.loc}</div>
+                            <div className="container-data-div">
+                                <div className="container-data-fullName-date">
+                                    <div className="container-data-fullName">{post.by.fullname}</div>
+                                    <div className="container-data-date">
+                                        <span className='container-data-date-span'>·</span>
+                                        <div className='container-data-date-div'>3d</div>
+                                    </div>
+                                </div>
+                                <div className="container-data-loc">location: {post.by.loc}</div>
+                            </div>
                         </div>
 
                         <div className="container-moreOptions" onClick={() => { onToggleModal({ type: 'MoreOptions' }) }}> {Svgs.more3Points}</div>
@@ -43,62 +69,30 @@ export function PostPreview({ post, addLikeToPost, addCommentToPost }) {
                 </div>
 
                 <PostPreviewImg imgUrl={post.imgUrl} />
-                {/* <div className="post-preview">
-                    {(imgCount > 0) &&
-                        <button onClick={() => { setImgCount(imgCount - 1) }}
-                            aria-label="Go Back" className=" _afxv _al46 _al47" >
-                            <div className=" _9zm0"></div>
-                        </button>
-                    }
-
-                    {
-                        ((post.imgUrl[imgCount]).includes('image'))
-                        && <img className="post-preview-img" src={post.imgUrl[imgCount]} />
-                        || <video controls width="100%">
-                            <source src={post.imgUrl[imgCount]} type="video/mp4" autoPlay={true} />
-                        </video>
-                    }
-
-                    {((post.imgUrl.length - 1) > imgCount) &&
-                        <button onClick={() => { setImgCount(imgCount + 1) }} aria-label="Next" className=" _afxw _al46 _al47">
-                            <div className="_9zm2"></div>
-                        </button>
-                    }
-                </div> */}
 
                 <div className='post-icons-info'>
-                  <PostPreviewIcons post={post} addLikeToPost={addLikeToPost}/>
-                    {/* <div className='post-icons'>
-                        <div className='post-icons-list'>
-                            <span className="span-like" onClick={() => addLikeToPost(post)}>
-                                {
-                                    likePost ?
-                                        <div className="like likePost">{Svgs.red}</div> :
-                                        <div className=" like black">{Svgs.notifications} </div>
-                                }
-                            </span>
-                             <Link to={`/post/${post._id}`}><span className="span-comment"><div className="comment" > {Svgs.comment}</div></span></Link> 
-                            <button className="button-sharePost"> <div className="sharePost" onClick={() => { onToggleModal({ type: 'Share' }) }}> {Svgs.sharePost}</div></button>
-                        </div>
-                        <div className='div-post-icons-save'>
-                            <div className="post-icons-save" onClick={() => { }}>{Svgs.save}</div>
-                        </div>
-                    </div> */}
+                    <PostPreviewIcons post={post} addLikeToPost={addLikeToPost} />
+
 
                     {!!post.likedBy?.length && (
-                        <div className="like" onClick={() => { onToggleModal({ type: 'Likes', data: { post: post } }) }}> {post.likedBy?.length} likes </div>
+                        <div className="post-icons-info-likes" onClick={() => { onToggleModal({ type: 'Likes', data: { post: post } }) }}> {post.likedBy?.length} likes </div>
                     )}
 
-                    <div className='post-text'>
-                        {/* <div className='post-text-bold'>{post.by.fullname}</div> */}
-                        <div className='post-text-txt'>{post.txt} </div>
+                    <div className='post-icons-info-text'>
+                        <div className='post-icons-info-text-fullName'>{post.by.fullname}</div>
+                        <span className='post-icons-info-text-more'>
+                            <span className='post-icons-info-text-txt'>{text}</span>
+                            {!isExp && post.txt.length > numText && <span className='button-more-txt' onClick={() => { setIsExp(true) }}>more</span>}
+                        </span>
                     </div>
+
+
                     {!!post.comments?.length && (
                         <div className="view-comments">
-                               <Link to={`/post/${post._id}`}><div className="comment" > View all {post.comments?.length} comments</div></Link> 
+                            <Link to={`/post/${post._id}`}><div className="comment" > View all {post.comments?.length} comments</div></Link>
                         </div>
                     )}
-                    <div className="add-comment">
+                    <div className="post-icons-info-add-comment">
                         <InputEmojiChat addCommentToPost={addCommentToPost} post={post} />
                     </div>
                 </div>

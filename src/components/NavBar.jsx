@@ -4,15 +4,29 @@ import { More } from './More';
 import { Reel } from './Reel';
 import { Svgs } from '../assets/Svgs';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Logo } from './Logo';
 import { onToggleModalCreate } from '../store/actions/create.actions'
+import { postService } from '../services/post.service';
+import { useEffect, useState } from 'react';
+import { getUserLogin } from '../store/actions/user.actions';
 
 
 
 export function NavBar() {
 
-    const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
+    const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const location = useLocation();
+    let svgHome = Svgs.homeBlack
+
+    useEffect(() => {
+        getUserLogin()
+        if (location.pathname !== '/')
+            svgHome = Svgs.homeWhite
+        else
+            svgHome = Svgs.homeBlack
+    }, [location]);
+
     return (
         <section className="navBar-grid-container">
 
@@ -29,7 +43,7 @@ export function NavBar() {
                     <div className="div-navBar-list home" >
                         <a className="flex-navBar-list" href="/" role='link'>
                             <div className="svgs">
-                                {Svgs.homeWhite}
+                                {svgHome}
                             </div>
                             <div className='div-name'>
                                 <div className="name">Home</div>
@@ -109,9 +123,10 @@ export function NavBar() {
 
                     <div className="div-navBar-list profile" >
                         <a className="flex-navBar-list" href="/profile/:profileId" role='link'>
-                            <div className="svgs">
-                                {Svgs.emoji}
+                            <div className="navBar-list-profile-img-div">
+                                <img className="navBar-list-profile-img" src={loggedInUser?.imgUrl} />
                             </div>
+
                             <div className='div-name'>
                                 <div className="name">Profile</div>
                             </div>
@@ -136,6 +151,6 @@ export function NavBar() {
             {/* <Outlet context={{ onAddEmail, onUpdateEmail, onSaveDraftEmail }} /> */}
 
         </section >
-    
+
     )
 }

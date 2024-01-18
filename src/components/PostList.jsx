@@ -12,7 +12,7 @@ export function PostList({ posts ,addLikeToPost,addCommentToPost}) {
 					<AppStory />
 				</div>
 				<div  className="postDetails-list">
-					<div></div>
+					{/* <div></div> */}
 					{!!posts?.length && (
 						<ul >
 							{posts.map(post => (

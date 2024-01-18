@@ -3,6 +3,7 @@ import { utilService } from './util.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 const STORAGE_KEY_USER_DB = 'user'
+const STORAGE_KEY = 'users'
 
 
 export const userService = {
@@ -15,15 +16,22 @@ export const userService = {
     getById,
     remove,
     update,
-    getEmptyUser
+    getEmptyUser,
+    getUserLogin
 }
 
 window.userService = userService
 
 _createUsers()
+_creatUserConnected()
 
 function getUsers() {
-    return storageService.query(STORAGE_KEY_USER_DB)
+    return storageService.query(STORAGE_KEY)
+}
+
+function getUserLogin()
+{
+    return storageService.query(STORAGE_KEY_LOGGEDIN_USER)
 }
 
 async function getById(userId) {
@@ -52,7 +60,7 @@ async function login(userCred) {
 }
 
 async function signup(userCred) {
-    userCred.balance = 10000
+   // userCred.balance = 10000
     if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
     const user = await storageService.post('user', userCred)
     return saveLocalUser(user)
@@ -108,16 +116,55 @@ function getLoggedinUser() {
 }
 
 
-async function _createUsers() {
+ function _creatUserConnected(){
     try {
-        let users = await getUsers()
+        let user = utilService.loadFromStorage(STORAGE_KEY_LOGGEDIN_USER)
+        if (!user || !user.length) {
+            user = {
+                _id: "u101",
+                username: "Muko",
+                password: "mukmuk",
+                fullname: "Muki Muka",
+                imgUrl: "https://res.cloudinary.com/dvtyeanju/image/upload/v1705356114/ongfy2tr14ttjpu8qska.jpg",
+                following: [
+                    {
+                        _id: "u106",
+                        fullname: "Dob",
+                        imgUrl: "http://some-img"
+                    }
+                ],
+                followers: [
+                    {
+                        _id: "u105",
+                        fullname: "Bob",
+                        imgUrl: "http://some-img"
+                    }
+                ],
+
+                savedStoryIds: ["s104", "s111", "s123"] // even better - use mini-story
+            }
+    }
+
+    utilService.saveToStorage(STORAGE_KEY_LOGGEDIN_USER, user)
+
+} catch (err) {
+    console.log('UserActions: err in loadUser connected', err)
+}
+}
+
+
+
+
+ function _createUsers() {
+    try {
+        let users = utilService.loadFromStorage(STORAGE_KEY)
         if (!users || !users.length) {
             users = [{
                 _id: "u101",
                 username: "Muko",
                 password: "mukmuk",
                 fullname: "Muki Muka",
-                imgUrl: "http://some-img",
+                imgUrl: "https://res.cloudinary.com/dvtyeanju/image/upload/v1705356114/ongfy2tr14ttjpu8qska.jpg",
                 following: [
                     {
                         _id: "u106",
@@ -139,8 +186,8 @@ async function _createUsers() {
                 username: "Nata",
                 password: "Nata",
                 fullname: "Nat Gr",
-                imgUrl: "http://some-img",
-                following: [
+                imgUrl: "https://res.cloudinary.com/dvtyeanju/image/upload/v1705355892/mbs6lja98b7dflr1cls5.jpg",
+                 following: [
                     {
                         _id: "u106",
                         fullname: "Dob",
@@ -159,7 +206,7 @@ async function _createUsers() {
             ]
         }
 
-      //  await storageService.put(STORAGE_KEY_USER_DB, users)
+        utilService.saveToStorage(STORAGE_KEY, users)
 
     } catch (err) {
         console.log('UserActions: err in loadUsers', err)

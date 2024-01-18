@@ -19,6 +19,7 @@ export function CreatePost() {
 
     const imageModalData = useSelector(storeState => storeState.imageModal.imgs)
     const imageModalUrlData = useSelector(storeState => storeState.imageModal.imgsUrl)
+    const files = Array.from(imageModalData.target.files);
     const [text, setText] = useState("")
     const newPost = postService.createPost()
     const [imgCount, setImgCount] = useState(0)
@@ -29,15 +30,15 @@ export function CreatePost() {
     }))
 
 
-    const [chosenEmoji, setChosenEmoji] = useState(null);
+    //const [chosenEmoji, setChosenEmoji] = useState(null);
 
-    const onEmojiClick = (event, emojiObject) => {
-        setChosenEmoji(emojiObject);
-        debugger
-        console.log('emojiObject:', { chosenEmoji });
-        setText(text + emojiObject.target)
+    // const onEmojiClick = (event, emojiObject) => {
+    //     setChosenEmoji(emojiObject);
+        
+    //     console.log('emojiObject:', { chosenEmoji });
+    //     setText(text + emojiObject.target)
 
-    };
+    // };
 
     const [showEmojis, setShowEmojis] = useState(false);
 
@@ -104,10 +105,10 @@ export function CreatePost() {
                     {
                         filesMap.length > 0 && filesMap[imgCount].url !== null
                         && ((filesMap[imgCount].type === 'video'
-                            && <video controls width="100%">
+                            && <video controls className="post-img-style">
                                 <source src={filesMap[imgCount].url} type="video/mp4" autoPlay={true} />
                             </video>)
-                            || (<img className={`post-img-style`} src={filesMap[imgCount].url} />))
+                            || (<img className="post-img-style" src={filesMap[imgCount].url} />))
 
                     }
 
@@ -148,7 +149,7 @@ export function CreatePost() {
                                             setShowEmojis(!showEmojis)}>{Svgs.smi}</button>
                                         <div className="create-post-result">
                                             <div className="create-post-result-div">
-                                                {text.length}/{maxCharacterCount.toLocaleString()}
+                                                {text.length?.toLocaleString()}/{maxCharacterCount.toLocaleString()}
                                             </div>
                                         </div>
                                     </div>

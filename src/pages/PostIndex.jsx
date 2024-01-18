@@ -6,6 +6,7 @@ import { loadPosts, removePost, savePost, setFilterBy } from "../store/actions/p
 import { Outlet, useNavigate, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { SideData } from "../components/sideData";
+import { getUserLogin, loadUserLogin } from "../store/actions/user.actions";
 
 
 
@@ -27,6 +28,7 @@ export function PostIndex() {
 
     useEffect(() => {
         // Sanitize filterBy
+        getUserLogin()
         loadPosts()
         setSearchParams(filterBy)
     }, [filterBy])
@@ -59,7 +61,7 @@ export function PostIndex() {
     
     async function addLikeToPost(post) {
         try {
-            const user = postService.loggedinUser
+            const user = useSelector(storeState => storeState.userModule.user)
             const likePost = postService.isLikePost(post)
             if (!likePost) {
 

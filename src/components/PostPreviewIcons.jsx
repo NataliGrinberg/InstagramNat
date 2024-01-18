@@ -10,7 +10,6 @@ export function PostPreviewIcons({ post , addLikeToPost }) {
 
 
     useEffect(() => {
-        console.log('in post pre ')
         var likeByUser = postService.isLikePost(post);
         setLikePost(likeByUser)
     }, [post.likedBy])

@@ -1,12 +1,11 @@
 import { userService } from "../../services/user.service"
 
-export const SPEND_BALANCE = 'SPEND_BALANCE'
 export const SET_USER = 'SET_USER'
 export const REMOVE_USER = 'REMOVE_USER'
 export const SET_USERS = 'SET_USERS'
 
 const initialState = {
-    user: {},
+    user: null,//userService.getLoggedinUser(),
     users: []
 }
 

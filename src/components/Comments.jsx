@@ -13,7 +13,7 @@ export function Comments() {
 
     useEffect(() => {
         loadPost()
-    }, [])
+    }, [post])
 
 
     async function loadPost() {
@@ -21,34 +21,35 @@ export function Comments() {
         setPost(post)
     }
 
-    async function addCommentToPost(comment) {
-        const postToSave = structuredClone(post)
-        postToSave.comments = post.comments ? [...post.comments, comment] : [comment]
-        setPost(postToSave)
-        await savePost(postToSave)
-    }
+    // async function addCommentToPost(comment) {
+    //     const postToSave = structuredClone(post)
+    //     postToSave.comments = post.comments ? [...post.comments, comment] : [comment]
+    //     setPost(postToSave)
+    //     await savePost(postToSave)
+    // }
 
- 
+
     if (!post) return <div>Loading</div>
     return (
-        <section className="Comments-container">
-            <div className="postComments-list">
-                <div></div>
-                {!!post.comments?.length && (
-                    <ul >
-                        {post.comments.map(comment => (
-                            <CommentDetails
-                                key={comment.id}
-                                comment={comment}
-                            />
-                        ))}
-                    </ul>
-                )}
-                {!post.comments?.length && <h1 className="no-comments-info">post dont have comments </h1>}
+        <section className="comments-container">
+            <div className="post-comments-div">
+                <div className="post-comments-list">
+                    {/* <div></div> */}
+                    {!!post.comments?.length && (
+                        <div>
+                            {post.comments.map(comment => (
+                                <CommentDetails
+                                    key={comment.id}
+                                    comment={comment}
+                                />
+                            ))}
+                        </div>
+                    )}
+                    {!post.comments?.length && <h1 className="no-comments-info">post dont have comments </h1>}
+                </div>
+
+               
             </div>
-
-            {/* <InputEmojiChat addCommentToPost={addCommentToPost} post={post}  /> */}
-
         </section>
     )
 }

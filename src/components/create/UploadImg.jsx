@@ -17,10 +17,8 @@ export function UploadImg() {
 
     function handleChange(event) {
         const files = Array.from(event.target.files);
-        console.log('event:', files)
+       // console.log('event:', files)
         saveImage({ type: SET_IMGS, imgs: event })
-
-        //uploadImageSelected()
         
         onToggleModalCreate({ type: 'FilterImg' })
     };

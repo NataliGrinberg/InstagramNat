@@ -12,10 +12,11 @@ export function FilterImg() {
     const imageModalUrlData = useSelector(storeState => storeState.imageModal.imgsUrl)
     const files = Array.from(imageModalData.target.files);
     const elementRef = useRef(null);
-    const filter = { Aden: 'aden', Clarendon: 'clarendon', Crema: 'crema', Gingham: 'gingham', Juno: 'juno', Lark: 'lark', Ludwig: 'ludwig', Moon: 'moon', Original: 'original', Perpetua: 'perpetua', Reyes: 'reyes', Slumber: 'slumber' }
+    // const filter = { Aden: 'filter-aden', Clarendon: 'filter-clarendon', Crema: 'filter-crema', Gingham: 'filter-gingham', Juno: 'juno', 'filter-juno', Lark: 'filter-lark', Ludwig: 'filter-ludwig', Moon: 'filter-moon', Original: 'original', Perpetua: 'filter-perpetua', Reyes: 'filter-reyes', Slumber: 'filter-slumber' }
+    const filter = { Aden: 'aden', Clarendon: 'clarendon', Crema: 'filter-crema', Gingham: 'gingham', Juno: 'filter-juno', Lark: 'lark', Ludwig: 'filter-ludwig', Moon: 'moon', Original: 'original', Perpetua: 'perpetua', Reyes: 'reyes', Slumber: 'slumber' }
 
     const [imgCount, setImgCount] = useState(0)
-
+    const [isloading, setIsloading] = useState(false)
     console.log('imageModalData: ', files)
     const [filesMap, setFilesMap] = useState(imageModalUrlData ? imageModalUrlData : files.map((file) => {
         { return { 'file': file, 'type': (file.type.includes('video') ? 'video' : 'image'), 'url': URL.createObjectURL(file), 'filter': '', displayFilter: false } }
@@ -23,7 +24,11 @@ export function FilterImg() {
 
 
     async function uploadImageSelected() {
-        htmlToImageConvertMove()
+        
+        if (filesMap[imgCount].type === 'video')
+            onToggleModalCreate({ type: 'CreatePost' })
+        else
+            htmlToImageConvertMove()
     }
 
     useEffect(() => {
@@ -31,9 +36,9 @@ export function FilterImg() {
 
 
     const htmlToImageConvert = (count) => {
+        setIsloading(true)
         toPng(elementRef.current, { cacheBust: false })
             .then((dataUrl) => {
-
                 filesMap[count].url = dataUrl
                 let metadata = {
                     type: filesMap[count].file.type
@@ -41,8 +46,9 @@ export function FilterImg() {
                 let newFile = new File([dataUrl], filesMap[count].file.name, metadata)
                 filesMap[count].file = newFile
                 setFilesMap([...filesMap])
+                setIsloading(false)
                 saveImageUrl({ type: SET_IMGS_URL, imgsUrl: filesMap })
-                alert('can move')
+
 
             })
             .catch((err) => {
@@ -51,6 +57,7 @@ export function FilterImg() {
     };
 
     const htmlToImageConvertMove = () => {
+        setIsloading(true)
         toPng(elementRef.current, { cacheBust: false })
             .then((dataUrl) => {
 
@@ -64,6 +71,7 @@ export function FilterImg() {
 
                 setFilesMap([...filesMap])
                 saveImageUrl({ type: SET_IMGS_URL, imgsUrl: filesMap })
+                setIsloading(false)
                 onToggleModalCreate({ type: 'CreatePost' })
 
             })
@@ -73,7 +81,7 @@ export function FilterImg() {
     };
 
     function addFilterToImage(filter) {
-        
+
         if (filesMap[imgCount].filter !== '' && filesMap[imgCount].file.name === files[imgCount].name) {
             filesMap[imgCount].url = URL.createObjectURL(files[imgCount])
         }
@@ -86,9 +94,13 @@ export function FilterImg() {
     return (
         <section className="create-post-filter-img">
 
+            {isloading && <div className='loader'></div>}
+
             <div className="upload-img-model-title-filter" >
 
-                <div className="filter-back-btn" onClick={() => { onToggleModalCreate({ type: 'UploadImg' }) }}>
+                <div className="filter-back-btn" onClick={() => { 
+                     saveImageUrl({ type: SET_IMGS_URL, imgsUrl: null })
+                    onToggleModalCreate({ type: 'UploadImg' }) }}>
                     <div className="filter-back-btn-svg">{Svgs.back}</div>
                 </div>
 
@@ -123,10 +135,10 @@ export function FilterImg() {
 
                     <div>
                         {
-
+                            
                             filesMap.length > 0 && filesMap[imgCount].url !== null
                             && ((filesMap[imgCount].type === 'video'
-                                && <video controls width="100%">
+                                && <video controls className='post-img-style'>
                                     <source src={filesMap[imgCount].url} type="video/mp4" autoPlay={true} />
                                 </video>)
                                 || (<img ref={elementRef} className={`post-img-style ${filesMap[imgCount].displayFilter ? filesMap[imgCount].filter : ``}`} src={filesMap[imgCount].url} />))
@@ -135,6 +147,7 @@ export function FilterImg() {
                     </div>
 
                     <div>
+                        
                         {((filesMap.length - 1) > imgCount) &&
                             <button onClick={() => {
                                 if (filesMap[imgCount].filter !== '')
@@ -160,17 +173,17 @@ export function FilterImg() {
 
                     <div className="upload-img-filter-list">
                         <div className='list-of-filter'>
-                            {/* <div className='list-of-filter'>figure {'filter-img {v}'}*/}
-                            {Object.entries(filter).map(([k, v]) => (
-                                <div className='filter-flex'>
-                                    <div onClick={() => { addFilterToImage({ v }) }} className={`filter-img ${v}`}>
-                                        {/* <figure className={v} > */}
-                                        <div className="filter-img-div"><img src={normal} /></div>
-                                        {/* </figure> */}
+                            {
+                                filesMap[imgCount].type === 'image' &&
+                                Object.entries(filter).map(([k, v]) => (
+                                    <div className='filter-flex'>
+                                        <div onClick={() => { addFilterToImage({ v }) }} className={`filter-img ${v}`}>
+                                            <div className={`filter-img-div  ${filesMap[imgCount].filter === v ? 'filter-selected' : ''}`}><img src={normal} /></div>
+
+                                        </div>
+                                        <div className={`filter-name  ${filesMap[imgCount].filter === v ? 'filter-selected-name' : ''}`}>{k}</div>
                                     </div>
-                                    <div className='filter-name'>{k}</div>
-                                </div>
-                            ))}
+                                ))}
                         </div>
                     </div>
                 </div>

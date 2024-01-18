@@ -12,6 +12,7 @@ import { Svgs } from "../assets/Svgs";
 import { Comments } from "../components/Comments";
 import { CreatePost } from "../components/create/CreatePost";
 import { PostPreviewIcons } from "../components/PostPreviewIcons";
+import { onToggleModal } from "../store/actions/app.actions";
 
 export function PostDetails() {
     const [post, setPost] = useState(null)
@@ -26,7 +27,7 @@ export function PostDetails() {
     }, [])
 
     useEffect(() => {
-      
+
     }, [post])
 
     useEffect(() => {
@@ -51,81 +52,123 @@ export function PostDetails() {
 
     console.log('data from comments', post);
     if (!post) return <div>Loading</div>
+
+
     return (
 
-        <section className="section-postDetails">
-            <div className="create-postDetails-opacity">
+        <section className="section-post-details">
+            <div className="create-post-details-opacity">
 
-                <div className="create-postDetails-button">
-                    <div className="create-postDetails-button-div">
+                <div className="create-post-details-button">
+                    <div className="create-post-details-button-div">
                         <div className="svg-postDetails" onClick={() => navigate('/')}>
                             {Svgs.close}
                         </div>
                     </div>
                 </div>
 
+                {/* ********************************container***************************************** */}
+                <div className="post-details-container">
 
-                <div className="postDetails-container">
 
-                    <div className="postDetails-container-imgs">
+                    {/* *********************************img************************************** */}
+                    <div className="post-details-container-imgs">
                         <PostPreviewImg imgUrl={post.imgUrl} />
                     </div>
+                    {/* *********************************end img***************************************** */}
 
-                    <div className="postDetails-container-data">
+                    {/* *******************************data************************************** */}
+                    <div className="post-details-container-data">
 
-                        <div className="postDetails-container-data-profile">
-                            profile
-                        </div>
-
-                        <div className="postDetails-container-data-details">
-                            <div className="postDetails-container-data-details-1">
-
-                                <div className="postDetails-container-data-details-1">
-                                    <div className="postDetails-container-data-details-1-img"></div>
-
-                                    <div className="postDetails-container-data-details-1-txt">
-                                        <div className='postDetails-text-txt'>{post.txt} </div>
+                        {/* *******************************profile*************************************** */}
+                        <div className="post-details-container-data-profile">   {/*empty */}
+                            <div className="post-details-user-info">
+                                <div className="post-details-user-info-container">
+                                    <div className="post-details-user-container-img">
+                                        <img className="img" src={post.by.imgUrl} />
+                                    </div>
+                                    <div className="container-data">
+                                        <div className="container-data-div">
+                                            <div className="container-data-fullName-date">
+                                                <div className="container-data-fullName">{post.by.fullname}</div>
+                                                <div className="container-data-date">
+                                                    <span className='container-data-date-span'>·</span>
+                                                    <div className='container-data-date-div'>3d</div>
+                                                </div>
+                                            </div>
+                                            <div className="container-data-loc">location: {post.by.loc}</div>
+                                        </div>
                                     </div>
 
+                                    <div className="container-moreOptions" onClick={() => { onToggleModal({ type: 'MoreOptions' }) }}> {Svgs.more3Points}</div>
                                 </div>
-
-                                <div className="postDetails-container-data-details-1-comments">
-                                    <Comments />
-                                </div>
-
                             </div>
-
-                            {/* <div className="postDetails-container-data-details-2">
-                                <div className="postDetails-container-data-details-2-icons">
-                                    */}
-                            <div className='post-icons-info'>
-                       
-                                <PostPreviewIcons post={post} addLikeToPost={addLikeToPost} />
-                            </div>
-
-                            
-
-                                <div className="postDetails-container-data-details-2-likes">
-                                    {!!post.likedBy?.length && (
-                                        <div className="postDetails-like" onClick={() => { onToggleModal({ type: 'Likes', data: { post: post } }) }}> {post.likedBy?.length} likes </div>
-                                    )}
-                                </div>
-
-
-                                <div className="postDetails-container-data-details-2-date">date</div>
-
-
-                                <div className="postDetails-container-data-details-2-addComment">
-                                    <div className="postDetails-add-comment">
-                                        <InputEmojiChat addCommentToPost={addCommentToPost} post={post} />
-                                    </div>
-                                </div>
-      
                         </div>
+
+                        {/* *******************************end profile***************************************** */}
+
+                        {/* ***********************************all data************************************* */}
+                        <div className="post-details-container-data-details">
+
+                            {/* ***********************************name img comments************************************* */}
+
+                            <div className="post-details-user-info-container">
+                                <div className="post-details-user-container-img">
+                                    <img className="img" src={post.by.imgUrl} />
+                                </div>
+                                {/* 
+                                <div className="postDetails-container-data-details-1-txt"> */}
+                                <div className='post-icons-info-text'>
+                                    <div className='post-icons-info-text-fullName'>{post.by.fullname}</div>
+                                    <span className='post-icons-info-text-more'>
+                                        <span className='post-icons-info-text-txt'>{post.txt}</span>
+                                    </span>
+                                </div>
+                                {/* </div> */}
+
+                            </div>
+                            <div className="empty-div"></div>
+                            <div className="postDetails-container-data-details-1-comments">
+                                <Comments />
+                            </div>
+
+                        </div>
+
+                        {/* ***********************************end name img comment ************************************ */}
+
+                        {/* **********************************icons************************************ */}
+
+                        <PostPreviewIcons post={post} addLikeToPost={addLikeToPost} />
+
+                        {/* ***********************************end icons************************************* */}
+
+                        {/* ************************************likes*********************************** */}
+                        <div className="post-details-likes">
+                            {!!post.likedBy?.length && (
+                                <div className="div-post-details-like" onClick={() => { onToggleModal({ type: 'Likes', data: { post: post } }) }}> {post.likedBy?.length} likes </div>
+                            )}
+                        </div>
+                        {/* *************************************end likes************************************ */}
+
+                        {/* **********************************date************************************** */}
+
+                        <div className='post-details-date'>3d</div>
+                        {/* *********************************end date**************************************** */}
+
+                        {/* **********************************add comment**************************************** */}
+                        <div className="section-post-details-add-comment222">
+                            <div className="post-details-add-comment-input">
+                                <InputEmojiChat addCommentToPost={addCommentToPost} post={post} />
+                            </div>
+                        </div>
+                        {/* ************************************end add comment************************************** */}
+
                     </div>
-
+                    {/* ************************************end all data************************************** */}
                 </div>
+                {/* ************************************end data************************************** */}
+
             </div>
-        </section>
+        </section >
     )
 }

@@ -14,9 +14,6 @@ export function InputEmojiChat({ addCommentToPost, post }) {
         try {
             comment.txt = text
             comment.id = storageService._makeId()
-            //post.comments.push(comment)
-            //setComment(comment)
-            // postToSave.comments = post.comments ? [...post.comments, comment] : [comment]
             addCommentToPost(comment, post)
 
 
@@ -26,16 +23,7 @@ export function InputEmojiChat({ addCommentToPost, post }) {
     }
 
     return (
-        <div>
-            {text !== '' && text !== null &&
-                <div className='button-input-emoji' onClick={(ev) => {
-
-                    if (text != '' && text != null) {
-                        addComment(text)
-                        setText('')
-                    }
-                }}>Post</div>}
-
+        <div className="input-emoji-flex">
             <InputEmoji
                 value={text}
 
@@ -45,6 +33,13 @@ export function InputEmojiChat({ addCommentToPost, post }) {
                 aria-label="Add a comment…"
                 placeholder="Add a comment…"
             />
+            {text !== '' && text !== null &&
+                <div className='button-post-add-comment button-input-emoji' onClick={(ev) => {
+                    if (text != '' && text != null) {
+                        addComment(text)
+                        setText('')
+                    }
+                }}>Post</div>}
         </div>
     )
 }

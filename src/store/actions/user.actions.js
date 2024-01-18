@@ -5,10 +5,33 @@ import { REMOVE_USER, SET_USER, SET_USERS } from "../reducers/user.reducer"
 import { store } from "../store"
 
 
+export async function loadUserLogin() {
+    try {
+        
+        const user = await userService.getLoggedinUser()
+        console.log('user: ', user)
+        store.dispatch({ type: SET_USER, user})
+    } catch (err) {
+        console.log('UserActions: err in loadUserLogin', err)
+    }
+}
+
+export async function getUserLogin() {
+    try {
+        
+        const user = await userService.getUserLogin()
+        console.log('user: ', user)
+        store.dispatch({ type: SET_USER, user})
+    } catch (err) {
+        console.log('UserActions: err in loadUserLogin', err)
+    }
+}
+
 
 export async function loadUsers() {
     try {
         const users = await userService.getUsers()
+        console.log('users:', users)
         store.dispatch({ type: SET_USERS, users })
     } catch (err) {
         console.log('UserActions: err in loadUsers', err)

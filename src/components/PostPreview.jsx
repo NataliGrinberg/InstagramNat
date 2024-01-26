@@ -6,8 +6,6 @@ import { postService } from '../services/post.service'
 import { InputEmojiChat } from './InputEmojiChat';
 import { Player } from 'video-react';
 
-import { Source } from '@cloudinary/url-gen/qualifiers'
-import { PostDetails } from '../pages/PostDetails'
 import { PostPreviewImg } from './PostPreviewImg'
 import { PostPreviewIcons } from "../components/PostPreviewIcons";
 
@@ -15,11 +13,9 @@ import { PostPreviewIcons } from "../components/PostPreviewIcons";
 
 export function PostPreview({ post, addLikeToPost, addCommentToPost }) {
 
-    // const [likePost, setLikePost] = useState(postService.isLikePost(post));
     const [text, setText] = useState(post.txt)
     const [isExp, setIsExp] = useState(false)
     const numText = 20;
-
 
     useEffect(() => {
         expText()
@@ -38,7 +34,7 @@ export function PostPreview({ post, addLikeToPost, addCommentToPost }) {
         }
     }
 
-
+console.log('post prew: ', post)
     return (
         <article className="article-post-preview-model">
             <div className="post-preview-model">
@@ -57,10 +53,10 @@ export function PostPreview({ post, addLikeToPost, addCommentToPost }) {
                                     <div className="container-data-fullName">{post.by.fullname}</div>
                                     <div className="container-data-date">
                                         <span className='container-data-date-span'>·</span>
-                                        <div className='container-data-date-div'>3d</div>
+                                        <div className='container-data-date-div'>{post?.createdAt}</div>
                                     </div>
                                 </div>
-                                <div className="container-data-loc">location: {post.by.loc}</div>
+                                <div className="container-data-loc">{post?.loc?.name}</div>
                             </div>
                         </div>
 

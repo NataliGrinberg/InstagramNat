@@ -3,65 +3,70 @@ import { postService } from "../services/post.service";
 import { PostList } from "../components/PostList";
 
 import { loadPosts, removePost, savePost, setFilterBy } from "../store/actions/post.actions";
-import { Outlet, useNavigate, useSearchParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { SideData } from "../components/sideData";
 import { getUserLogin, loadUserLogin } from "../store/actions/user.actions";
 
 
-
-
-
 export function PostIndex() {
-
-    const [searchParams, setSearchParams] = useSearchParams()
+    //const filterBy = useSelector(storeState => storeState.postModule.filterBy)
+    //const [searchParams, setSearchParams] = useSearchParams()
     const posts = useSelector(storeState => storeState.postModule.posts)
-    const filterBy = useSelector(storeState => storeState.postModule.filterBy)
-
+    const user = useSelector(storeState => storeState.userModule.user)
+    //const params = useParams()
 
     const navigate = useNavigate()
-
+    console.log("user", user)
     useEffect(() => {
-        setFilterBy(postService.getFilterFromParams(searchParams))
+       console.log("user2", user)
+        if(!user){
+             navigate('/login')
+        }
+        
+        loadPosts()
+        //setFilterBy(postService.getFilterFromParams(searchParams))
     }, [])
 
 
-    useEffect(() => {
+   // useEffect(() => {
         // Sanitize filterBy
-        getUserLogin()
-        loadPosts()
-        setSearchParams(filterBy)
-    }, [filterBy])
-
-    function onSetFilter(fieldsToUpdate) {
-        fieldsToUpdate = { ...filterBy, ...fieldsToUpdate }
-        setFilterBy(fieldsToUpdate)
-    }
+       // getUserLogin()
+       // loadPosts()
+        //setSearchParams(filterBy)
+    //}, [filterBy])
 
 
-    async function onRemovePost(postId) {
-        try {
-            await removePost(postId)
-            showSuccessMsg('Successfully removed')
-        } catch (err) {
-            console.log('Had issues loading posts', err);
-            showErrorMsg('can not remove!')
-        }
-    }
 
-    async function onSavePost(post) {
-        try {
-            await savePost(post)
-            // navigate('/post')
-        } catch (err) {
-            console.log('Had issues adding post', err);
-        }
-    }
+
+    // function onSetFilter(fieldsToUpdate) {
+    //     fieldsToUpdate = { ...filterBy, ...fieldsToUpdate }
+    //     setFilterBy(fieldsToUpdate)
+    // }
+
+
+    // async function onRemovePost(postId) {
+    //     try {
+    //         await removePost(postId)
+    //         showSuccessMsg('Successfully removed')
+    //     } catch (err) {
+    //         console.log('Had issues loading posts', err);
+    //         showErrorMsg('can not remove!')
+    //     }
+    // }
+
+    // async function onSavePost(post) {
+    //     try {
+    //         await savePost(post)
+    //         // navigate('/post')
+    //     } catch (err) {
+    //         console.log('Had issues adding post', err);
+    //     }
+    // }
 
     
     async function addLikeToPost(post) {
         try {
-            const user = useSelector(storeState => storeState.userModule.user)
             const likePost = postService.isLikePost(post)
             if (!likePost) {
 
@@ -87,8 +92,8 @@ export function PostIndex() {
 
     async function addCommentToPost(comment, post) {
         try {
-
             const postToSave = structuredClone(post)
+            postToSave.createdAt= new Date()
             postToSave.comments = post.comments ? [...post.comments, comment] : [comment]
             await savePost(postToSave)
 

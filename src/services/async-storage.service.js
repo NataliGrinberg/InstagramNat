@@ -4,7 +4,8 @@ export const storageService = {
     post,
     put,
     remove,
-    _makeId
+    _makeId,
+    getName
 }
 
 function query(entityType, delay = 200) {
@@ -20,11 +21,19 @@ function get(entityType, entityId) {
     })
 }
 
+function getName(entityType, entityName) {
+    return query(entityType).then(entities => {
+        const entity = entities.find(entity => entity.username === entityName)
+        if (!entity) throw new Error(`Get failed, cannot find entity with username: ${entityName} in: ${entityType}`)
+        return entity
+    })
+}
+
 function post(entityType, newEntity) {
     newEntity = { ...newEntity }
     newEntity._id = _makeId()
     return query(entityType).then(entities => {
-        entities.push(newEntity)
+        entities.unshift(newEntity) //push
         _save(entityType, entities)
         return newEntity
     })

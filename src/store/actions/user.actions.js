@@ -7,10 +7,9 @@ import { store } from "../store"
 
 export async function loadUserLogin() {
     try {
-        
+
         const user = await userService.getLoggedinUser()
-        console.log('user: ', user)
-        store.dispatch({ type: SET_USER, user})
+        store.dispatch({ type: SET_USER, user })
     } catch (err) {
         console.log('UserActions: err in loadUserLogin', err)
     }
@@ -18,10 +17,17 @@ export async function loadUserLogin() {
 
 export async function getUserLogin() {
     try {
-        
         const user = await userService.getUserLogin()
-        console.log('user: ', user)
-        store.dispatch({ type: SET_USER, user})
+        store.dispatch({ type: SET_USER, user })
+    } catch (err) {
+        console.log('UserActions: err in loadUserLogin', err)
+    }
+}
+
+export function getUser() {
+    try {
+        const user = JSON.parse(localStorage.getItem("user"));
+        return user;
     } catch (err) {
         console.log('UserActions: err in loadUserLogin', err)
     }
@@ -31,7 +37,6 @@ export async function getUserLogin() {
 export async function loadUsers() {
     try {
         const users = await userService.getUsers()
-        console.log('users:', users)
         store.dispatch({ type: SET_USERS, users })
     } catch (err) {
         console.log('UserActions: err in loadUsers', err)
@@ -52,13 +57,10 @@ export async function removeUser(userId) {
 export async function login(credentials) {
     try {
         const user = await userService.login(credentials)
-        store.dispatch({
-            type: SET_USER,
-            user
-        })
+        store.dispatch({type: SET_USER, user })
         return user
     } catch (err) {
-        console.log('Cannot login', err)
+        console.log('Cannot login action', err)
         throw err
     }
 }

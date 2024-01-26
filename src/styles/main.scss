@@ -29,10 +29,15 @@
 @import 'cmps/instagram';
 @import 'cmps/commentDetails';
 @import 'cmps/comments';
-
+@import 'cmps/postListPro';
+@import 'cmps/saved';
+@import 'cmps/tagged';
+@import 'cmps/login';
+@import 'cmps/signup';
 //PAGES
-@import 'pages/postIndex.scss';
-@import 'pages/postDetails.scss';
+@import 'pages/postIndex';
+@import 'pages/postDetails';
+@import 'pages/profile';
 
 
 

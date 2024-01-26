@@ -7,9 +7,9 @@ export function PostPreviewImg({ imgUrl }) { //post post.imgUrl
 
     return (
         <article className="article-post-preview-img-model">
-            {/* <div className="post-preview-model"> */}
+           
             <div className="post-preview">
-                {(imgCount > 0) && <IoIosArrowDropleftCircle className="button-back-img" onClick={() => { setImgCount(imgCount - 1) }}/>
+                {(imgCount > 0) && <div className="button-back-img" onClick={() => { setImgCount(imgCount - 1) }}></div>
                 }
 
                 {
@@ -21,11 +21,11 @@ export function PostPreviewImg({ imgUrl }) { //post post.imgUrl
 
                 }
 
-                {((imgUrl.length - 1) > imgCount) && <IoIosArrowDroprightCircle className="button-next-img" onClick={() => { setImgCount(imgCount + 1) }}/>
+                {((imgUrl.length - 1) > imgCount) && <div className="button-next-img" onClick={() => { setImgCount(imgCount + 1) }}></div>
             
                 }
             </div>
-            {/* </div> */}
+          
         </article >
     )
 

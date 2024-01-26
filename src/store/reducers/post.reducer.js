@@ -1,6 +1,7 @@
 import { postService } from "../../services/post.service";
 
 export const SET_POSTS = 'SET_POSTS'
+export const SET_USER_POSTS = 'SET_USER_POSTS'
 export const ADD_POST = 'ADD_POST'
 export const REMOVE_POST = 'REMOVE_POST'
 export const UPDATE_POST = 'UPDATE_POST'
@@ -9,6 +10,7 @@ export const UNDO_CHANGES = 'UNDO_CHANGES'
 
 const initialState = {
     posts: null,
+    userPosts: null,
     filterBy: postService.getDefaultFilter(),
     lastposts: []
 }
@@ -21,9 +23,12 @@ export function postReducer(state = initialState, action = {}) {
                 posts: action.posts
             }
         case ADD_POST:
+            const posts = state.posts || []
+            const userPosts = state.userPosts || []
             return {
                 ...state,
-                posts: [...state.posts, action.post]
+                posts: [ action.post, ...posts],
+                userPosts: [ action.post, ...userPosts]
             }
 
         case REMOVE_POST:
@@ -48,6 +53,11 @@ export function postReducer(state = initialState, action = {}) {
             return {
                 ...state,
                 posts: [...state.lastPosts]
+            }
+            case SET_USER_POSTS:
+            return{
+                ...state,
+                userPosts: action.userPosts
             }
         default:
             return state

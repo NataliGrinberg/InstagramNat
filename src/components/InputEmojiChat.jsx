@@ -22,6 +22,7 @@ export function InputEmojiChat({ addCommentToPost, post }) {
         }
     }
 
+    const isButtonShow = (text !== '' && text !== null)
     return (
         <div className="input-emoji-flex">
             <InputEmoji
@@ -33,8 +34,8 @@ export function InputEmojiChat({ addCommentToPost, post }) {
                 aria-label="Add a comment…"
                 placeholder="Add a comment…"
             />
-            {text !== '' && text !== null &&
-                <div className='button-post-add-comment button-input-emoji' onClick={(ev) => {
+            {
+                <div className={`button-post-add-comment button-input-emoji ${isButtonShow ? '' :'hidden' }`} onClick={(ev) => {
                     if (text != '' && text != null) {
                         addComment(text)
                         setText('')

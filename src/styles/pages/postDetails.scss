@@ -2518,7 +2518,11 @@
         .input-emoji-flex {
             display: flex;
             align-items: center;
-            margin-top: 10px; //need change
+            margin: 0px;
+//             padding-bottom: 6px;
+// padding-right: 16px;
+// padding-top: 6px;
+           //? margin-top: 10px; //need change
         }
 
 
@@ -2527,6 +2531,7 @@
         .react-input-emoji--container {
             border: 0px;
             font-size: 14px;
+            margin: 0px;
         }
 
         .react-input-emoji--placeholder {
@@ -2563,17 +2568,22 @@
             resize: none;
             width: 100%;
             z-index: 0;
+            padding: 0px;
+            padding-left: 16px;
 
         }
 
+        .react-input-emoji--button svg {
+            fill: rgb(0, 0, 0);
+        }
 
         button.react-input-emoji--button {
-            // padding: 0px;
+             padding: 0px;
             // margin-bottom: 5px;
-            padding-bottom: 8px;
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-top: 8px;
+            //? padding-bottom: 8px;
+            // padding-left: 16px;
+            // padding-right: 16px;
+            // padding-top: 8px;
         }
 
         svg.react-input-emoji--button--icon {
@@ -2634,6 +2644,10 @@
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
             margin-left: -2px;
+
+            &.hidden{
+                opacity: 0.2;
+            }
         }
     }
 
@@ -2698,3 +2712,4 @@
     }
 
 }
+

@@ -35,7 +35,7 @@
 		text-size-adjust: 100%;
 		width: 630px;
 		margin-bottom: 24px;
-		align-items: center;//?
+		align-items: center; //?
 	}
 
 	.postDetails-list {
@@ -65,7 +65,11 @@
 		overflow-y: visible;
 		position: static;
 		text-size-adjust: 100%;
+
 		//width: 630px;
+		ul {
+			padding-inline-start: 0;
+		}
 
 	}
 

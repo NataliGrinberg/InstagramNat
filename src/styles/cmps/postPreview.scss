@@ -1146,7 +1146,7 @@
     // box-sizing: border-box;
     margin-top: 10px;
     align-items: center;
-    background-color: rgb(0, 0, 0);
+    //background-color: rgb(0, 0, 0);
     border-bottom-color: rgb(219, 219, 219);
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
@@ -1248,29 +1248,34 @@
 }
 
 
-.input-emoji-flex{
+.input-emoji-flex {
     display: flex;
     align-items: center;
-    margin-top: 10px;//need change
+    margin-top: 5px;
+    margin-left: 10px;
+    max-width: 440px;
+
 }
+
 .post-icons-info-add-comment {
 
 
     .react-input-emoji--container {
+        margin: 0px;
         border: 0px;
         font-size: 14px;
     }
 
     .react-input-emoji--placeholder {
-        height: 18px;
+        //height: 18px;
         z-index: 0;
         padding-left: 0;
         left: 0px;
     }
 
     .react-emoji {
-        height: 18px;
-        margin-top: 8px;
+        //height: 18px;
+        //margin-top: 8px;
         margin-left: -10px;
     }
 
@@ -1290,13 +1295,14 @@
         resize: none;
         width: 100%;
         z-index: 0;
+        padding: 0px;
 
     }
 
 
     button.react-input-emoji--button {
-       // padding: 0px;
-       margin-bottom: 5px;
+        // padding: 0px;
+       // margin-bottom: 5px;
     }
 
     svg.react-input-emoji--button--icon {
@@ -1357,4 +1363,56 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
     margin-left: -2px;
+
+    &.hidden{
+        display: none;
+    }
 }
+
+
+
+
+
+.button-back-img {
+    background-image: url("https://static.cdninstagram.com/rsrc.php/v3/y5/r/TJztmXpWTmS.png");
+    background-position-x: -130px;
+    background-position-y: -98px;
+    background-repeat: no-repeat;
+    color: rgb(0, 0, 0);
+    color-scheme: light;
+    cursor: pointer;
+    direction: ltr;
+    display: block;
+    font-weight: 400;
+    height: 30px;
+    letter-spacing: normal;
+    line-height: 18px;
+    text-align: center;
+    width: 30px;
+    position: absolute;
+    //z-index: 1;
+    top: 50%;
+    left:2%
+
+}
+
+.button-next-img {
+    position: absolute;
+   // z-index: 1;
+    top: 50%;
+    left: 92%;
+    background-image: url("https://static.cdninstagram.com/rsrc.php/v3/y5/r/TJztmXpWTmS.png");
+    background-position-x: -162px;
+    background-position-y: -98px;
+    background-repeat: no-repeat;
+    color: rgb(0, 0, 0);
+    color-scheme: light;
+    cursor: pointer;
+    direction: ltr;
+    font-weight: 400;
+    height: 30px;
+    letter-spacing: normal;
+    width: 30px;
+
+}
+

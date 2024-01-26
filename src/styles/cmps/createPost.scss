@@ -26,6 +26,10 @@ createPost-container {
     position: relative;
     text-size-adjust: 100%;
     //width: 339.2px;
+
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    overflow: hidden;
 }
 
 .createPost-container-data-scroll {

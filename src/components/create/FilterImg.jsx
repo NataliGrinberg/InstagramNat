@@ -4,20 +4,20 @@ import { Svgs } from '../../assets/Svgs'
 import normal from '../../assets/images/Normal.jpg'
 import { saveImageUrl } from '../../store/actions/image.actions';
 import { SET_IMGS_URL } from '../../store/reducers/image.reducer';
-import { useEffect, useRef, useState } from 'react';
+import { cloneElement, useEffect, useRef, useState } from 'react';
 import { toPng } from 'html-to-image';
+import React from 'react';
 
 export function FilterImg() {
     const imageModalData = useSelector(storeState => storeState.imageModal.imgs)
     const imageModalUrlData = useSelector(storeState => storeState.imageModal.imgsUrl)
     const files = Array.from(imageModalData.target.files);
     const elementRef = useRef(null);
-    // const filter = { Aden: 'filter-aden', Clarendon: 'filter-clarendon', Crema: 'filter-crema', Gingham: 'filter-gingham', Juno: 'juno', 'filter-juno', Lark: 'filter-lark', Ludwig: 'filter-ludwig', Moon: 'filter-moon', Original: 'original', Perpetua: 'filter-perpetua', Reyes: 'filter-reyes', Slumber: 'filter-slumber' }
     const filter = { Aden: 'aden', Clarendon: 'clarendon', Crema: 'filter-crema', Gingham: 'gingham', Juno: 'filter-juno', Lark: 'lark', Ludwig: 'filter-ludwig', Moon: 'moon', Original: 'original', Perpetua: 'perpetua', Reyes: 'reyes', Slumber: 'slumber' }
 
     const [imgCount, setImgCount] = useState(0)
     const [isloading, setIsloading] = useState(false)
-    console.log('imageModalData: ', files)
+  
     const [filesMap, setFilesMap] = useState(imageModalUrlData ? imageModalUrlData : files.map((file) => {
         { return { 'file': file, 'type': (file.type.includes('video') ? 'video' : 'image'), 'url': URL.createObjectURL(file), 'filter': '', displayFilter: false } }
     }))
@@ -37,6 +37,7 @@ export function FilterImg() {
 
     const htmlToImageConvert = (count) => {
         setIsloading(true)
+       
         toPng(elementRef.current, { cacheBust: false })
             .then((dataUrl) => {
                 filesMap[count].url = dataUrl
@@ -119,17 +120,15 @@ export function FilterImg() {
             <div className="create-post-filter-img-continar">
 
                 <div className="create-post-filter-img-data">
-                    {/* <div className="post-filter-preview"> */}
                     <div>
                         {(imgCount > 0) &&
-                            <button onClick={() => {
+                            <div onClick={() => {
                                 if (filesMap[imgCount].filter !== '')
                                     htmlToImageConvert(imgCount)
                                 setImgCount(imgCount - 1)
                             }}
-                                aria-label="Go Back" className=" _afxv _al46 _al47" >
-                                <div className=" _9zm0"></div>
-                            </button>
+                                aria-label="Go Back" className="button-back-img" >
+                            </div>
                         }
                     </div>
 
@@ -142,28 +141,22 @@ export function FilterImg() {
                                     <source src={filesMap[imgCount].url} type="video/mp4" autoPlay={true} />
                                 </video>)
                                 || (<img ref={elementRef} className={`post-img-style ${filesMap[imgCount].displayFilter ? filesMap[imgCount].filter : ``}`} src={filesMap[imgCount].url} />))
-
                         }
                     </div>
 
                     <div>
                         
                         {((filesMap.length - 1) > imgCount) &&
-                            <button onClick={() => {
+                            <div onClick={() => {
                                 if (filesMap[imgCount].filter !== '')
                                     htmlToImageConvert(imgCount)
                                 setImgCount(imgCount + 1)
-                            }} aria-label="Next" className=" _afxw _al46 _al47">
-                                <div className="_9zm2"></div>
-                            </button>
+                            }} aria-label="Next" className="button-next-img">
+                               
+                            </div>
                         }
                     </div>
                 </div>
-
-
-
-                {/* </div> */}
-
 
 
                 <div className="upload-img-filter">

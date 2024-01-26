@@ -20,6 +20,7 @@ export function CommentDetails({ comment }) {
                                     <span className='post-icons-info-text-txt'>{comment.txt}</span>
                                 </span>
                             </div>
+                            <div className='post-icons-info-created'>{comment?.createdAt}</div>
                         </div>
                         <div className='comment-details-like'>
                             {Svgs.smallHeart}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { CommentDetails } from "./CommentDetails"
 import { useForm } from "../customHooks/useForm"
 import { postService } from "../services/post.service"
+import { utilService } from "../services/util.service"
 
 import { InputEmojiChat } from "../components/InputEmojiChat"
 
@@ -27,11 +28,9 @@ export function PostDetails() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    console.log('insert to details')
+    console.log("insert to details")
     loadPost()
   }, [postId])
-
-  // useEffect(() => {}, [post])
 
   useEffect(() => {
     var likeByUser = postService.isLikePost(post)
@@ -41,76 +40,18 @@ export function PostDetails() {
   async function loadPost() {
     const post = await postService.getById(postId)
     setPost(post)
+    formetDate(post)
   }
 
   async function addCommentToPost(comment) {
     const postToSave = structuredClone(post)
-    postToSave.createdAt = new Date()
+    comment.createdAt = Date.now()
     postToSave.comments = post.comments
       ? [...post.comments, comment]
       : [comment]
-    setPost(postToSave)
+
     await savePost(postToSave)
-  }
-  formetDate()
-  function formetDate() {
-    //if (dateP === null || dateP === "") return
-    const dateP = new Date("2024-01-20")
-    const nowd = new Date()
-
-    var difference = nowd.getTime() - dateP.getTime()
-    if (difference < 0) {
-      console.log("error in date")
-    } else {
-      //   let difference2 = difference / 1000
-      //   let hourDifference = Math.floor(difference2 / 3600)
-      //   difference2 -= hourDifference * 3600
-      //  console.log("hourDifference:", hourDifference)
-
-      //   const today = new Date()
-      //   const yyyy = today.getFullYear()
-      //   let mm = today.getMonth() + 1 // Months start at 0!
-      //   let dd = today.getDate()
-
-      //   if (dd < 10) dd = "0" + dd
-      //   if (mm < 10) mm = "0" + mm
-
-      //   const formattedToday = dd + "/" + mm + "/" + yyyy
-
-      // console.log("formattedToday:", formattedToday)
-
-      // test it
-      const a = new Date("2023-12-01")
-      const b = new Date("2024-01-01")
-
-      const days = dateDiffInDays(a, b)
-      //console.log("difference: " + days + " days")
-
-      if (days > 7) {
-        const weeks = Math.round(days / 7)
-        console.log("weeks: " + weeks + " weeks")
-        if (weeks > 4) {
-          console.log("weeks: " + weeks + " mounth")
-        }
-      } else {
-        if (days === 0) {
-          var difference = a.getTime() - b.getTime()
-          let difference2 = difference / 1000
-          let hourDifference = Math.floor(difference2 / 3600)
-          difference2 -= hourDifference * 3600
-          console.log("hours: " + difference2 + " hours")
-        } else console.log("days: " + days + " days")
-      }
-    }
-  }
-
-  function dateDiffInDays(a, b) {
-    const _MS_PER_DAY = 1000 * 60 * 60 * 24
-    // Discard the time and time-zone information.
-    const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate())
-    const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate())
-
-    return Math.floor((utc2 - utc1) / _MS_PER_DAY)
+    setPost(postToSave)
   }
 
   if (!post) return <div>Suggested Posts</div>
@@ -120,7 +61,13 @@ export function PostDetails() {
       <div className="create-post-details-opacity">
         <div className="create-post-details-button">
           <div className="create-post-details-button-div">
-            <div className="svg-postDetails" onClick={() => {console.log("close in"); window.history.go(-1)}}>
+            <div
+              className="svg-postDetails"
+              onClick={() => {
+                console.log("close in")
+                window.history.go(-1)
+              }}
+            >
               {Svgs.close}
             </div>
           </div>
@@ -151,12 +98,12 @@ export function PostDetails() {
                         <div className="container-data-fullName">
                           {post.by.fullname}
                         </div>
-                        <div className="container-data-date">
+                        {/* <div className="container-data-date">
                           <span className="container-data-date-span">·</span>
                           <div className="container-data-date-div">
-                            {post?.createdAt}
+                            {utilService.formatTimeAgo(post?.createdAt)}
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                       <div className="container-data-loc">
                         {post?.loc?.name}
@@ -230,8 +177,11 @@ export function PostDetails() {
             {/* *************************************end likes************************************ */}
 
             {/* **********************************date************************************** */}
-
-            <div className="post-details-date">3d</div>
+            <div className="post-details-date">
+              <div className="post-details-date-div">
+                {utilService.formatTimeAgo(post?.createdAt)}
+              </div>
+            </div>
             {/* *********************************end date**************************************** */}
 
             {/* **********************************add comment**************************************** */}

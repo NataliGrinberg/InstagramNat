@@ -3,11 +3,12 @@ import { Suggested } from "./Suggested";
 import { SwitchProfile } from "./switchProfile";
 import { loadUsers,getUserLogin } from '../store/actions/user.actions';
 import { useEffect } from 'react';
+import { AppFooterSide } from "./AppFooterSide";
 
 export function SideData() {
 
     useEffect(() => {
-        getUserLogin()
+        //getUserLogin()
         loadUsers()
     }, [])
 
@@ -17,7 +18,7 @@ export function SideData() {
             <div className="flex-sideData-container">
                 <SwitchProfile></SwitchProfile>
                 <Suggested></Suggested>
-                <AppFooter></AppFooter>
+                <AppFooterSide></AppFooterSide>
             </div>
         </section>
     )

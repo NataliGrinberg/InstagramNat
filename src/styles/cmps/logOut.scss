@@ -1,0 +1,117 @@
+.logout-container {
+  color: rgb(0, 0, 0);
+  color-scheme: light;
+  direction: ltr;
+  display: block;
+  font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  //height 476.5px
+  left: 0px;
+  line-height: 18px;
+  //margin-right: -9999px;
+  position: fixed;
+  text-size-adjust: 100%;
+  top: 400px;
+  transform: matrix(1, 0, 0, 1, 60, 198.2);
+
+  .logout-container-flex {
+    padding: 8px;
+    background-color: rgb(255, 255, 255);
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px 0px;
+    color: rgb(0, 0, 0);
+    color-scheme: light;
+    direction: ltr;
+    display: flex;
+    flex-direction: column;
+    font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    //height: 50px;
+    line-height: 18px;
+    position: relative;
+    text-size-adjust: 100%;
+    //width: 266px;
+
+    .logout-container-logout{
+    //     align-items: center;
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+      background-color: rgb(255, 255, 255);
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      border-top-style: solid;
+      border-top-width: 0px;
+      box-sizing: border-box;
+      color: rgb(0, 0, 0);
+      color-scheme: light;
+      cursor: pointer;
+      direction: ltr;
+      display: flex;
+      flex-basis: auto;
+      flex-direction: row;
+      flex-shrink: 0;
+      font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      height: 50px;
+      line-height: 18px;
+      list-style-image: none;
+      list-style-position: outside;
+      list-style-type: none;
+     
+      max-width: 100%;
+      min-height: 0px;
+      min-width: 0px;
+      outline-color: rgb(0, 0, 0);
+      outline-style: none;
+      outline-width: 0px;
+      //padding: 0px;
+      position: relative;
+      text-align: start;
+      text-decoration-color: rgb(0, 0, 0);
+      text-decoration-line: none;
+      text-decoration-style: solid;
+      text-decoration-thickness: auto;
+      text-size-adjust: 100%;
+      width: 250px;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+
+      .span{
+        //align-items: center;
+        justify-content: center;
+box-sizing: border-box;
+color: rgb(0, 0, 0);
+color-scheme: light;
+cursor: pointer;
+direction: ltr;
+display: flex;
+flex-direction: column;
+flex-grow: 1;
+font-family: "Instagram Sans UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+font-size :14px;
+font-weight: 400;
+height: 18px;
+justify-content: center;
+line-height: 18px;
+list-style-image :none;
+list-style-position: outside;
+list-style-type: none;
+min-width: 0px;
+position: relative;
+text-align: start;
+text-size-adjust: 100%;
+user-select: none;
+//width 218px
+
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      }
+    }
+  }
+}

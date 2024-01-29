@@ -14,22 +14,23 @@ import { Tagged } from "./components/Tagged"
 import { Saved } from "./components/Saved"
 import { Login } from "./components/Login"
 import { Signup } from "./components/Signup"
+import { LogOut } from "./components/LogOut"
 
 // import './App.css'
 
 function App() {
-  // useEffect(() => {
-  //   loadUsers()
-  // }, [])
+
 
   return (
     <Router>
       <section className="app">
         <NavBar />
         <Routes>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/accounts/emailsignup" element={<Signup />}/>
+        <Route path="/login" element={<Login />}/>
+        <Route path="/accounts/emailsignup" element={<Signup />}/>
           <Route path="/" element={<PostIndex />}>
+          
+         
             <Route path="/post/:postId" element={<PostDetails />} />
           </Route>
           <Route path="/chat" element={<Message />} />
@@ -40,6 +41,7 @@ function App() {
           </Route>
         </Routes>
       </section>
+     
       <DynamicModal />
       <CreateDynamicModal />
     </Router>

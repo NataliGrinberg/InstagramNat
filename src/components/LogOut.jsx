@@ -1,5 +1,25 @@
+import { useNavigate } from "react-router-dom";
+import {logout } from "../store/actions/user.actions";
+
 export function LogOut() {
-    return (
-        <div></div>
-    )
+  const navigate = useNavigate()
+
+    async function onLogout() {
+        try {
+            await logout()
+            navigate('/login')
+        } catch (err) {
+            
+        }
+    }
+
+  return (
+    <div className="logout-container">
+      <div className="logout-container-flex">
+        <div className="logout-container-logout" onClick={onLogout}>
+          <span className="span">Log out</span>
+        </div>
+      </div>
+    </div>
+  )
 }

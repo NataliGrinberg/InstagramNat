@@ -4,15 +4,18 @@ import { Link, useLocation } from "react-router-dom"
 import { onToggleModalCreate } from "../store/actions/create.actions"
 import { useEffect, useState } from "react"
 import { getUserLogin } from "../store/actions/user.actions"
+import { LogOut } from "./LogOut"
 
 export function NavBar() {
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const location = useLocation()
+  const [openMore, setOpenMore] = useState(false)
 
   let [svgHome, setSvgHome] = useState(Svgs.homeBlack)
 
   useEffect(() => {
-    getUserLogin()
+    setOpenMore(false)
+    //getUserLogin()
 
     if (location.pathname !== "/") setSvgHome(Svgs.homeWhite)
     else setSvgHome((svgHome = Svgs.homeBlack))
@@ -22,9 +25,11 @@ export function NavBar() {
     <section className="navBar-grid-container">
       <div className="flex">
         <div className="navBar-logo">
-          <div className="div-navBar-logo">
-            <div className="logo">{Svgs.logo} </div>
-          </div>
+          <a className="flex-navBar-list" href="/" role="link">
+            <div className="div-navBar-logo">
+              <div className="logo">{Svgs.logo} </div>
+            </div>
+          </a>
         </div>
 
         <div className="navBar-list">
@@ -120,7 +125,7 @@ export function NavBar() {
           <div
             className="flex-navBar-list"
             onClick={() => {
-              alert("more")
+              setOpenMore(!openMore)
             }}
           >
             <div className="svgs">{Svgs.settingsMore}</div>
@@ -128,6 +133,7 @@ export function NavBar() {
               <div className="name">More</div>
             </div>
           </div>
+          {openMore && <LogOut />}
         </div>
       </div>
       {/* <Outlet context={{ onAddEmail, onUpdateEmail, onSaveDraftEmail }} /> */}

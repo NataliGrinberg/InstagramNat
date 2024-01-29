@@ -28,6 +28,7 @@
     "react-router-dom": "^6.19.0",
     "reducers": "^3.0.0-alpha",
     "redux": "^4.2.1",
+    "timeago.js": "^4.0.2",
     "video-react": "^0.16.0"
   },
   "devDependencies": {

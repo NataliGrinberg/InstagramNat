@@ -4,22 +4,9 @@ import { Svgs } from "../assets/Svgs"
 
 export function PostListPro() {
   const { posts } = useOutletContext()
-  //const [isHovering, setIsHovering] = useState(false);
-  //const ref = useRef([]);
 
-  // useEffect(() => {}, [posts])
 
   console.log("posts: ", posts)
-
-  // function handleMouseOut(){
-  //   //setIsHovering(false)
-  //   ref.current.style.display='none'
-  // }
-
-  // function handleMouseMove(){
-  //   ref.current.style.display='flex'
-  //  // setIsHovering(true)
-  // }
 
   return (
     <article className="post-list-profile-article">
@@ -29,16 +16,13 @@ export function PostListPro() {
         {!!posts?.length && (
           <ul className="ul-pro">
             {posts.map((post) => {
-             
               return (
                 <Link
                   className="post-list-profile-link"
                   to={`/post/${post?._id}`}
                 >
                   <div className="post-list-profile-img">
-                    {/* <video controls className="video-post-preview">
-                            <source src={imgUrl[imgCount]} type="video/mp4" autoPlay={true} />
-                        </video> */}
+              
                     <img className="img" src={post.imgUrl[0]} />
                     {post.imgUrl.length > 1 && (
                       <div className="post-list-profile-svg-flex">

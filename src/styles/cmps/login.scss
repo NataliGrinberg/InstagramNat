@@ -1,12 +1,13 @@
 .login-page {
-  position: fixed;
+  position: relative;
   width: 100vw;
   min-height: 100vh;
   //z-index: 10;
   background-color: white;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    overflow-y: scroll;
 
   .article-login {
     align-items: stretch;

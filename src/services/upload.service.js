@@ -2,6 +2,7 @@ export const uploadService = {
     uploadImg
 }
 
+
 async function uploadImg(file) {
     
     const CLOUD_NAME = "dvtyeanju"
@@ -34,7 +35,7 @@ async function uploadImg(file) {
             body: formData
         })
         const imgData = await res.json()
-        console.log('imgData', imgData)
+       // console.log('imgData', imgData)
 
         return imgData
     } catch (err) {

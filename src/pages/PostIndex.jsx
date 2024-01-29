@@ -13,13 +13,12 @@ export function PostIndex() {
     //const filterBy = useSelector(storeState => storeState.postModule.filterBy)
     //const [searchParams, setSearchParams] = useSearchParams()
     const posts = useSelector(storeState => storeState.postModule.posts)
-    const user = useSelector(storeState => storeState.userModule.user)
+    const user =  useSelector(storeState => storeState.userModule.user)
     //const params = useParams()
 
     const navigate = useNavigate()
-    console.log("user", user)
+    
     useEffect(() => {
-       console.log("user2", user)
         if(!user){
              navigate('/login')
         }
@@ -93,7 +92,8 @@ export function PostIndex() {
     async function addCommentToPost(comment, post) {
         try {
             const postToSave = structuredClone(post)
-            postToSave.createdAt= new Date()
+            debugger
+            comment.createdAt= Date.now()
             postToSave.comments = post.comments ? [...post.comments, comment] : [comment]
             await savePost(postToSave)
 
@@ -101,6 +101,7 @@ export function PostIndex() {
             console.log('Had issues adding add comment', err);
         }
     }
+    if(!posts) return
     return (
         <section className="post-index-container">
            

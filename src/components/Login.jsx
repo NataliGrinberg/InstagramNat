@@ -8,10 +8,10 @@ import img2 from "../assets/images/img2.png"
 import img3 from "../assets/images/img3.png"
 import img4 from "../assets/images/img4.png"
 import { AppFooter } from "./AppFooter"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export function Login(props) {
-  const users = useSelector((storeState) => storeState.userModule.users)
+  // const users = useSelector((storeState) => storeState.userModule.users)
   const [credentials, setCredentials] = useState(userService.getEmptyUser())
 
   const [textUserName, setTextUserName] = useState("")
@@ -21,7 +21,7 @@ export function Login(props) {
   const [passwordShown, setPasswordShown] = useState(false)
   const navigate = useNavigate()
   useEffect(() => {
-    loadUsers()
+    //loadUsers()
     carousel()
   }, [])
 
@@ -42,11 +42,11 @@ export function Login(props) {
       setDisplayError("")
       if (ev) ev.preventDefault()
 
-      if (!credentials.username) {
-        setDisplayError("username is empty")
+      if (!credentials.emailOrNumber) {
+        setDisplayError("Email or mobile phone is empty")
         return
       }
-      await login(credentials)
+      const user = await login(credentials)
       navigate('/')
       clearState()
     } catch (err) {
@@ -139,7 +139,7 @@ export function Login(props) {
                             handleChange(ev)
                           }}
                           value={textUserName}
-                          name="username"
+                          name="emailOrNumber"
                         />
                       </label>
                       <div className="username-div"></div>
@@ -205,30 +205,6 @@ export function Login(props) {
                     <div className="error">{displayError}</div>
                   </span>
                 )}
-                {/* type="submit"<div className="_ab39">
-                    <div className="x78zum5 x1q0g3np">
-                      <div className=""></div>
-                      <div className="">or</div>
-                      <div className=""></div>
-                    </div>
-                  </div> */}
-                {/* <div className="">
-                    <button
-                      className=" _acan _acao _acas _aj1- _ap30"
-                      type="button"
-                    >
-                      <span className=" _a04s _ab36"></span>
-                      <span className="_ab37">Log in with Facebook</span>
-                    </button>
-                  </div> */}
-
-                {/* <a className="" href="/accounts/password/reset/"
-                  role="link"
-                  tabIndex="0">
-                  <span className="" dir="auto">
-                    Forgotten your password?
-                  </span>
-                </a> */}
               </div>
             </div>
           </div>
@@ -237,16 +213,16 @@ export function Login(props) {
             <span className="signup-container-span" dir="auto">
               <p className="signup-container-p">
                 Don't have an account?&nbsp;
-                <a
+                <Link to={`/accounts/emailsignup`}
                   className="signup-container-link"
-                  href="/accounts/emailsignup"
-                  role="link"
-                  tabIndex="0"
+                  //href="/accounts/emailsignup"
+                  //role="link"
+                  //tabIndex="0"
                 >
                   <span className="signup-container-link-span" dir="auto">
                     Sign up
                   </span>
-                </a>
+                </Link>
               </p>
             </span>
           </div>

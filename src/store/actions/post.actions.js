@@ -18,7 +18,6 @@ export async function loadUserPosts(user) {
     try {
        //const filterBy = store.getState().postModule.filterBy
        const userPosts = await postService.getPostsOfUser(user._id)
-
         store.dispatch({ type: SET_USER_POSTS, userPosts })
     } catch (err) {
         console.log('Had issues loading posts', err);
@@ -41,6 +40,7 @@ export async function savePost(post) {
     try {
         const type = post._id ? UPDATE_POST : ADD_POST
         const postToSave = await postService.save(post)
+        console.log('postToSave:', postToSave)
         store.dispatch({ type, post: postToSave })
     } catch (err) {
         console.log('Had issues loading posts', err);

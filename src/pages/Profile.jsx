@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom"
+import { Link, NavLink, Outlet, useLocation, useNavigate, useParams } from "react-router-dom"
 import { postService } from "../services/post.service"
 import { Svgs } from "../assets/Svgs"
 import { userService } from "../services/user.service"
@@ -13,9 +13,15 @@ export function Profile() {
   const [user, setUser] = useState(null)
   const posts = useSelector((storeState) => storeState.postModule.userPosts)
 
+console.log('posts from profile:', posts)
   useEffect(() => {
+    console.log('insert to profile')
     loadUser()
   }, [username])
+
+  // useEffect(() => {
+
+  // }, [posts])
 
   async function loadUser() {
     try {
@@ -29,6 +35,7 @@ export function Profile() {
 
   async function loadPosts(userByName) {
     try {
+      console.log('load post from pro')
       loadUserPosts(userByName)
     } catch (err) {
       console.log("err:", err)

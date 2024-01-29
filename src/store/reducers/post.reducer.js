@@ -40,9 +40,12 @@ export function postReducer(state = initialState, action = {}) {
 
             }
         case UPDATE_POST:
+            const postsUpdate = state.posts || []
+            const userPostsUpdate = state.userPosts || []
             return {
                 ...state,
-                posts: state.posts.map(post => post._id === action.post._id ? action.post : post)
+                posts: postsUpdate.map(post => post._id === action.post._id ? action.post : post),
+                userPosts : userPostsUpdate.map(post => post._id === action.post._id ? action.post : post)
             }
         case SET_FILTER_BY:
             return {

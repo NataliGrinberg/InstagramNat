@@ -3,28 +3,35 @@ import { Link } from "react-router-dom"
 
 export function SwitchProfile() {
   const user = useSelector((storeState) => storeState.userModule.user)
-  console.log("user swic: ", user)
-  return (
-    <Link to={`/profile/${user?.username}`}>
-    <div className="post-user-info">
-      <div className="post-user-info-container">
-       
-          <div className="container-img">
-            <img className="img" src={user?.imgUrl} />
-          </div>
-          <div className="container-data">
-            <div className="container-data-div">
-              <div className="container-data-fullName-date">
-                <div className="container-data-fullName">{user?.username}</div>
-              </div>
-              <div className="container-data-loc">{user?.fullname}</div>
-            </div>
-          </div>
 
-          <div className="container-moreOptions">switch</div>
-       
+  return (
+    <div className="switch-container">
+      <div className="switch-container-div">
+
+        <div className="container-img">
+          <Link to={`/profile/${user?.username}`}>
+            <img className="img" src={user?.imgUrl} />
+          </Link>
+        </div>
+
+        <div className="container-data">
+          <div className="container-data-div">
+
+            <Link className="container-data-username-date" to={`/profile/${user?.username}`}>
+              
+                <div className="container-data-username">{user?.username}</div>
+              
+            </Link>
+
+            <div className="container-data-fullname">{user?.fullname}</div>
+
+          </div>
+        </div>
+
+        <div className="container-switch">
+          <div className="button">switch</div>
+        </div>
       </div>
     </div>
-    </Link>
   )
 }

@@ -5,6 +5,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { postService } from '../services/post.service'
 import { InputEmojiChat } from './InputEmojiChat';
 import { Player } from 'video-react';
+import { utilService } from "../services/util.service"
 
 import { PostPreviewImg } from './PostPreviewImg'
 import { PostPreviewIcons } from "../components/PostPreviewIcons";
@@ -34,7 +35,8 @@ export function PostPreview({ post, addLikeToPost, addCommentToPost }) {
         }
     }
 
-console.log('post prew: ', post)
+
+
     return (
         <article className="article-post-preview-model">
             <div className="post-preview-model">
@@ -45,15 +47,19 @@ console.log('post prew: ', post)
 
                             {/* <img className="canvas" src={'../assets/images/canva.png'} />  */}
                             {/* <canvas className="canvas" height="53" width="53" ></canvas> */}
-                            <img className="img" src={post.by.imgUrl} />
+                            <Link to={`/profile/${post.by?.username}`}>
+                                <img className="img" src={post.by.imgUrl} />
+                            </Link>
                         </div>
                         <div className="container-data">
                             <div className="container-data-div">
                                 <div className="container-data-fullName-date">
-                                    <div className="container-data-fullName">{post.by.fullname}</div>
+                                    <Link to={`/profile/${post.by?.username}`}>
+                                        <div className="container-data-fullName">{post.by.fullname}</div>
+                                    </Link>
                                     <div className="container-data-date">
                                         <span className='container-data-date-span'>·</span>
-                                        <div className='container-data-date-div'>{post?.createdAt}</div>
+                                        <div className='container-data-date-div'>{utilService.formatTimeAgo(post?.createdAt)}</div>
                                     </div>
                                 </div>
                                 <div className="container-data-loc">{post?.loc?.name}</div>
@@ -75,7 +81,9 @@ console.log('post prew: ', post)
                     )}
 
                     <div className='post-icons-info-text'>
-                        <div className='post-icons-info-text-fullName'>{post.by.fullname}</div>
+                        <Link to={`/profile/${post.by?.username}`}>
+                            <div className='post-icons-info-text-fullName'>{post.by.username}</div>
+                        </Link>
                         <span className='post-icons-info-text-more'>
                             <span className='post-icons-info-text-txt'>{text}</span>
                             {!isExp && post.txt.length > numText && <span className='button-more-txt' onClick={() => { setIsExp(true) }}>more</span>}

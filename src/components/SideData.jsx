@@ -1,5 +1,5 @@
 import { Suggested } from "./Suggested";
-import { SwitchProfile } from "./switchProfile";
+import { SwitchProfile } from "./SwitchProfile";
 import { loadUsers,getUserLogin } from '../store/actions/user.actions';
 import { useEffect } from 'react';
 import { AppFooterSide } from "./AppFooterSide";

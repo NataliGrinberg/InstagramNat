@@ -1,4 +1,3 @@
-import { AppFooter } from "./AppFooter";
 import { Suggested } from "./Suggested";
 import { SwitchProfile } from "./switchProfile";
 import { loadUsers,getUserLogin } from '../store/actions/user.actions';
@@ -8,7 +7,6 @@ import { AppFooterSide } from "./AppFooterSide";
 export function SideData() {
 
     useEffect(() => {
-        //getUserLogin()
         loadUsers()
     }, [])
 

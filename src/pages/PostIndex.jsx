@@ -5,8 +5,8 @@ import { PostList } from "../components/PostList";
 import { loadPosts, removePost, savePost, setFilterBy } from "../store/actions/post.actions";
 import { Outlet, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { SideData } from "../components/sideData";
-import { getUserLogin, loadUserLogin } from "../store/actions/user.actions";
+import { SideData } from "../components/SideData";
+
 
 
 export function PostIndex() {

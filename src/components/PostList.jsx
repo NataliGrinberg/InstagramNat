@@ -7,9 +7,9 @@ export function PostList({ posts, addLikeToPost, addCommentToPost }) {
   return (
     <Fragment>
       <section className="postList-container">
-        <div className="appStory-post">
+        {/* <div className="appStory-post">
           <AppStory />
-        </div>
+        </div> */}
         <div className="postDetails-list">
           {/* <div></div> */}
           {!!posts?.length && (
@@ -26,7 +26,7 @@ export function PostList({ posts, addLikeToPost, addCommentToPost }) {
           )}
           {!posts?.length && <h1 className="no-posts-info">No posts here</h1>}
         </div>
-        <div>
+        <div className="width">
           <AppFooter />
         </div>
       </section>

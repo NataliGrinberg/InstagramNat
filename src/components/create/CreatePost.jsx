@@ -2,18 +2,12 @@ import { useEffect, useState } from "react";
 import { uploadService } from "../../services/upload.service";
 import { useSelector } from "react-redux";
 import { postService } from "../../services/post.service";
-import InputEmoji from "react-input-emoji";
 import { savePost } from "../../store/actions/post.actions";
-import {
-  onCloseModalCreate,
-  onToggleModalCreate,
-} from "../../store/actions/create.actions";
+import { onCloseModalCreate , onToggleModalCreate} from "../../store/actions/create.actions";
 import { Svgs } from "../../assets/Svgs";
-import { PostPreviewImg } from "../PostPreviewImg";
 import { SET_IMGS, SET_IMGS_URL } from "../../store/reducers/image.reducer";
 import { saveImage, saveImageUrl } from "../../store/actions/image.actions";
-import Picker from "emoji-picker-react";
-import { none } from "@cloudinary/url-gen/qualifiers/fontHinting";
+
 
 export function CreatePost() {
   const imageModalData = useSelector(
@@ -44,15 +38,6 @@ export function CreatePost() {
         })
   );
 
-  //const [chosenEmoji, setChosenEmoji] = useState(null);
-
-  // const onEmojiClick = (event, emojiObject) => {
-  //     setChosenEmoji(emojiObject);
-
-  //     console.log('emojiObject:', { chosenEmoji });
-  //     setText(text + emojiObject.target)
-
-  // };
 
   const [showEmojis, setShowEmojis] = useState(false);
 
@@ -70,7 +55,7 @@ export function CreatePost() {
         ? [...newPost.imgUrl, returnImgDataUrl.secure_url]
         : [returnImgDataUrl.secure_url];
     }
-    // newPost.imgUrl = await uploadImageSelected() //newPost.imgUrl ? [...newPost.imgUrl, retuenImgData.secure_url] : [retuenImgData.secure_url]
+ 
     newPost.txt = text;
     savePost(newPost);
 
@@ -111,15 +96,10 @@ export function CreatePost() {
         </div>
       </div>
 
-      {/* <div className="create-post-back-btn" onClick={() => { onToggleModalCreate({ type: 'FilterImg' }) }}>{Svgs.back}</div>
-                <div className="createPost-titel-create" >Create new post</div>
-                <div className="createPost-titel-btn-share" onClick={saveNewPost}>Share</div>
-            </div> */}
 
       <div className="createPost-container-data">
-        {/* <div className="createPost-container-data-img"> */}
         <div className="create-post-filter-img-data">
-          {/* <div className="post-filter-preview"> */}
+        
           {imgCount > 0 && (
             <div
               onClick={() => {
@@ -154,7 +134,7 @@ export function CreatePost() {
             ></div>
           )}
         </div>
-        {/* </div> */}
+  
 
         <div className="createPost-container-data">
           <div className="createPost-container-data-scroll">
@@ -200,12 +180,6 @@ export function CreatePost() {
                     </div>
                   </div>
                 </div>
-
-                {/* {showEmojis && (
-                                    <div className="create-post-show-emojis">
-                                        <Picker onEmojiClick={onEmojiClick} />
-                                    </div>
-                                )} */}
               </div>
 
               <div className="createPost-container-data-add-location create-post-divs">

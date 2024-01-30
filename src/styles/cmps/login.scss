@@ -306,7 +306,7 @@
         position: relative;
         text-size-adjust: 100%;
         vertical-align: baseline;
-        //width 350px
+     
 
         .login-flex-insta {
           align-content: stretch;
@@ -333,23 +333,20 @@
           font-size: 14px;
           font-stretch: 100%;
           font-weight: 400;
-          //height 53.6px;
           justify-content: flex-start;
           line-height: 18px;
           margin-bottom: 12px;
           margin-top: 36px;
-          // overflow-x visible;
-          // overflow-y visible;
           position: relative;
           text-size-adjust: 100%;
-          //width 174px;
+       
 
           .login-flex-insta-div {
             color: rgb(0, 0, 0);
             color-scheme: light;
             cursor: pointer;
             direction: ltr;
-            display: block;
+            //display: block;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
               Helvetica, Arial, sans-serif;
             font-feature-settings: normal;
@@ -357,51 +354,17 @@
             font-optical-sizing: auto;
             font-size: 14px;
             font-stretch: 100%;
-            // font-style normal
-            // font-variant-alternates normal
-            // font-variant-caps normal
-            // font-variant-east-asian normal
-            // font-variant-ligatures normal
-            // font-variant-numeric normal
-            // font-variant-position normal
-            // font-variation-settings normal;
             font-weight: 400;
-            //height 53.6px
             line-height: 18px;
             text-size-adjust: 100%;
-            //width 174px
+            display: flex;
+            justify-content: center;
 
-            .login-flex-insta-i {
-              background-image: url(https://static.cdninstagram.com/rsrc.php/v3/ys/r/WBLlWbPOKZ9.png);
-              background-position-x: 0px;
-              background-position-y: 0px;
-              background-repeat: no-repeat;
-              background-size: 176px 264px;
-              color: rgb(0, 0, 0);
-              color-scheme: light;
-              cursor: pointer;
-              direction: ltr;
-              display: inline-block;
-              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-                Helvetica, Arial, sans-serif;
-              font-feature-settings: normal;
-              font-kerning: auto;
-              font-optical-sizing: auto;
-              font-size: 14px;
-              font-stretch: 100%;
-              font-style: italic;
-              font-variant-alternates: normal;
-              font-variant-caps: normal;
-              font-variant-east-asian: normal;
-              font-variant-ligatures: normal;
-              font-variant-numeric: normal;
-              font-variant-position: normal;
-              font-variation-settings: normal;
-              font-weight: 400;
-              height: 50px;
-              line-height: 18px;
-              text-size-adjust: 100%;
-              width: 174px;
+          
+            img {
+              height: 100%;
+              width: 70%;
+              object-fit: cover;
             }
           }
         }

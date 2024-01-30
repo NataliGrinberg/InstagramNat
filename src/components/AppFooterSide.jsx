@@ -25,7 +25,7 @@ export function AppFooterSide() {
         </div>
 
         <div className="divs-side">
-          <div>© 2024 Instagram from Meta</div>
+          <div>© 2024 InstaNat from Meta</div>
         </div>
       </div>
     </footer>

@@ -3,6 +3,8 @@ import { userService } from "../services/user.service"
 import { AppFooter } from "./AppFooter"
 import { Link, useNavigate } from "react-router-dom"
 import { signup } from "../store/actions/user.actions"
+import instaNat from "../assets/images/InstaNat.png"
+
 
 export function Signup(props) {
   const [credentials, setCredentials] = useState(userService.getEmptyUser())
@@ -111,12 +113,7 @@ export function Signup(props) {
                 tabIndex="0"
                 className="login-flex-insta-div"
               >
-                <i
-                  data-visualcompletion="css-img"
-                  aria-label="Instagram"
-                  className="login-flex-insta-i"
-                  role="img"
-                ></i>
+                <img className="logo" src={instaNat} />
               </div>
             </div>
 

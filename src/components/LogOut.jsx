@@ -5,11 +5,12 @@ export function LogOut() {
   const navigate = useNavigate()
 
     async function onLogout() {
+  
         try {
             await logout()
             navigate('/login')
         } catch (err) {
-            
+          console.error('error:',err)  
         }
     }
 

@@ -1,5 +1,12 @@
 import { useSelector } from "react-redux"
-import { Link, NavLink, Outlet, useLocation, useNavigate, useParams } from "react-router-dom"
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom"
 import { postService } from "../services/post.service"
 import { Svgs } from "../assets/Svgs"
 import { userService } from "../services/user.service"
@@ -12,22 +19,24 @@ export function Profile() {
   const { username } = useParams()
   const [user, setUser] = useState(null)
   const posts = useSelector((storeState) => storeState.postModule.userPosts)
+  const userLoggin = useSelector((storeState) => storeState.userModule.user)
+  const [isFollowing, setIsFollowing] = useState(false)
+  const [isUserLogginProfile, setIsUserLogginProfile] = useState(false)
 
-console.log('posts from profile:', posts)
   useEffect(() => {
-    console.log('insert to profile')
     loadUser()
   }, [username])
-
-  // useEffect(() => {
-
-  // }, [posts])
 
   async function loadUser() {
     try {
       const userByName = await userService.getByUserName(username)
       setUser(userByName)
       loadPosts(userByName)
+      debugger
+      if (userLoggin._id !== userByName._id)
+        setIsFollowing(userService.checkIsFollowing(user))
+      else setIsUserLogginProfile(true)
+
     } catch (err) {
       console.log("err:", err)
     }
@@ -35,7 +44,7 @@ console.log('posts from profile:', posts)
 
   async function loadPosts(userByName) {
     try {
-      console.log('load post from pro')
+      console.log("load post from pro")
       loadUserPosts(userByName)
     } catch (err) {
       console.log("err:", err)
@@ -61,22 +70,53 @@ console.log('posts from profile:', posts)
                   {user.username}
                 </div>
                 <div className="profile-container-user-buttons">
-                  <div className="profile-container-user-buttons-flex">
+                  {/* <div className="profile-container-user-buttons-flex"> */}
+
+                  {(isUserLogginProfile && (
+                    <div className="profile-container-user-buttons-flex">
+                      <div className="button-edit">
+                        <a className="button-edit-link" href="/" role="link">
+                          Edit profile
+                        </a>
+                      </div>
+                      <div className="button-view">
+                        <a className="button-view-link" href="/" role="link">
+                          View archive
+                        </a>
+                      </div>
+                    </div>
+                  )) || ( isFollowing && (
+                    <div className="profile-container-user-buttons-flex">
+                      <div className="button-edit">
+                        <a className="button-edit-link" href="/" role="link">
+                          Following
+                        </a>
+                      </div>
+                      <div className="button-view">
+                        <a className="button-view-link" href="/" role="link">
+                          message
+                        </a>
+                      </div>
+                    </div>
+                  ) || (
+                    <div className="profile-container-user-buttons-flex">
                     <div className="button-edit">
-                      <a className="button-edit-link" href="/" role="link">
-                        Edit profile
+                      <a className="button-edit-link follow" href="/" role="link">
+                      Follow
                       </a>
                     </div>
                     <div className="button-view">
                       <a className="button-view-link" href="/" role="link">
-                        View archive
+                      message
                       </a>
                     </div>
                   </div>
+                  ))}
+
                 </div>
                 <div className="profile-container-user-option">
                   <div className="profile-container-user-svg">
-                    {Svgs.optionsProfile}
+                    { isUserLogginProfile ? Svgs.optionsProfile : Svgs.profileMore}
                   </div>
                 </div>
               </div>
@@ -86,11 +126,11 @@ console.log('posts from profile:', posts)
                   <span className="weight">{posts.length}</span> posts
                 </div>
                 <div className="profile-post-followers">
-                  <span className="weight">{user.followers?.length}</span>{" "}
+                  <span className="weight">{user.followers?.length > 0 ? user.followers?.length : 0}</span>{" "}
                   followers
                 </div>
                 <div className="profile-post-following">
-                  <span className="weight">{user.following?.length}</span>{" "}
+                  <span className="weight">{user.following?.length > 0 ? user.following?.length : 0}</span>{" "}
                   following
                 </div>
               </div>

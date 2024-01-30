@@ -7,10 +7,12 @@ import img1 from "../assets/images/img1.png"
 import img2 from "../assets/images/img2.png"
 import img3 from "../assets/images/img3.png"
 import img4 from "../assets/images/img4.png"
+import instaNat from "../assets/images/InstaNat.png"
 import { AppFooter } from "./AppFooter"
 import { Link, useNavigate } from "react-router-dom"
 
 export function Login(props) {
+  console.log('login');
   // const users = useSelector((storeState) => storeState.userModule.users)
   const [credentials, setCredentials] = useState(userService.getEmptyUser())
 
@@ -98,12 +100,13 @@ export function Login(props) {
                 tabIndex="0"
                 className="login-flex-insta-div"
               >
-                <i
+                <img className="logo" src={instaNat} />
+                {/* <i
                   data-visualcompletion="css-img"
                   aria-label="Instagram"
                   className="login-flex-insta-i"
                   role="img"
-                ></i>
+                ></i> */}
               </div>
             </div>
 

@@ -2,7 +2,6 @@ import { storageService } from "./async-storage.service"
 import { uploadService } from "./upload.service"
 import { utilService } from "../services/util.service"
 
-//const STORAGE_KEY_LOGGEDIN_USER = "loggedinUser"
 const STORAGE_KEY_USER_DB = "user"
 const STORAGE_KEY = "users"
 
@@ -17,8 +16,8 @@ export const userService = {
   remove,
   // update,
   getEmptyUser,
-  //getUserLogin,
   getByUserName,
+  checkIsFollowing
 }
 
 window.userService = userService
@@ -30,9 +29,6 @@ function getUsers() {
   return storageService.query(STORAGE_KEY)
 }
 
-// function getUserLogin() {
-//   return storageService.query(STORAGE_KEY_USER_DB)
-// }
 
 async function getById(userId) {
   const user = await storageService.get(STORAGE_KEY, userId)
@@ -95,18 +91,24 @@ async function signup(userCred) {
   return saveLocalUser(user)
 }
 
+function checkIsFollowing(user)
+  {
+    
+    const userLoggin = getLoggedinUser()
+    const userFollowing = userLoggin?.following?.filter(fol => fol._id === user._id)
+    debugger
+    if(userFollowing)
+      return true
+
+      return false;
+
+  }
+
+
 async function logout() {
   sessionStorage.removeItem(STORAGE_KEY_USER_DB)
 }
 
-// function getEmptyUser() {
-//     return {
-//         username: '',
-//         fullname: '',
-//         password: '',
-//         imgUrl: '',
-//     }
-// }
 
 function getEmptyUser() {
   return {
@@ -143,7 +145,6 @@ function saveLocalUser(user) {
     emailOrNumber: user.emailOrNumber,
   }
 
-  //utilService.saveToStorage(STORAGE_KEY_USER_DB, userSave)
   sessionStorage.setItem(STORAGE_KEY_USER_DB, JSON.stringify(userSave))
   return userSave
 }

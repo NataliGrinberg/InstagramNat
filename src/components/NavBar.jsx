@@ -3,8 +3,8 @@ import { useSelector } from "react-redux"
 import { Link, useLocation } from "react-router-dom"
 import { onToggleModalCreate } from "../store/actions/create.actions"
 import { useEffect, useState } from "react"
-import { getUserLogin } from "../store/actions/user.actions"
 import { LogOut } from "./LogOut"
+import instaNat from "../assets/images/InstaNat.png"
 
 export function NavBar() {
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
@@ -27,7 +27,7 @@ export function NavBar() {
         <div className="navBar-logo">
           <a className="flex-navBar-list" href="/" role="link">
             <div className="div-navBar-logo">
-              <div className="logo">{Svgs.logo} </div>
+              <img className="logo" src={instaNat} />
             </div>
           </a>
         </div>

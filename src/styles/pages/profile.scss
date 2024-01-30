@@ -22,7 +22,7 @@
     flex-grow: 1;
     //height: 585.8px;
     line-height: 18px;
-    min-height: 695.2px;
+    //min-height: 695.2px;
     text-size-adjust: 100%;
 
     .profile-container-data-div {
@@ -227,7 +227,7 @@
                 text-decoration-thickness: auto;
                 text-size-adjust: 100%;
                 touch-action: manipulation;
-                width: 40px;
+                //width: 40px;
                 -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
               }
             }
@@ -374,7 +374,14 @@
                     width: 104.7px;
                     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
                   }
+
+                  .follow {
+                    background-color: rgb(0, 149, 246);
+                    color: white;
+                  }
                 }
+
+                
 
                 .button-view {
                   align-content: stretch;
@@ -471,6 +478,8 @@
                   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
                 }
               }
+
+             
             }
 
             .profile-container-user-username {

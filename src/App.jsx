@@ -19,20 +19,17 @@ import { LogOut } from "./components/LogOut"
 // import './App.css'
 
 function App() {
-
-
   return (
     <Router>
       <section className="app">
         <NavBar />
         <Routes>
-        <Route path="/login" element={<Login />}/>
-        <Route path="/accounts/emailsignup" element={<Signup />}/>
           <Route path="/" element={<PostIndex />}>
-          
-         
             <Route path="/post/:postId" element={<PostDetails />} />
           </Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="/accounts/emailsignup" element={<Signup />} />
+
           <Route path="/chat" element={<Message />} />
           <Route path="/profile/:username" element={<Profile />}>
             <Route path="/profile/:username" element={<PostListPro />} />
@@ -41,7 +38,7 @@ function App() {
           </Route>
         </Routes>
       </section>
-     
+
       <DynamicModal />
       <CreateDynamicModal />
     </Router>

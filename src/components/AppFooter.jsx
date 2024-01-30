@@ -12,7 +12,7 @@ export function AppFooter() {
           <div>Privacy</div>
           <div>Terms</div>
           <div>Locations</div>
-          <div>Instagram</div>
+          <div>InstaNat</div>
           <div>Lite</div>
           <div>Threads</div>
           <div>Contact Uploading & Non-Users</div>
@@ -20,7 +20,7 @@ export function AppFooter() {
         </div>
 
         <div className="divs">
-          <div>© 2024 Instagram from Meta</div>
+          <div>© 2024 InstaNat from Meta</div>
         </div>
       </div>
     </footer>

@@ -14,6 +14,7 @@ export function PostIndex() {
     //const [searchParams, setSearchParams] = useSearchParams()
     const posts = useSelector(storeState => storeState.postModule.posts)
     const user =  useSelector(storeState => storeState.userModule.user)
+ 
     //const params = useParams()
 
     const navigate = useNavigate()
@@ -25,7 +26,7 @@ export function PostIndex() {
         
         loadPosts()
         //setFilterBy(postService.getFilterFromParams(searchParams))
-    }, [])
+    }, [user])
 
 
    // useEffect(() => {
@@ -102,6 +103,7 @@ export function PostIndex() {
         }
     }
     if(!posts) return
+    if (!user) return ''
     return (
         <section className="post-index-container">
            

@@ -169,8 +169,7 @@ export function PostDetails() {
                     onToggleModal({ type: "Likes", data: { post: post } })
                   }}
                 >
-                  {" "}
-                  {post.likedBy?.length} likes{" "}
+                  {post.likedBy?.length} likes
                 </div>
               )}
             </div>

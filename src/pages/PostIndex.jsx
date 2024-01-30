@@ -92,7 +92,7 @@ export function PostIndex() {
     async function addCommentToPost(comment, post) {
         try {
             const postToSave = structuredClone(post)
-            debugger
+            
             comment.createdAt= Date.now()
             postToSave.comments = post.comments ? [...post.comments, comment] : [comment]
             await savePost(postToSave)

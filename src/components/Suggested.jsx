@@ -13,7 +13,7 @@ export function Suggested() {
         ? userSuggested.splice(0, chunkSize)
         : userSuggested.splice(0, users.length))
   }
-debugger
+
   return (
     <div className="suggested-container">
       <div className="suggested-container-div">

@@ -10,12 +10,8 @@ import { saveImage, saveImageUrl } from "../../store/actions/image.actions";
 
 
 export function CreatePost() {
-  const imageModalData = useSelector(
-    (storeState) => storeState.imageModal.imgs
-  );
-  const imageModalUrlData = useSelector(
-    (storeState) => storeState.imageModal.imgsUrl
-  );
+  const imageModalData = useSelector((storeState) => storeState.imageModal.imgs);
+  const imageModalUrlData = useSelector( (storeState) => storeState.imageModal.imgsUrl);
   const files = Array.from(imageModalData.target.files);
   const [text, setText] = useState("");
   const newPost = postService.createPost();

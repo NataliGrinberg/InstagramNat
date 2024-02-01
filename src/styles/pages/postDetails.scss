@@ -26,6 +26,7 @@
   //width: 990.4;
   position: relative;
   text-size-adjust: 100%;
+  z-index: 20;
 
   .post-details-container-imgs {
     aspect-ratio: 1 / 1;
@@ -2427,6 +2428,7 @@
     line-height: 18px;
     position: relative;
     text-size-adjust: 100%;
+    //background: black;
     //width 468.4px
   }
 

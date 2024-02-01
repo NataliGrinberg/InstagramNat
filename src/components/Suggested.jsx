@@ -1,17 +1,29 @@
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
+
 export function Suggested() {
   const chunkSize = 5
   const userLoggin = useSelector((storeState) => storeState.userModule.user)
   const users = useSelector((storeState) => storeState.userModule.users)
-  let userSuggested = users.filter(us => us._id !== userLoggin._id)
-  //const userst = usersy.filter(us=> {us.followers !== userLoggin._id})
-  //let userSuggested = []
+  let userSuggested = users.filter((us) => us._id !== userLoggin._id)
+
   if (users) {
-    userSuggested = (userSuggested.length > chunkSize
+    userSuggested =
+      userSuggested.length > chunkSize
         ? userSuggested.splice(0, chunkSize)
-        : userSuggested.splice(0, users.length))
+        : userSuggested.splice(0, users.length)
+  }
+
+  function checkIsFollows(user) {
+    const userFullData = users.filter((us) => us._id === userLoggin._id)
+    const userFollows = userFullData[0]?.followers?.filter(
+      (fol) => fol._id === user._id
+    )
+
+    if (userFollows !== null && userFollows?.length > 0) return true
+
+    return false
   }
 
   return (
@@ -44,7 +56,7 @@ export function Suggested() {
                   {/* <div></div> */}
                   {!!userSuggested?.length &&
                     userSuggested.map((user) => (
-                      <div className="user-container">
+                      <div className="user-container" key={user?._id}>
                         <div className="user-container-div">
                           <div className="user-container-flex">
                             <div className="user-container-flex-div">
@@ -72,29 +84,34 @@ export function Suggested() {
                               </div>
 
                               {/* <div className="user-container-username"> */}
-                                <div className="user-container-flex-username">
-
-                                  <div className="user-container-flex-div">
-                                    <Link className="link" to={`/profile/${user.username}`}>
-                                      {user.username}
-                                    </Link>
-                                  </div>
-
-                                  <span className="user-container-flex-follow">
-                                  <span className="span">{user?.followers ? 'Follows you' : 'Suggested for you'}</span>
-                                  </span>
+                              <div className="user-container-flex-username">
+                                <div className="user-container-flex-div">
+                                  <Link
+                                    className="link"
+                                    to={`/profile/${user.username}`}
+                                  >
+                                    {user.username}
+                                  </Link>
                                 </div>
-                              
+
+                                <span className="user-container-flex-follow">
+                                  <span className="span">
+                                    {checkIsFollows(user)
+                                      ? "Follows you"
+                                      : "Suggested for you"}
+                                  </span>
+                                </span>
+                              </div>
+
                               {/* </div> */}
 
                               <div className="user-container-follwing">
-                              <div className="user-container-follwing-div">
-                                <div className="user-container-follwing-button">
-                                <div className="button">Follow </div>
+                                <div className="user-container-follwing-div">
+                                  <div className="user-container-follwing-button">
+                                    <div className="button">Follow </div>
+                                  </div>
                                 </div>
-                                </div> 
                               </div>
-                           
                             </div>
                           </div>
                         </div>

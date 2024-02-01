@@ -32,11 +32,20 @@ export function Profile() {
       const userByName = await userService.getByUserName(username)
       setUser(userByName)
       loadPosts(userByName)
-      debugger
-      if (userLoggin._id !== userByName._id)
-        setIsFollowing(userService.checkIsFollowing(user))
-      else setIsUserLogginProfile(true)
 
+    const userFollows = userByName?.followers?.filter(
+      (fol) => fol._id === userLoggin._id
+    )
+
+    if (userFollows !== null && userFollows?.length > 0) return true
+    return false
+
+
+      // if (userLoggin._id === userByName._id) setIsUserLogginProfile(true)
+      // else {
+      //   const isFoll = userService.checkIsFollowing(userByName)
+      //   setIsFollowing(isFoll)
+      // }
     } catch (err) {
       console.log("err:", err)
     }
@@ -85,38 +94,44 @@ export function Profile() {
                         </a>
                       </div>
                     </div>
-                  )) || ( isFollowing && (
-                    <div className="profile-container-user-buttons-flex">
-                      <div className="button-edit">
-                        <a className="button-edit-link" href="/" role="link">
-                          Following
-                        </a>
+                  )) ||
+                    (isFollowing && (
+                      <div className="profile-container-user-buttons-flex">
+                        <div className="button-edit">
+                          <a className="button-edit-link" href="/" role="link">
+                            Following
+                          </a>
+                        </div>
+                        <div className="button-view">
+                          <a className="button-view-link" href="/" role="link">
+                            message
+                          </a>
+                        </div>
                       </div>
-                      <div className="button-view">
-                        <a className="button-view-link" href="/" role="link">
-                          message
-                        </a>
+                    )) || (
+                      <div className="profile-container-user-buttons-flex">
+                        <div className="button-edit">
+                          <a
+                            className="button-edit-link follow"
+                            href="/"
+                            role="link"
+                          >
+                            Follow
+                          </a>
+                        </div>
+                        <div className="button-view">
+                          <a className="button-view-link" href="/" role="link">
+                            message
+                          </a>
+                        </div>
                       </div>
-                    </div>
-                  ) || (
-                    <div className="profile-container-user-buttons-flex">
-                    <div className="button-edit">
-                      <a className="button-edit-link follow" href="/" role="link">
-                      Follow
-                      </a>
-                    </div>
-                    <div className="button-view">
-                      <a className="button-view-link" href="/" role="link">
-                      message
-                      </a>
-                    </div>
-                  </div>
-                  ))}
-
+                    )}
                 </div>
                 <div className="profile-container-user-option">
                   <div className="profile-container-user-svg">
-                    { isUserLogginProfile ? Svgs.optionsProfile : Svgs.profileMore}
+                    {isUserLogginProfile
+                      ? Svgs.optionsProfile
+                      : Svgs.profileMore}
                   </div>
                 </div>
               </div>
@@ -126,11 +141,15 @@ export function Profile() {
                   <span className="weight">{posts.length}</span> posts
                 </div>
                 <div className="profile-post-followers">
-                  <span className="weight">{user.followers?.length > 0 ? user.followers?.length : 0}</span>{" "}
+                  <span className="weight">
+                    {user.followers?.length > 0 ? user.followers?.length : 0}
+                  </span>{" "}
                   followers
                 </div>
                 <div className="profile-post-following">
-                  <span className="weight">{user.following?.length > 0 ? user.following?.length : 0}</span>{" "}
+                  <span className="weight">
+                    {user.following?.length > 0 ? user.following?.length : 0}
+                  </span>{" "}
                   following
                 </div>
               </div>
@@ -165,16 +184,17 @@ export function Profile() {
               </NavLink>
             </div> */}
 
-            <NavLink
-              className="profile-container-tab-saved"
-              to={`/profile/${user?.username}/saved`}
-            >
-              <div className="link">
-                <div className="saved-svg">{Svgs.saved}</div>
-                <div className="saved-name">SAVED</div>
-              </div>
-            </NavLink>
-
+            {isUserLogginProfile && (
+              <NavLink
+                className="profile-container-tab-saved"
+                to={`/profile/${user?.username}/saved`}
+              >
+                <div className="link">
+                  <div className="saved-svg">{Svgs.saved}</div>
+                  <div className="saved-name">SAVED</div>
+                </div>
+              </NavLink>
+            )}
             <NavLink
               className="profile-container-tab-tagged"
               to={`/profile/${user?.username}/tagged`}

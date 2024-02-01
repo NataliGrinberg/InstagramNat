@@ -1,12 +1,38 @@
 import { useEffect, useRef, useState } from "react"
-import { Link, useOutletContext } from "react-router-dom"
+import { Link, Outlet, useOutletContext, useParams } from "react-router-dom"
 import { Svgs } from "../assets/Svgs"
+import { postService } from "../services/post.service"
+import { useSelector } from "react-redux"
+import { savePost } from "../store/actions/post.actions"
 
 export function PostListPro() {
   const { posts } = useOutletContext()
+  const { username } = useParams()
+  const user = useSelector((storeState) => storeState.userModule.user)
 
+  async function addLikeToPost(post) {
+    try {
+        const likePost = postService.isLikePost(post)
+        if (!likePost) {
 
-  console.log("posts: ", posts)
+            const likeToSave = {
+                _id: user._id,
+                fullname: user.fullname,
+                imgUrl: user.imgUrl
+            }
+
+            post.likedBy = post.likedBy ? [...post.likedBy, likeToSave] : [likeToSave]
+        }
+        else {
+            if (post.likedBy) post.likedBy = post.likedBy.filter(like => like._id !== user._id)
+        }
+
+        await savePost(post)
+       
+    } catch (err) {
+        console.error('Had issues adding add like', err);
+    }
+}
 
   return (
     <article className="post-list-profile-article">
@@ -17,13 +43,24 @@ export function PostListPro() {
           <ul className="ul-pro">
             {posts.map((post) => {
               return (
-                <Link
+                <Link  key={post?._id}
                   className="post-list-profile-link"
-                  to={`/post/${post?._id}`}
-                >
+                  to={`/profile/${username}/${post?._id}`}>
+                  
                   <div className="post-list-profile-img">
               
-                    <img className="img" src={post.imgUrl[0]} />
+                  {
+                    ( ((post.imgUrl[0]).includes('video')
+                        && <video controls className="">
+                            <source src={post.imgUrl[0]} type="video/mp4" />
+                        </video>)
+                        || (
+                          <img className="img" src={post.imgUrl[0]} />
+                        ))
+
+                }
+
+                    {/* <img className="img" src={post.imgUrl[0]} /> */}
                     {post.imgUrl.length > 1 && (
                       <div className="post-list-profile-svg-flex">
                         <div className="post-list-profile-svg">
@@ -61,6 +98,7 @@ export function PostListPro() {
           </ul>
         )}
       </div>
+      <Outlet context={{addLikeToPost}} />
       <div></div>
     </article>
   )

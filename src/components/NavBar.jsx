@@ -15,7 +15,6 @@ export function NavBar() {
 
   useEffect(() => {
     setOpenMore(false)
-    //getUserLogin()
 
     if (location.pathname !== "/") setSvgHome(Svgs.homeWhite)
     else setSvgHome((svgHome = Svgs.homeBlack))
@@ -26,6 +25,9 @@ export function NavBar() {
       <div className="flex">
         <div className="navBar-logo">
           <a className="flex-navBar-list" href="/" role="link">
+            <div className="div-navBar-logo-instagram">
+              <div className="svgs">{Svgs.instagram}</div>
+            </div>
             <div className="div-navBar-logo">
               <img className="logo" src={instaNat} />
             </div>

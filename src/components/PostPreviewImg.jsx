@@ -17,7 +17,8 @@ export function PostPreviewImg({ imgUrl }) { //post post.imgUrl
                         && <video controls className="video-post-preview">
                             <source src={imgUrl[imgCount]} type="video/mp4" autoPlay={true} />
                         </video>))
-                        || (<img className="post-preview-img" src={imgUrl[imgCount]} />))
+                        || (
+                        <div  className="post-preview-img-continar"><img className="post-preview-img" src={imgUrl[imgCount]} /></div>))
 
                 }
 

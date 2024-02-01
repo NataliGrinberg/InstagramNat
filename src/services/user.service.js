@@ -17,7 +17,8 @@ export const userService = {
   // update,
   getEmptyUser,
   getByUserName,
-  checkIsFollowing
+  //checkIsFollowing,
+
 }
 
 window.userService = userService
@@ -28,7 +29,6 @@ _createUsers()
 function getUsers() {
   return storageService.query(STORAGE_KEY)
 }
-
 
 async function getById(userId) {
   const user = await storageService.get(STORAGE_KEY, userId)
@@ -54,7 +54,7 @@ function remove(userId) {
 
 async function login(userCred) {
   const users = await storageService.query(STORAGE_KEY)
-  
+
   const user = users.find(
     (user) =>
       user.emailOrNumber === userCred.emailOrNumber ||
@@ -91,24 +91,21 @@ async function signup(userCred) {
   return saveLocalUser(user)
 }
 
-function checkIsFollowing(user)
-  {
-    
-    const userLoggin = getLoggedinUser()
-    const userFollowing = userLoggin?.following?.filter(fol => fol._id === user._id)
-    debugger
-    if(userFollowing)
-      return true
+// async function checkIsFollowing(user) {
+//   const userLoggin = getLoggedinUser()
+//   const userFullData = await getById(userLoggin._id)
+//   const userFollowing = userFullData?.following?.filter(
+//     (fol) => fol._id === user?._id
+//   )
 
-      return false;
+//   if (userFollowing !== null && userFollowing.length>0) return true
 
-  }
-
+//   return false
+// }
 
 async function logout() {
   sessionStorage.removeItem(STORAGE_KEY_USER_DB)
 }
-
 
 function getEmptyUser() {
   return {
@@ -192,12 +189,11 @@ function getLoggedinUser() {
 
 function _createUsers() {
   try {
-     let users = utilService.loadFromStorage(STORAGE_KEY)
+    let users = utilService.loadFromStorage(STORAGE_KEY)
 
-     
     if (!users || !users.length) {
       users = createDemoUsers()
-    console.log(users)
+      console.log(users)
     }
 
     // if (!users || !users.length) {
@@ -356,7 +352,7 @@ function _createUsers() {
 //       username: "john_doe",
 //       password: "secure_password1",
 //       fullname: "John Doe",
-//       imgUrl: "https://randomuser.me/api/portraits/men/1.jpg",
+//       imgUrl: "https://randomuser.me/api/portraits/men/86.jpg",
 //       createdAt: "2024-01-29T12:00:01Z",
 //       emailOrNumber: "john_doe@gmail.com"
 //     },
@@ -872,13 +868,345 @@ function _createUsers() {
 function createDemoUsers() {
   return [
     {
+      emailOrNumber: "natali@gmail.com",
+      username: "natalig",
+      password: "123456",
+      fullname: "Natali Grinberg",
+      imgUrl:
+        "https://res.cloudinary.com/dvtyeanju/image/upload/v1706720856/jmv762vj4pq62igypni8.jpg",
+      createdAt: 1706720856817,
+      following: [
+        {
+          _id: "u108",
+          fullname: "William Taylor",
+          imgUrl: "https://randomuser.me/api/portraits/men/9.jpg",
+        },
+        {
+          _id: "u109",
+          fullname: "Sophia Clark",
+          imgUrl: "https://randomuser.me/api/portraits/women/10.jpg",
+        },
+        {
+          _id: "u1010",
+          fullname: "Adam Hall",
+          imgUrl: "https://randomuser.me/api/portraits/men/11.jpg",
+        },
+        {
+          _id: "u1011",
+          fullname: "Lily Martin",
+          imgUrl: "https://randomuser.me/api/portraits/women/12.jpg",
+        },
+        {
+          _id: "u1012",
+          fullname: "Brian King",
+          imgUrl: "https://randomuser.me/api/portraits/men/13.jpg",
+        },
+        {
+          _id: "u1013",
+          fullname: "Grace Scott",
+          imgUrl: "https://randomuser.me/api/portraits/women/14.jpg",
+        },
+        {
+          _id: "u1014",
+          fullname: "Jacob Adams",
+          imgUrl: "https://randomuser.me/api/portraits/men/15.jpg",
+        },
+        {
+          _id: "u1015",
+          fullname: "Olivia Hill",
+          imgUrl: "https://randomuser.me/api/portraits/women/16.jpg",
+        },
+        {
+          _id: "u1016",
+          fullname: "Charlie Ross",
+          imgUrl: "https://randomuser.me/api/portraits/men/17.jpg",
+        },
+        {
+          _id: "u1017",
+          fullname: "Ava Long",
+          imgUrl: "https://randomuser.me/api/portraits/women/18.jpg",
+        },
+        {
+          _id: "u1018",
+          fullname: "Ryan Campbell",
+          imgUrl: "https://randomuser.me/api/portraits/men/19.jpg",
+        },
+        {
+          _id: "u1019",
+          fullname: "Zoe Kelly",
+          imgUrl: "https://randomuser.me/api/portraits/women/20.jpg",
+        },
+        {
+          _id: "u1020",
+          fullname: "Daniel Hall",
+          imgUrl: "https://randomuser.me/api/portraits/men/21.jpg",
+        },
+        {
+          _id: "u1021",
+          fullname: "Emma Morris",
+          imgUrl: "https://randomuser.me/api/portraits/women/22.jpg",
+        },
+        {
+          _id: "u1022",
+          fullname: "Aiden White",
+          imgUrl: "https://randomuser.me/api/portraits/men/23.jpg",
+        },
+        {
+          _id: "u1023",
+          fullname: "Mia Nelson",
+          imgUrl: "https://randomuser.me/api/portraits/women/24.jpg",
+        },
+        {
+          _id: "u1024",
+          fullname: "Logan Clark",
+          imgUrl: "https://randomuser.me/api/portraits/men/25.jpg",
+        },
+        {
+          _id: "u1025",
+          fullname: "Mia Hill",
+          imgUrl: "https://randomuser.me/api/portraits/women/26.jpg",
+        },
+        {
+          _id: "u1026",
+          fullname: "Owen Wood",
+          imgUrl: "https://randomuser.me/api/portraits/men/27.jpg",
+        },
+        {
+          _id: "u1027",
+          fullname: "Ella Turner",
+          imgUrl: "https://randomuser.me/api/portraits/women/28.jpg",
+        },
+        {
+          _id: "u1028",
+          fullname: "Caleb Ross",
+          imgUrl: "https://randomuser.me/api/portraits/men/29.jpg",
+        },
+        {
+          _id: "u1029",
+          fullname: "Chloe Perry",
+          imgUrl: "https://randomuser.me/api/portraits/women/30.jpg",
+        },
+        {
+          _id: "u1030",
+          fullname: "Isaac King",
+          imgUrl: "https://randomuser.me/api/portraits/men/31.jpg",
+        },
+      ],
+      followers: [
+        {
+          _id: "u103",
+          fullname: "Emily White",
+          imgUrl:
+            "https://res.cloudinary.com/dvtyeanju/image/upload/v1706514503/pexels-tati%C3%A9le-alves-18275619_v1hnr0.jpg",
+        },
+        {
+          _id: "u105",
+          fullname: "Olivia Davis",
+          imgUrl: "https://randomuser.me/api/portraits/women/6.jpg",
+        },
+        {
+          _id: "u106",
+          fullname: "Ethan Miller",
+          imgUrl: "https://randomuser.me/api/portraits/men/7.jpg",
+        },
+        {
+          _id: "u107",
+          fullname: "Ava Jones",
+          imgUrl: "https://randomuser.me/api/portraits/women/8.jpg",
+        },
+        {
+          _id: "u108",
+          fullname: "William Taylor",
+          imgUrl: "https://randomuser.me/api/portraits/men/9.jpg",
+        },
+        {
+          _id: "u109",
+          fullname: "Sophia Clark",
+          imgUrl: "https://randomuser.me/api/portraits/women/10.jpg",
+        },
+        {
+          _id: "u1010",
+          fullname: "Adam Hall",
+          imgUrl: "https://randomuser.me/api/portraits/men/11.jpg",
+        },
+        {
+          _id: "u1011",
+          fullname: "Lily Martin",
+          imgUrl: "https://randomuser.me/api/portraits/women/12.jpg",
+        },
+        {
+          _id: "u1012",
+          fullname: "Brian King",
+          imgUrl: "https://randomuser.me/api/portraits/men/13.jpg",
+        },
+        {
+          _id: "u1013",
+          fullname: "Grace Scott",
+          imgUrl: "https://randomuser.me/api/portraits/women/14.jpg",
+        },
+        {
+          _id: "u1014",
+          fullname: "Jacob Adams",
+          imgUrl: "https://randomuser.me/api/portraits/men/15.jpg",
+        },
+        {
+          _id: "u1015",
+          fullname: "Olivia Hill",
+          imgUrl: "https://randomuser.me/api/portraits/women/16.jpg",
+        },
+        {
+          _id: "u1016",
+          fullname: "Charlie Ross",
+          imgUrl: "https://randomuser.me/api/portraits/men/17.jpg",
+        },
+        {
+          _id: "u1017",
+          fullname: "Ava Long",
+          imgUrl: "https://randomuser.me/api/portraits/women/18.jpg",
+        },
+        {
+          _id: "u1018",
+          fullname: "Ryan Campbell",
+          imgUrl: "https://randomuser.me/api/portraits/men/19.jpg",
+        },
+        {
+          _id: "u1019",
+          fullname: "Zoe Kelly",
+          imgUrl: "https://randomuser.me/api/portraits/women/20.jpg",
+        },
+        {
+          _id: "u1020",
+          fullname: "Daniel Hall",
+          imgUrl: "https://randomuser.me/api/portraits/men/21.jpg",
+        },
+        {
+          _id: "u1021",
+          fullname: "Emma Morris",
+          imgUrl: "https://randomuser.me/api/portraits/women/22.jpg",
+        },
+      ],
+      savedStoryIds: [],
+      _id: "u001",
+    },
+    {
       username: "john_doe",
       password: "secure_password1",
       fullname: "John Doe",
-      imgUrl: "https://randomuser.me/api/portraits/men/1.jpg",
-      createdAt: "2024-01-29T12:00:01Z",
+      imgUrl: "https://randomuser.me/api/portraits/men/86.jpg",
+      createdAt: 1674259200,
       emailOrNumber: "john_doe@gmail.com",
       _id: "u100",
+      following: [
+        {
+          _id: "u102",
+          fullname: "Sam Jackson",
+          imgUrl: "https://randomuser.me/api/portraits/men/3.jpg",
+        },
+        {
+          _id: "u103",
+          fullname: "Emily White",
+          imgUrl:
+            "https://res.cloudinary.com/dvtyeanju/image/upload/v1706514503/pexels-tati%C3%A9le-alves-18275619_v1hnr0.jpg",
+        },
+        {
+          _id: "u104",
+          fullname: "Michael Brown",
+          imgUrl: "https://randomuser.me/api/portraits/men/5.jpg",
+        },
+        {
+          _id: "u105",
+          fullname: "Olivia Davis",
+          imgUrl: "https://randomuser.me/api/portraits/women/6.jpg",
+        },
+        {
+          _id: "u106",
+          fullname: "Ethan Miller",
+          imgUrl: "https://randomuser.me/api/portraits/men/7.jpg",
+        },
+        {
+          _id: "u107",
+          fullname: "Ava Jones",
+          imgUrl: "https://randomuser.me/api/portraits/women/8.jpg",
+        },
+        {
+          _id: "u108",
+          fullname: "William Taylor",
+          imgUrl: "https://randomuser.me/api/portraits/men/9.jpg",
+        },
+        {
+          _id: "u109",
+          fullname: "Sophia Clark",
+          imgUrl: "https://randomuser.me/api/portraits/women/10.jpg",
+        },
+        {
+          _id: "u1010",
+          fullname: "Adam Hall",
+          imgUrl: "https://randomuser.me/api/portraits/men/11.jpg",
+        },
+      ],
+      followers: [
+        {
+          _id: "u102",
+          fullname: "Sam Jackson",
+          imgUrl: "https://randomuser.me/api/portraits/men/3.jpg",
+        },
+        {
+          _id: "u103",
+          fullname: "Emily White",
+          imgUrl:
+            "https://res.cloudinary.com/dvtyeanju/image/upload/v1706514503/pexels-tati%C3%A9le-alves-18275619_v1hnr0.jpg",
+        },
+        {
+          _id: "u104",
+          fullname: "Michael Brown",
+          imgUrl: "https://randomuser.me/api/portraits/men/5.jpg",
+        },
+        {
+          _id: "u105",
+          fullname: "Olivia Davis",
+          imgUrl: "https://randomuser.me/api/portraits/women/6.jpg",
+        },
+        {
+          _id: "u106",
+          fullname: "Ethan Miller",
+          imgUrl: "https://randomuser.me/api/portraits/men/7.jpg",
+        },
+        {
+          _id: "u107",
+          fullname: "Ava Jones",
+          imgUrl: "https://randomuser.me/api/portraits/women/8.jpg",
+        },
+        {
+          _id: "u108",
+          fullname: "William Taylor",
+          imgUrl: "https://randomuser.me/api/portraits/men/9.jpg",
+        },
+        {
+          _id: "u109",
+          fullname: "Sophia Clark",
+          imgUrl: "https://randomuser.me/api/portraits/women/10.jpg",
+        },
+        {
+          _id: "u1010",
+          fullname: "Adam Hall",
+          imgUrl: "https://randomuser.me/api/portraits/men/11.jpg",
+        },
+        {
+          _id: "u1014",
+          fullname: "Jacob Adams",
+          imgUrl: "https://randomuser.me/api/portraits/men/15.jpg",
+        },
+        {
+          _id: "u1015",
+          fullname: "Olivia Hill",
+          imgUrl: "https://randomuser.me/api/portraits/women/16.jpg",
+        },
+        {
+          _id: "u1016",
+          fullname: "Charlie Ross",
+          imgUrl: "https://randomuser.me/api/portraits/men/17.jpg",
+        },
+      ],
     },
     {
       username: "jane_smith",
@@ -886,18 +1214,177 @@ function createDemoUsers() {
       fullname: "Jane Smith",
       imgUrl:
         "https://res.cloudinary.com/dvtyeanju/image/upload/v1706514509/pexels-nele-holemans-19923206_wihp1b.jpg",
-      createdAt: "2024-01-29T12:00:10Z",
+      createdAt: 1674000000,
       emailOrNumber: "jane_smith@gmail.com",
       _id: "u101",
+      following: [
+        {
+          _id: "u1022",
+          fullname: "Aiden White",
+          imgUrl: "https://randomuser.me/api/portraits/men/23.jpg",
+        },
+        {
+          _id: "u1023",
+          fullname: "Mia Nelson",
+          imgUrl: "https://randomuser.me/api/portraits/women/24.jpg",
+        },
+        {
+          _id: "u1024",
+          fullname: "Logan Clark",
+          imgUrl: "https://randomuser.me/api/portraits/men/25.jpg",
+        },
+        {
+          _id: "u1025",
+          fullname: "Mia Hill",
+          imgUrl: "https://randomuser.me/api/portraits/women/26.jpg",
+        },
+        {
+          _id: "u1026",
+          fullname: "Owen Wood",
+          imgUrl: "https://randomuser.me/api/portraits/men/27.jpg",
+        },
+        {
+          _id: "u1027",
+          fullname: "Ella Turner",
+          imgUrl: "https://randomuser.me/api/portraits/women/28.jpg",
+        },
+        {
+          _id: "u1028",
+          fullname: "Caleb Ross",
+          imgUrl: "https://randomuser.me/api/portraits/men/29.jpg",
+        },
+        {
+          _id: "u1029",
+          fullname: "Chloe Perry",
+          imgUrl: "https://randomuser.me/api/portraits/women/30.jpg",
+        },
+        {
+          _id: "u1030",
+          fullname: "Isaac King",
+          imgUrl: "https://randomuser.me/api/portraits/men/31.jpg",
+        },
+      ],
+      followers: [
+        {
+          _id: "u1025",
+          fullname: "Mia Hill",
+          imgUrl: "https://randomuser.me/api/portraits/women/26.jpg",
+        },
+        {
+          _id: "u1026",
+          fullname: "Owen Wood",
+          imgUrl: "https://randomuser.me/api/portraits/men/27.jpg",
+        },
+        {
+          _id: "u1027",
+          fullname: "Ella Turner",
+          imgUrl: "https://randomuser.me/api/portraits/women/28.jpg",
+        },
+        {
+          _id: "u1028",
+          fullname: "Caleb Ross",
+          imgUrl: "https://randomuser.me/api/portraits/men/29.jpg",
+        },
+      ],
     },
     {
       username: "sam_jackson",
       password: "secure_password3",
       fullname: "Sam Jackson",
       imgUrl: "https://randomuser.me/api/portraits/men/3.jpg",
-      createdAt: "2024-01-29T12:00:20Z",
+      createdAt: 1673654400,
       emailOrNumber: "sam_jackson@gmail.com",
       _id: "u102",
+
+      following: [
+        {
+          _id: "u1016",
+          fullname: "Charlie Ross",
+          imgUrl: "https://randomuser.me/api/portraits/men/17.jpg",
+        },
+        {
+          _id: "u1017",
+          fullname: "Ava Long",
+          imgUrl: "https://randomuser.me/api/portraits/women/18.jpg",
+        },
+        {
+          _id: "u1018",
+          fullname: "Ryan Campbell",
+          imgUrl: "https://randomuser.me/api/portraits/men/19.jpg",
+        },
+        {
+          _id: "u1019",
+          fullname: "Zoe Kelly",
+          imgUrl: "https://randomuser.me/api/portraits/women/20.jpg",
+        },
+        {
+          _id: "u1020",
+          fullname: "Daniel Hall",
+          imgUrl: "https://randomuser.me/api/portraits/men/21.jpg",
+        },
+      ],
+      followers: [
+        {
+          _id: "u107",
+          fullname: "Ava Jones",
+          imgUrl: "https://randomuser.me/api/portraits/women/8.jpg",
+        },
+        {
+          _id: "u108",
+          fullname: "William Taylor",
+          imgUrl: "https://randomuser.me/api/portraits/men/9.jpg",
+        },
+        {
+          _id: "u109",
+          fullname: "Sophia Clark",
+          imgUrl: "https://randomuser.me/api/portraits/women/10.jpg",
+        },
+        {
+          _id: "u1010",
+          fullname: "Adam Hall",
+          imgUrl: "https://randomuser.me/api/portraits/men/11.jpg",
+        },
+        {
+          _id: "u1011",
+          fullname: "Lily Martin",
+          imgUrl: "https://randomuser.me/api/portraits/women/12.jpg",
+        },
+        {
+          _id: "u1012",
+          fullname: "Brian King",
+          imgUrl: "https://randomuser.me/api/portraits/men/13.jpg",
+        },
+        {
+          _id: "u1013",
+          fullname: "Grace Scott",
+          imgUrl: "https://randomuser.me/api/portraits/women/14.jpg",
+        },
+        {
+          _id: "u1014",
+          fullname: "Jacob Adams",
+          imgUrl: "https://randomuser.me/api/portraits/men/15.jpg",
+        },
+        {
+          _id: "u1015",
+          fullname: "Olivia Hill",
+          imgUrl: "https://randomuser.me/api/portraits/women/16.jpg",
+        },
+        {
+          _id: "u1016",
+          fullname: "Charlie Ross",
+          imgUrl: "https://randomuser.me/api/portraits/men/17.jpg",
+        },
+        {
+          _id: "u1017",
+          fullname: "Ava Long",
+          imgUrl: "https://randomuser.me/api/portraits/women/18.jpg",
+        },
+        {
+          _id: "u1018",
+          fullname: "Ryan Campbell",
+          imgUrl: "https://randomuser.me/api/portraits/men/19.jpg",
+        },
+      ],
     },
     {
       username: "emily_white",
@@ -905,45 +1392,439 @@ function createDemoUsers() {
       fullname: "Emily White",
       imgUrl:
         "https://res.cloudinary.com/dvtyeanju/image/upload/v1706514503/pexels-tati%C3%A9le-alves-18275619_v1hnr0.jpg",
-      createdAt: "2024-01-29T12:00:30Z",
+      createdAt: 1674777600,
       emailOrNumber: "emily_white@gmail.com",
       _id: "u103",
+      following: [
+        {
+          _id: "u1027",
+          fullname: "Ella Turner",
+          imgUrl: "https://randomuser.me/api/portraits/women/28.jpg",
+        },
+        {
+          _id: "u1028",
+          fullname: "Caleb Ross",
+          imgUrl: "https://randomuser.me/api/portraits/men/29.jpg",
+        },
+        {
+          _id: "u1029",
+          fullname: "Chloe Perry",
+          imgUrl: "https://randomuser.me/api/portraits/women/30.jpg",
+        },
+        {
+          _id: "u1030",
+          fullname: "Isaac King",
+          imgUrl: "https://randomuser.me/api/portraits/men/31.jpg",
+        },
+      ],
+      followers: [
+        {
+          _id: "u1023",
+          fullname: "Mia Nelson",
+          imgUrl: "https://randomuser.me/api/portraits/women/24.jpg",
+        },
+        {
+          _id: "u1024",
+          fullname: "Logan Clark",
+          imgUrl: "https://randomuser.me/api/portraits/men/25.jpg",
+        },
+        {
+          _id: "u1025",
+          fullname: "Mia Hill",
+          imgUrl: "https://randomuser.me/api/portraits/women/26.jpg",
+        },
+        {
+          _id: "u1026",
+          fullname: "Owen Wood",
+          imgUrl: "https://randomuser.me/api/portraits/men/27.jpg",
+        },
+        {
+          _id: "u1027",
+          fullname: "Ella Turner",
+          imgUrl: "https://randomuser.me/api/portraits/women/28.jpg",
+        },
+        {
+          _id: "u1028",
+          fullname: "Caleb Ross",
+          imgUrl: "https://randomuser.me/api/portraits/men/29.jpg",
+        },
+        {
+          _id: "u1029",
+          fullname: "Chloe Perry",
+          imgUrl: "https://randomuser.me/api/portraits/women/30.jpg",
+        },
+      ],
     },
     {
       username: "michael_brown",
       password: "secure_password5",
       fullname: "Michael Brown",
       imgUrl: "https://randomuser.me/api/portraits/men/5.jpg",
-      createdAt: "2024-01-29T12:00:40Z",
+      createdAt: 1675468800,
       emailOrNumber: "michael_brown@gmail.com",
       _id: "u104",
+      following: [
+        {
+          _id: "u1023",
+          fullname: "Mia Nelson",
+          imgUrl: "https://randomuser.me/api/portraits/women/24.jpg",
+        },
+        {
+          _id: "u1024",
+          fullname: "Logan Clark",
+          imgUrl: "https://randomuser.me/api/portraits/men/25.jpg",
+        },
+        {
+          _id: "u1025",
+          fullname: "Mia Hill",
+          imgUrl: "https://randomuser.me/api/portraits/women/26.jpg",
+        },
+        {
+          _id: "u1026",
+          fullname: "Owen Wood",
+          imgUrl: "https://randomuser.me/api/portraits/men/27.jpg",
+        },
+        {
+          _id: "u1027",
+          fullname: "Ella Turner",
+          imgUrl: "https://randomuser.me/api/portraits/women/28.jpg",
+        },
+        {
+          _id: "u1028",
+          fullname: "Caleb Ross",
+          imgUrl: "https://randomuser.me/api/portraits/men/29.jpg",
+        },
+        {
+          _id: "u1029",
+          fullname: "Chloe Perry",
+          imgUrl: "https://randomuser.me/api/portraits/women/30.jpg",
+        },
+      ],
+      followers: [
+        {
+          _id: "u1023",
+          fullname: "Mia Nelson",
+          imgUrl: "https://randomuser.me/api/portraits/women/24.jpg",
+        },
+        {
+          _id: "u1024",
+          fullname: "Logan Clark",
+          imgUrl: "https://randomuser.me/api/portraits/men/25.jpg",
+        },
+        {
+          _id: "u1025",
+          fullname: "Mia Hill",
+          imgUrl: "https://randomuser.me/api/portraits/women/26.jpg",
+        },
+        {
+          _id: "u1026",
+          fullname: "Owen Wood",
+          imgUrl: "https://randomuser.me/api/portraits/men/27.jpg",
+        },
+        {
+          _id: "u1029",
+          fullname: "Chloe Perry",
+          imgUrl: "https://randomuser.me/api/portraits/women/30.jpg",
+        },
+        {
+          _id: "u100",
+          fullname: "John Doe",
+          imgUrl: "https://randomuser.me/api/portraits/men/86.jpg",
+        },
+        {
+          _id: "u101",
+          fullname: "Jane Smith",
+          imgUrl:
+            "https://res.cloudinary.com/dvtyeanju/image/upload/v1706514509/pexels-nele-holemans-19923206_wihp1b.jpg",
+        },
+        {
+          _id: "u102",
+          fullname: "Sam Jackson",
+          imgUrl: "https://randomuser.me/api/portraits/men/3.jpg",
+        },
+      ],
     },
     {
       username: "olivia_davis",
       password: "secure_password6",
       fullname: "Olivia Davis",
       imgUrl: "https://randomuser.me/api/portraits/women/6.jpg",
-      createdAt: "2024-01-29T12:00:50Z",
+      createdAt: 1674518400,
       emailOrNumber: "olivia_davis@gmail.com",
       _id: "u105",
+      following: [
+        {
+          _id: "u106",
+          fullname: "Ethan Miller",
+          imgUrl: "https://randomuser.me/api/portraits/men/7.jpg",
+        },
+        {
+          _id: "u107",
+          fullname: "Ava Jones",
+          imgUrl: "https://randomuser.me/api/portraits/women/8.jpg",
+        },
+        {
+          _id: "u108",
+          fullname: "William Taylor",
+          imgUrl: "https://randomuser.me/api/portraits/men/9.jpg",
+        },
+        {
+          _id: "u109",
+          fullname: "Sophia Clark",
+          imgUrl: "https://randomuser.me/api/portraits/women/10.jpg",
+        },
+        {
+          _id: "u1010",
+          fullname: "Adam Hall",
+          imgUrl: "https://randomuser.me/api/portraits/men/11.jpg",
+        },
+      ],
+      followers: [
+        {
+          _id: "u108",
+          fullname: "William Taylor",
+          imgUrl: "https://randomuser.me/api/portraits/men/9.jpg",
+        },
+        {
+          _id: "u109",
+          fullname: "Sophia Clark",
+          imgUrl: "https://randomuser.me/api/portraits/women/10.jpg",
+        },
+        {
+          _id: "u1010",
+          fullname: "Adam Hall",
+          imgUrl: "https://randomuser.me/api/portraits/men/11.jpg",
+        },
+        {
+          _id: "u1011",
+          fullname: "Lily Martin",
+          imgUrl: "https://randomuser.me/api/portraits/women/12.jpg",
+        },
+        {
+          _id: "u1012",
+          fullname: "Brian King",
+          imgUrl: "https://randomuser.me/api/portraits/men/13.jpg",
+        },
+        {
+          _id: "u1013",
+          fullname: "Grace Scott",
+          imgUrl: "https://randomuser.me/api/portraits/women/14.jpg",
+        },
+        {
+          _id: "u1014",
+          fullname: "Jacob Adams",
+          imgUrl: "https://randomuser.me/api/portraits/men/15.jpg",
+        },
+        {
+          _id: "u1015",
+          fullname: "Olivia Hill",
+          imgUrl: "https://randomuser.me/api/portraits/women/16.jpg",
+        },
+        {
+          _id: "u1016",
+          fullname: "Charlie Ross",
+          imgUrl: "https://randomuser.me/api/portraits/men/17.jpg",
+        },
+        {
+          _id: "u1017",
+          fullname: "Ava Long",
+          imgUrl: "https://randomuser.me/api/portraits/women/18.jpg",
+        },
+      ],
     },
     {
       username: "ethan_miller",
       password: "secure_password7",
       fullname: "Ethan Miller",
       imgUrl: "https://randomuser.me/api/portraits/men/7.jpg",
-      createdAt: "2024-01-29T12:01:00Z",
+      createdAt: 1673481600,
       emailOrNumber: "ethan_miller@gmail.com",
       _id: "u106",
+      following: [
+        {
+          _id: "u100",
+          fullname: "John Doe",
+          imgUrl: "https://randomuser.me/api/portraits/men/86.jpg",
+        },
+        {
+          _id: "u101",
+          fullname: "Jane Smith",
+          imgUrl:
+            "https://res.cloudinary.com/dvtyeanju/image/upload/v1706514509/pexels-nele-holemans-19923206_wihp1b.jpg",
+        },
+        {
+          _id: "u102",
+          fullname: "Sam Jackson",
+          imgUrl: "https://randomuser.me/api/portraits/men/3.jpg",
+        },
+        {
+          _id: "u103",
+          fullname: "Emily White",
+          imgUrl:
+            "https://res.cloudinary.com/dvtyeanju/image/upload/v1706514503/pexels-tati%C3%A9le-alves-18275619_v1hnr0.jpg",
+        },
+        {
+          _id: "u104",
+          fullname: "Michael Brown",
+          imgUrl: "https://randomuser.me/api/portraits/men/5.jpg",
+        },
+        {
+          _id: "u105",
+          fullname: "Olivia Davis",
+          imgUrl: "https://randomuser.me/api/portraits/women/6.jpg",
+        },
+      ],
+      followers: [
+        {
+          _id: "u1010",
+          fullname: "Adam Hall",
+          imgUrl: "https://randomuser.me/api/portraits/men/11.jpg",
+        },
+        {
+          _id: "u1011",
+          fullname: "Lily Martin",
+          imgUrl: "https://randomuser.me/api/portraits/women/12.jpg",
+        },
+        {
+          _id: "u1012",
+          fullname: "Brian King",
+          imgUrl: "https://randomuser.me/api/portraits/men/13.jpg",
+        },
+        {
+          _id: "u1013",
+          fullname: "Grace Scott",
+          imgUrl: "https://randomuser.me/api/portraits/women/14.jpg",
+        },
+        {
+          _id: "u1014",
+          fullname: "Jacob Adams",
+          imgUrl: "https://randomuser.me/api/portraits/men/15.jpg",
+        },
+        {
+          _id: "u1015",
+          fullname: "Olivia Hill",
+          imgUrl: "https://randomuser.me/api/portraits/women/16.jpg",
+        },
+        {
+          _id: "u1016",
+          fullname: "Charlie Ross",
+          imgUrl: "https://randomuser.me/api/portraits/men/17.jpg",
+        },
+        {
+          _id: "u1017",
+          fullname: "Ava Long",
+          imgUrl: "https://randomuser.me/api/portraits/women/18.jpg",
+        },
+        {
+          _id: "u1018",
+          fullname: "Ryan Campbell",
+          imgUrl: "https://randomuser.me/api/portraits/men/19.jpg",
+        },
+        {
+          _id: "u1019",
+          fullname: "Zoe Kelly",
+          imgUrl: "https://randomuser.me/api/portraits/women/20.jpg",
+        },
+        {
+          _id: "u1020",
+          fullname: "Daniel Hall",
+          imgUrl: "https://randomuser.me/api/portraits/men/21.jpg",
+        },
+        {
+          _id: "u1021",
+          fullname: "Emma Morris",
+          imgUrl: "https://randomuser.me/api/portraits/women/22.jpg",
+        },
+        {
+          _id: "u1022",
+          fullname: "Aiden White",
+          imgUrl: "https://randomuser.me/api/portraits/men/23.jpg",
+        },
+      ],
     },
     {
       username: "ava_jones",
       password: "secure_password8",
       fullname: "Ava Jones",
       imgUrl: "https://randomuser.me/api/portraits/women/8.jpg",
-      createdAt: "2024-01-29T12:01:10Z",
+      createdAt: 1674777600,
       emailOrNumber: "ava_jones@gmail.com",
       _id: "u107",
+      following: [
+        {
+          _id: "u102",
+          fullname: "Sam Jackson",
+          imgUrl: "https://randomuser.me/api/portraits/men/3.jpg",
+        },
+        {
+          _id: "u103",
+          fullname: "Emily White",
+          imgUrl:
+            "https://res.cloudinary.com/dvtyeanju/image/upload/v1706514503/pexels-tati%C3%A9le-alves-18275619_v1hnr0.jpg",
+        },
+        {
+          _id: "u104",
+          fullname: "Michael Brown",
+          imgUrl: "https://randomuser.me/api/portraits/men/5.jpg",
+        },
+        {
+          _id: "u105",
+          fullname: "Olivia Davis",
+          imgUrl: "https://randomuser.me/api/portraits/women/6.jpg",
+        },
+        {
+          _id: "u106",
+          fullname: "Ethan Miller",
+          imgUrl: "https://randomuser.me/api/portraits/men/7.jpg",
+        },
+      ],
+      followers: [
+        {
+          _id: "u1017",
+          fullname: "Ava Long",
+          imgUrl: "https://randomuser.me/api/portraits/women/18.jpg",
+        },
+        {
+          _id: "u1018",
+          fullname: "Ryan Campbell",
+          imgUrl: "https://randomuser.me/api/portraits/men/19.jpg",
+        },
+        {
+          _id: "u1019",
+          fullname: "Zoe Kelly",
+          imgUrl: "https://randomuser.me/api/portraits/women/20.jpg",
+        },
+        {
+          _id: "u1020",
+          fullname: "Daniel Hall",
+          imgUrl: "https://randomuser.me/api/portraits/men/21.jpg",
+        },
+        {
+          _id: "u1021",
+          fullname: "Emma Morris",
+          imgUrl: "https://randomuser.me/api/portraits/women/22.jpg",
+        },
+        {
+          _id: "u1022",
+          fullname: "Aiden White",
+          imgUrl: "https://randomuser.me/api/portraits/men/23.jpg",
+        },
+        {
+          _id: "u1023",
+          fullname: "Mia Nelson",
+          imgUrl: "https://randomuser.me/api/portraits/women/24.jpg",
+        },
+        {
+          _id: "u1024",
+          fullname: "Logan Clark",
+          imgUrl: "https://randomuser.me/api/portraits/men/25.jpg",
+        },
+        {
+          _id: "u1025",
+          fullname: "Mia Hill",
+          imgUrl: "https://randomuser.me/api/portraits/women/26.jpg",
+        },
+      ],
     },
     {
       username: "william_taylor",
@@ -1130,9 +2011,190 @@ function createDemoUsers() {
       password: "secure_password29",
       fullname: "Jack Thompson",
       imgUrl: "https://randomuser.me/api/portraits/men/29.jpg",
-      createdAt: "2024-01-29T12:04:40Z",
+      createdAt: 1673827200,
       emailOrNumber: "jack_thompson@gmail.com",
       _id: "u1028",
+      following: [
+        {
+          _id: "u1025",
+          fullname: "Mia Hill",
+          imgUrl: "https://randomuser.me/api/portraits/women/26.jpg",
+        },
+        {
+          _id: "u1026",
+          fullname: "Owen Wood",
+          imgUrl: "https://randomuser.me/api/portraits/men/27.jpg",
+        },
+        {
+          _id: "u1027",
+          fullname: "Ella Turner",
+          imgUrl: "https://randomuser.me/api/portraits/women/28.jpg",
+        },
+        {
+          _id: "u1029",
+          fullname: "Chloe Perry",
+          imgUrl: "https://randomuser.me/api/portraits/women/30.jpg",
+        },
+        {
+          _id: "u1030",
+          fullname: "Isaac King",
+          imgUrl: "https://randomuser.me/api/portraits/men/31.jpg",
+        },
+      ],
+      followers: [
+        {
+          _id: "u100",
+          fullname: "John Doe",
+          imgUrl: "https://randomuser.me/api/portraits/men/86.jpg",
+        },
+        {
+          _id: "u101",
+          fullname: "Jane Smith",
+          imgUrl:
+            "https://res.cloudinary.com/dvtyeanju/image/upload/v1706514509/pexels-nele-holemans-19923206_wihp1b.jpg",
+        },
+        {
+          _id: "u102",
+          fullname: "Sam Jackson",
+          imgUrl: "https://randomuser.me/api/portraits/men/3.jpg",
+        },
+        {
+          _id: "u103",
+          fullname: "Emily White",
+          imgUrl:
+            "https://res.cloudinary.com/dvtyeanju/image/upload/v1706514503/pexels-tati%C3%A9le-alves-18275619_v1hnr0.jpg",
+        },
+        {
+          _id: "u104",
+          fullname: "Michael Brown",
+          imgUrl: "https://randomuser.me/api/portraits/men/5.jpg",
+        },
+        {
+          _id: "u105",
+          fullname: "Olivia Davis",
+          imgUrl: "https://randomuser.me/api/portraits/women/6.jpg",
+        },
+        {
+          _id: "u106",
+          fullname: "Ethan Miller",
+          imgUrl: "https://randomuser.me/api/portraits/men/7.jpg",
+        },
+        {
+          _id: "u107",
+          fullname: "Ava Jones",
+          imgUrl: "https://randomuser.me/api/portraits/women/8.jpg",
+        },
+        {
+          _id: "u108",
+          fullname: "William Taylor",
+          imgUrl: "https://randomuser.me/api/portraits/men/9.jpg",
+        },
+        {
+          _id: "u109",
+          fullname: "Sophia Clark",
+          imgUrl: "https://randomuser.me/api/portraits/women/10.jpg",
+        },
+        {
+          _id: "u1010",
+          fullname: "Adam Hall",
+          imgUrl: "https://randomuser.me/api/portraits/men/11.jpg",
+        },
+        {
+          _id: "u1011",
+          fullname: "Lily Martin",
+          imgUrl: "https://randomuser.me/api/portraits/women/12.jpg",
+        },
+        {
+          _id: "u1012",
+          fullname: "Brian King",
+          imgUrl: "https://randomuser.me/api/portraits/men/13.jpg",
+        },
+        {
+          _id: "u1013",
+          fullname: "Grace Scott",
+          imgUrl: "https://randomuser.me/api/portraits/women/14.jpg",
+        },
+        {
+          _id: "u1014",
+          fullname: "Jacob Adams",
+          imgUrl: "https://randomuser.me/api/portraits/men/15.jpg",
+        },
+        {
+          _id: "u1015",
+          fullname: "Olivia Hill",
+          imgUrl: "https://randomuser.me/api/portraits/women/16.jpg",
+        },
+        {
+          _id: "u1016",
+          fullname: "Charlie Ross",
+          imgUrl: "https://randomuser.me/api/portraits/men/17.jpg",
+        },
+        {
+          _id: "u1017",
+          fullname: "Ava Long",
+          imgUrl: "https://randomuser.me/api/portraits/women/18.jpg",
+        },
+        {
+          _id: "u1018",
+          fullname: "Ryan Campbell",
+          imgUrl: "https://randomuser.me/api/portraits/men/19.jpg",
+        },
+        {
+          _id: "u1019",
+          fullname: "Zoe Kelly",
+          imgUrl: "https://randomuser.me/api/portraits/women/20.jpg",
+        },
+        {
+          _id: "u1020",
+          fullname: "Daniel Hall",
+          imgUrl: "https://randomuser.me/api/portraits/men/21.jpg",
+        },
+        {
+          _id: "u1021",
+          fullname: "Emma Morris",
+          imgUrl: "https://randomuser.me/api/portraits/women/22.jpg",
+        },
+        {
+          _id: "u1022",
+          fullname: "Aiden White",
+          imgUrl: "https://randomuser.me/api/portraits/men/23.jpg",
+        },
+        {
+          _id: "u1023",
+          fullname: "Mia Nelson",
+          imgUrl: "https://randomuser.me/api/portraits/women/24.jpg",
+        },
+        {
+          _id: "u1024",
+          fullname: "Logan Clark",
+          imgUrl: "https://randomuser.me/api/portraits/men/25.jpg",
+        },
+        {
+          _id: "u1025",
+          fullname: "Mia Hill",
+          imgUrl: "https://randomuser.me/api/portraits/women/26.jpg",
+        },
+        {
+          _id: "u1026",
+          fullname: "Owen Wood",
+          imgUrl: "https://randomuser.me/api/portraits/men/27.jpg",
+        },
+        {
+          _id: "u1027",
+          fullname: "Ella Turner",
+          imgUrl: "https://randomuser.me/api/portraits/women/28.jpg",
+        },
+        {
+          _id: "u1029",
+          fullname: "Chloe Perry",
+          imgUrl: "https://randomuser.me/api/portraits/women/30.jpg",
+        },
+        {
+          _id: "u1030",
+          fullname: "Isaac King",
+          imgUrl: "https://randomuser.me/api/portraits/men/31.jpg",
+        },
+      ],
     },
     {
       username: "amelia_ward",
@@ -1448,22 +2510,29 @@ function createDemoUsers() {
       createdAt: "2024-01-29T12:06:00Z",
       emailOrNumber: "grayson_morris@gmail.com",
       _id: "u1063",
-    }
+    },
   ]
 }
 function generateTimeList() {
-  const startDate = new Date('2023-01-06');
-  const endDate = new Date('2024-01-29');
-  const timeList = [];
+  const startDate = new Date("2023-01-06")
+  const endDate = new Date("2024-01-29")
+  const timeList = []
 
-  for (let currentDate = startDate; currentDate <= endDate; currentDate.setDate(currentDate.getDate() + 1)) {
-      const timestampInSeconds = Math.floor(currentDate.getTime() / 1000);
-      timeList.push({ date: currentDate.toISOString().split('T')[0], timestamp: timestampInSeconds });
+  for (
+    let currentDate = startDate;
+    currentDate <= endDate;
+    currentDate.setDate(currentDate.getDate() + 1)
+  ) {
+    const timestampInSeconds = Math.floor(currentDate.getTime() / 1000)
+    timeList.push({
+      date: currentDate.toISOString().split("T")[0],
+      timestamp: timestampInSeconds,
+    })
   }
 
-  return timeList;
+  return timeList
 }
 
 // Example usage:
-const times = generateTimeList();
-console.log(times);
+const times = generateTimeList()
+console.log(times)

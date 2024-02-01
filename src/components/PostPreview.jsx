@@ -55,7 +55,7 @@ export function PostPreview({ post, addLikeToPost, addCommentToPost }) {
                             <div className="container-data-div">
                                 <div className="container-data-fullName-date">
                                     <Link to={`/profile/${post.by?.username}`}>
-                                        <div className="container-data-fullName">{post.by.fullname}</div>
+                                        <div className="container-data-fullName">{post.by.username}</div>
                                     </Link>
                                     <div className="container-data-date">
                                         <span className='container-data-date-span'>·</span>

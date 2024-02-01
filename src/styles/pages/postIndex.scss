@@ -7,11 +7,11 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  height: 2359.6px;
+ // height: 2359.6px;
   line-height: 18px;
   min-height: 695.2px;
   text-size-adjust: 100%;
-}
+
 
 .main-post-index-container {
 
@@ -27,4 +27,15 @@
   text-size-adjust: 100%;
   //width: 1275.2px;
 
+}}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .post-index-container{
+   // width: 360px;
+    margin-left: 0px;
+  }
+
+//  .main-post-index-container{
+//     width: 360px;
+//   }
 }

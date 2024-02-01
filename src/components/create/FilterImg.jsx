@@ -4,7 +4,7 @@ import { Svgs } from '../../assets/Svgs'
 import normal from '../../assets/images/Normal.jpg'
 import { saveImageUrl } from '../../store/actions/image.actions';
 import { SET_IMGS_URL } from '../../store/reducers/image.reducer';
-import { cloneElement, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { toPng } from 'html-to-image';
 import React from 'react';
 
@@ -35,25 +35,26 @@ export function FilterImg() {
     }, [filesMap])
 
 
-    const htmlToImageConvert = (count) => {
+    function htmlToImageConvert(move){
         setIsloading(true)
        
         toPng(elementRef.current, { cacheBust: false })
             .then((dataUrl) => {
-                filesMap[count].url = dataUrl
+               
+                filesMap[imgCount].url = dataUrl
                 let metadata = {
-                    type: filesMap[count].file.type
+                    type: filesMap[imgCount].file.type
                 };
-                let newFile = new File([dataUrl], filesMap[count].file.name, metadata)
-                filesMap[count].file = newFile
+                let newFile = new File([dataUrl], filesMap[imgCount].file.name, metadata)
+                filesMap[imgCount].file = newFile
                 setFilesMap([...filesMap])
                 setIsloading(false)
                 saveImageUrl({ type: SET_IMGS_URL, imgsUrl: filesMap })
-
-
+                setImgCount(imgCount + move)
+              
             })
             .catch((err) => {
-                console.log(err);
+                console.error(err);
             });
     };
 
@@ -61,7 +62,6 @@ export function FilterImg() {
         setIsloading(true)
         toPng(elementRef.current, { cacheBust: false })
             .then((dataUrl) => {
-
                 filesMap[imgCount].url = dataUrl
                 let metadata = {
                     type: filesMap[imgCount].file.type
@@ -77,7 +77,7 @@ export function FilterImg() {
 
             })
             .catch((err) => {
-                console.log(err);
+                console.error(err);
             });
     };
 
@@ -89,7 +89,7 @@ export function FilterImg() {
 
         filesMap[imgCount].filter = filter.v
         filesMap[imgCount].displayFilter = true;
-        setFilesMap([...filesMap])
+        setFilesMap([...filesMap]) 
     }
 
     return (
@@ -121,20 +121,21 @@ export function FilterImg() {
 
                 <div className="create-post-filter-img-data">
                     <div>
+                   
                         {(imgCount > 0) &&
                             <div onClick={() => {
                                 if (filesMap[imgCount].filter !== '')
-                                    htmlToImageConvert(imgCount)
-                                setImgCount(imgCount - 1)
+                                    htmlToImageConvert(-1)
+                                else
+                                    setImgCount(imgCount - 1)
                             }}
                                 aria-label="Go Back" className="button-back-img" >
                             </div>
                         }
                     </div>
-
+                 
                     <div>
                         {
-                            
                             filesMap.length > 0 && filesMap[imgCount].url !== null
                             && ((filesMap[imgCount].type === 'video'
                                 && <video controls className='post-img-style'>
@@ -149,8 +150,9 @@ export function FilterImg() {
                         {((filesMap.length - 1) > imgCount) &&
                             <div onClick={() => {
                                 if (filesMap[imgCount].filter !== '')
-                                    htmlToImageConvert(imgCount)
-                                setImgCount(imgCount + 1)
+                                    htmlToImageConvert(1)
+                                else
+                                    setImgCount(imgCount + 1)
                             }} aria-label="Next" className="button-next-img">
                                
                             </div>
@@ -169,10 +171,9 @@ export function FilterImg() {
                             {
                                 filesMap[imgCount].type === 'image' &&
                                 Object.entries(filter).map(([k, v]) => (
-                                    <div className='filter-flex'>
+                                    <div className='filter-flex' key={k}>
                                         <div onClick={() => { addFilterToImage({ v }) }} className={`filter-img ${v}`}>
                                             <div className={`filter-img-div  ${filesMap[imgCount].filter === v ? 'filter-selected' : ''}`}><img src={normal} /></div>
-
                                         </div>
                                         <div className={`filter-name  ${filesMap[imgCount].filter === v ? 'filter-selected-name' : ''}`}>{k}</div>
                                     </div>

@@ -32,7 +32,9 @@ function App() {
 
           <Route path="/chat" element={<Message />} />
           <Route path="/profile/:username" element={<Profile />}>
-            <Route path="/profile/:username" element={<PostListPro />} />
+            <Route path="/profile/:username" element={<PostListPro />}>
+              <Route path="/profile/:username/:postId" element={<PostDetails />}/>
+            </Route>
             <Route path="/profile/:username/saved" element={<Saved />} />
             <Route path="/profile/:username/tagged" element={<Tagged />} />
           </Route>

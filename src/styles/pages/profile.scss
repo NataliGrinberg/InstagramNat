@@ -1164,6 +1164,7 @@
       }
 
       .profile-container-tabs-data {
+        min-height: calc(100vh - 300px);
         align-content: stretch;
         align-items: stretch;
         align-self: auto;

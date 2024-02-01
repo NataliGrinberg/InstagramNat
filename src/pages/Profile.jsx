@@ -33,19 +33,19 @@ export function Profile() {
       setUser(userByName)
       loadPosts(userByName)
 
-    const userFollows = userByName?.followers?.filter(
-      (fol) => fol._id === userLoggin._id
-    )
+      if (userLoggin._id === userByName._id) setIsUserLogginProfile(true)
+      else {
+        
+        const userFollows = userByName?.followers?.filter(
+          (fol) => fol._id === userLoggin._id
+        )
+    
+        if (userFollows !== null && userFollows?.length > 0) setIsFollowing(true)
+        setIsFollowing(false)
 
-    if (userFollows !== null && userFollows?.length > 0) return true
-    return false
+      }
 
-
-      // if (userLoggin._id === userByName._id) setIsUserLogginProfile(true)
-      // else {
-      //   const isFoll = userService.checkIsFollowing(userByName)
-      //   setIsFollowing(isFoll)
-      // }
+   
     } catch (err) {
       console.log("err:", err)
     }
